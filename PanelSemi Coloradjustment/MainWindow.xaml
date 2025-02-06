@@ -1,0 +1,393 @@
+﻿<mah:MetroWindow
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PanelSemi_Coloradjustment"
+        xmlns:CtLib ="clr-namespace:CtLib.Library.Wpf;assembly=CtLib.Library.Wpf"
+        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls" x:Class="PanelSemi_Coloradjustment.MainWindow"
+        mc:Ignorable="d"
+        Title="{Binding PanelSemi_SplicingVersion}" Height="900" Width="1700" Background="{x:Null}" WindowStartupLocation="CenterScreen" TitleCharacterCasing="Normal">
+    <mah:MetroWindow.TitleTemplate>
+        <DataTemplate>
+            <StackPanel Orientation="Horizontal"
+			HorizontalAlignment="Left"
+			VerticalAlignment="Center"
+			Margin="5,0,0,0">
+                <Image Source="/Panelsemi white.png" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stretch="Uniform" Margin="0,2,5,2" />
+                <Border Margin="2,2,0,2"
+	                CornerRadius="3"
+	                Background="#3C3C3C">
+                    <TextBlock Padding="5,2.5,5,2.5" Text="Color adjustment App" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Border>
+                <Border Margin="10,2,0,2"
+				CornerRadius="3"
+				Background="#3C3C3C">
+                    <TextBlock Padding="5,2.5,5,2.5" Text="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Border>
+            </StackPanel>
+        </DataTemplate>
+    </mah:MetroWindow.TitleTemplate>
+    <Window.DataContext>
+        <local:MainProcess/>
+    </Window.DataContext>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0.7*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0.7*"/>
+
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Row="0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="單屏攔數" Grid.Column="0" Grid.Row="0" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" />
+                <TextBlock Text="單屏列數" Grid.Column="0" Grid.Row="1" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" />
+                <CtLib:NumericUpDown  Value="{Binding RowCount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Grid.Column="1" Grid.Row="0" Increment="1" Width="80" Height="50"/>
+                <CtLib:NumericUpDown  Value="{Binding ColumnCount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="1" Increment="1" Height="50" Width="80"/>
+            </Grid>
+        </Border>
+        <Border Grid.Column="0" Grid.Row="1" Grid.RowSpan="1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.5*"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="0.5*"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="Microusb" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
+                <ComboBox ItemsSource="{Binding Microusb_Items}" SelectedItem="{Binding Microusb_SelectedItem}" Grid.Row="1" BorderBrush="{x:Null}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" Margin="5">
+                                <!-- 圖片 -->
+                                <Image Source="{Binding Image}" Width="30" Height="60" Margin="0,0,5,0" Stretch="Uniform" />
+                                <!-- 文本 -->
+                                <TextBlock Text="{Binding Text}" VerticalAlignment="Center" FontSize="16"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+
+                <TextBlock Grid.Row="2" Text="HDMI" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
+                <ComboBox ItemsSource="{Binding HDMI_Items}" SelectedItem="{Binding HDMI_SelectedItem}" Grid.Row="3" BorderBrush="{x:Null}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" Margin="5">
+                                <!-- 圖片 -->
+                                <Image Source="{Binding Image}" Width="30" Height="60" Margin="0,0,5,0" Stretch="Uniform" />
+                                <!-- 文本 -->
+                                <TextBlock Text="{Binding Text}" VerticalAlignment="Center" FontSize="16" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+            </Grid>
+        </Border>
+        <Border Grid.Column="4" Grid.RowSpan="2" Grid.ColumnSpan="1">
+            <StackPanel Margin="2">
+                <TextBlock Text="色域選擇" Foreground="#FFFEFEFE" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="20"/>
+                <Separator/>
+                <Border Height="30">
+                    <StackPanel Orientation="Horizontal" >
+                        <TextBlock Text="1020階" Foreground="#FFF8F8F8" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"/>
+                        <Rectangle Width="2" Fill="White" Margin="5,0,0,0"/>
+                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[0]}" Content="R" Margin="5,0,0,0" FontSize="18"/>
+                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[1]}" Content="G" Margin="5,0,0,0" FontSize="18"/>
+                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[2]}" Content="B" Margin="5,0,0,0" FontSize="18"/>
+                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[3]}" Content="W" Margin="5,0,0,0" FontSize="18"/>
+                    </StackPanel>
+                </Border>
+                <Separator/>
+                <Border Height="30">
+                    <StackPanel Orientation="Horizontal" >
+                        <TextBlock Text="0512階" Foreground="#FFF8F8F8" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"/>
+                        <Rectangle Width="2" Fill="White" Margin="5,0,0,0"/>
+                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[4]}" Content="R" Margin="5,0,0,0" FontSize="18"/>
+                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[5]}" Content="G" Margin="5,0,0,0" FontSize="18"/>
+                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[6]}" Content="B" Margin="5,0,0,0" FontSize="18"/>
+                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[7]}" Content="W" Margin="5,0,0,0" FontSize="18"/>
+                    </StackPanel>
+                </Border>
+                <Separator/>
+                <Border Height="30">
+                    <StackPanel Orientation="Horizontal" >
+                        <TextBlock Text="0256階" Foreground="#FFF8F8F8" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"/>
+                        <Rectangle Width="2" Fill="White" Margin="5,0,0,0"/>
+                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[8]}" Content="R" Margin="5,0,0,0" FontSize="18"/>
+                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[9]}" Content="G" Margin="5,0,0,0" FontSize="18" />
+                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[10]}" Content="B" Margin="5,0,0,0" FontSize="18"/>
+                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[11]}" Content="W" Margin="5,0,0,0" FontSize="18"/>
+                    </StackPanel>
+                </Border>
+                <Separator/>
+                <Border Height="30">
+                    <StackPanel Orientation="Horizontal" >
+                        <TextBlock Text="0128階" Foreground="#FFF8F8F8" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"/>
+                        <Rectangle Width="2" Fill="White" Margin="5,0,0,0"/>
+                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[12]}" Content="R" Margin="5,0,0,0" FontSize="18"/>
+                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[13]}" Content="G" Margin="5,0,0,0" FontSize="18"/>
+                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[14]}" Content="B" Margin="5,0,0,0" FontSize="18"/>
+                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[15]}" Content="W" Margin="5,0,0,0" FontSize="18"/>
+                    </StackPanel>
+                </Border>
+                <Separator/>
+                <Button Command="{Binding StartandInit}" Content="Start" Margin="0,5,0,0" FontSize="16" Background="#FF207900"/>
+
+                <Button Command="{Binding SaveColorInfo}" Content="Save" Margin="0,5,0,0" FontSize="16" Background="#FFA82507"/>
+            </StackPanel>
+        </Border>
+        <Border Grid.Column="3" Grid.ColumnSpan="1" Grid.RowSpan="7">
+            <StackPanel Margin="2">
+                <TextBlock Text="系統" Foreground="#FFFEFEFE" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="20"/>
+                <Separator/>
+                <Button Command="{Binding USB_ComPort_FindandOpen}" Content="連線" Margin="0,5,0,0" FontSize="16" />
+                <ItemsControl ItemsSource="{Binding Panel_ID_CheckBoxes}"  >
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <CheckBox Content="{Binding Content}" IsChecked="{Binding IsChecked}"  FontSize="18" Margin="5"/>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
+            
+        </Border>
+        <Border Margin="2" Grid.Column="5" Grid.RowSpan="2" Grid.ColumnSpan="2" BorderThickness="2" BorderBrush="White">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.5*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Border  Grid.ColumnSpan="8" BorderBrush="White" BorderThickness="1">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Panelsemi white.png" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stretch="Fill" Margin="5,2,5,2" />
+                    </StackPanel>
+                </Border>
+                <Rectangle Fill="{Binding List_fillBrush[0]}" Grid.Column="0" Grid.Row="1"/>
+                <Rectangle Fill="{Binding FillBrushX1T2}" Grid.Column="0" Grid.Row="2"/>
+                <Rectangle Fill="{Binding FillBrushX1T3}" Grid.Column="0" Grid.Row="3"/>
+                <Rectangle Fill="{Binding FillBrushX1T4}" Grid.Column="0" Grid.Row="4"/>
+
+                <Rectangle Fill="{Binding FillBrushX2T1}" Grid.Column="1" Grid.Row="1"/>
+                <Rectangle Fill="{Binding FillBrushX2T2}" Grid.Column="1" Grid.Row="2"/>
+                <Rectangle Fill="{Binding FillBrushX2T3}" Grid.Column="1" Grid.Row="3"/>
+                <Rectangle Fill="{Binding FillBrushX2T4}" Grid.Column="1" Grid.Row="4"/>
+
+                <Rectangle Fill="{Binding FillBrushX3T1}" Grid.Column="2" Grid.Row="1"/>
+                <Rectangle Fill="{Binding FillBrushX3T2}" Grid.Column="2" Grid.Row="2"/>
+                <Rectangle Fill="{Binding FillBrushX3T3}" Grid.Column="2" Grid.Row="3"/>
+                <Rectangle Fill="{Binding FillBrushX3T4}" Grid.Column="2" Grid.Row="4"/>
+
+                <Rectangle Fill="{Binding FillBrushX4T1}" Grid.Column="3" Grid.Row="1"/>
+                <Rectangle Fill="{Binding FillBrushX4T2}" Grid.Column="3" Grid.Row="2"/>
+                <Rectangle Fill="{Binding FillBrushX4T3}" Grid.Column="3" Grid.Row="3"/>
+                <Rectangle Fill="{Binding FillBrushX4T4}" Grid.Column="3" Grid.Row="4"/>
+
+                <Rectangle Fill="{Binding AFillBrushX1T1}" Grid.Column="4" Grid.Row="1"/>
+                <Rectangle Fill="{Binding AFillBrushX1T2}" Grid.Column="4" Grid.Row="2"/>
+                <Rectangle Fill="{Binding AFillBrushX1T3}" Grid.Column="4" Grid.Row="3"/>
+                <Rectangle Fill="{Binding AFillBrushX1T4}" Grid.Column="4" Grid.Row="4"/>
+
+                <Rectangle Fill="{Binding AFillBrushX2T1}" Grid.Column="5" Grid.Row="1"/>
+                <Rectangle Fill="{Binding AFillBrushX2T2}" Grid.Column="5" Grid.Row="2"/>
+                <Rectangle Fill="{Binding AFillBrushX2T3}" Grid.Column="5" Grid.Row="3"/>
+                <Rectangle Fill="{Binding AFillBrushX2T4}" Grid.Column="5" Grid.Row="4"/>
+
+                <Rectangle Fill="{Binding AFillBrushX3T1}" Grid.Column="6" Grid.Row="1"/>
+                <Rectangle Fill="{Binding AFillBrushX3T2}" Grid.Column="6" Grid.Row="2"/>
+                <Rectangle Fill="{Binding AFillBrushX3T3}" Grid.Column="6" Grid.Row="3"/>
+                <Rectangle Fill="{Binding AFillBrushX3T4}" Grid.Column="6" Grid.Row="4"/>
+
+                <Rectangle Fill="{Binding AFillBrushX4T1}" Grid.Column="7" Grid.Row="1"/>
+                <Rectangle Fill="{Binding AFillBrushX4T2}" Grid.Column="7" Grid.Row="2"/>
+                <Rectangle Fill="{Binding AFillBrushX4T3}" Grid.Column="7" Grid.Row="3"/>
+                <Rectangle Fill="{Binding AFillBrushX4T4}" Grid.Column="7" Grid.Row="4"/>
+
+            </Grid>
+
+        </Border>
+        <Border Grid.Column="7" Grid.RowSpan="2" Grid.ColumnSpan="1">
+            <StackPanel Margin="2">
+                <TextBlock Text="調整模式" Foreground="#FFFEFEFE" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="20"/>
+                <Separator/>
+                <ComboBox ItemsSource="{Binding Mode_Item}" SelectedItem="{Binding Mode_SelectedItem}"  Margin="5"/>
+                <Separator/>
+                <TextBlock Text="XB Chose" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18"/>
+                <Border Height="30" IsEnabled="{Binding Is1x4}">
+                    <StackPanel Orientation="Horizontal">
+                        <CheckBox IsChecked="{Binding Ix4checkBoxStates[0]}" Content="1" Margin="5,0,0,0" FontSize="18"/>
+                        <CheckBox IsChecked="{Binding Ix4checkBoxStates[1]}" Content="2" Margin="5,0,0,0" FontSize="18"/>
+                        <CheckBox IsChecked="{Binding Ix4checkBoxStates[2]}" Content="3" Margin="5,0,0,0" FontSize="18"/>
+                        <CheckBox IsChecked="{Binding Ix4checkBoxStates[3]}" Content="4" Margin="5,0,0,0" FontSize="18"/>
+                    </StackPanel>
+
+                </Border>
+                <Border Height="30" IsEnabled="{Binding Is1x4}">
+                    <StackPanel Orientation="Horizontal">
+                        <CheckBox IsChecked="{Binding Ix4checkBoxStates[4]}" Content="5" Margin="5,0,0,0" FontSize="18"/>
+                        <CheckBox IsChecked="{Binding Ix4checkBoxStates[5]}" Content="6" Margin="5,0,0,0" FontSize="18"/>
+                        <CheckBox IsChecked="{Binding Ix4checkBoxStates[6]}" Content="7" Margin="5,0,0,0" FontSize="18"/>
+                        <CheckBox IsChecked="{Binding Ix4checkBoxStates[7]}" Content="8" Margin="5,0,0,0" FontSize="18"/>
+                    </StackPanel>
+                </Border>
+                <Separator/>
+                <TextBlock Text="Tile Chose" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18"/>
+                <Border Height="30" IsEnabled="{Binding IsSingle}">
+                    <StackPanel Orientation="Horizontal">
+                        <CheckBox IsChecked="{Binding SinglecheckBoxStates[0]}" Content="1" Margin="5,0,0,0" FontSize="18"/>
+                        <CheckBox IsChecked="{Binding SinglecheckBoxStates[1]}" Content="2" Margin="5,0,0,0" FontSize="18"/>
+                        <CheckBox IsChecked="{Binding SinglecheckBoxStates[2]}" Content="3" Margin="5,0,0,0" FontSize="18"/>
+                        <CheckBox IsChecked="{Binding SinglecheckBoxStates[3]}" Content="4" Margin="5,0,0,0" FontSize="18"/>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </Border>
+
+       
+
+        <Border Grid.Row="0" Grid.RowSpan="2" Grid.Column="1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.05*"/>
+                    <RowDefinition Height="1*" />
+                </Grid.RowDefinitions>
+                <!--<Rectangle Fill="White" Height="2"/>-->
+                <ListBox Grid.Row="1" Background="{x:Null}"/>
+            </Grid>
+        </Border>
+        <Border Grid.Column="4" Grid.ColumnSpan="4" Grid.Row="3" Grid.RowSpan="2">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.4*"/>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="R" FontSize="30" Foreground="#FFFCFCFC" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <StackPanel Grid.Column="1" Orientation="Horizontal">
+                        <TextBox Text="{Binding ValueR}" FontSize="26" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                    </StackPanel>
+                    
+                    <StackPanel Grid.Column="2" Margin="5,0,5,0">
+                        <Button Command="{Binding AdjValueR}" CommandParameter="up" Width="110" Height="40" Margin="5,5,5,5"/>
+                        <Button Command="{Binding AdjValueR}" CommandParameter="dwn" Width="110" Height="40" Margin="5,0,5,0"/>
+                    </StackPanel>
+                </Grid>
+
+            </Grid>
+        </Border>
+        <Border Grid.Column="4" Grid.ColumnSpan="4" Grid.Row="4" Grid.RowSpan="2">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.4*"/>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="G" FontSize="30" Foreground="#FFFCFCFC" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                    <TextBox Grid.Column="1" Text="{Binding ValueG}" FontSize="26" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+
+                    <StackPanel Grid.Column="2" Margin="5,0,5,0">
+                        <Button Width="110" Command="{Binding AdjValueG}" CommandParameter="up"  Height="40" Margin="5,5,5,5"/>
+                        <Button Width="110" Command="{Binding AdjValueG}" CommandParameter="dwn" Height="40" Margin="5,0,5,0"/>
+                    </StackPanel>
+                </Grid>
+
+            </Grid>
+        </Border>
+        <Border Grid.Column="4" Grid.ColumnSpan="4" Grid.Row="5" Grid.RowSpan="2">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.4*"/>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="B" FontSize="30" Foreground="#FFFCFCFC" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <TextBox Grid.Column="1"  Text="{Binding ValueB}" FontSize="26" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                    <StackPanel Grid.Column="2" Margin="5,0,5,0">
+                        <Button Width="110" Command="{Binding AdjValueB}" CommandParameter="up"  Height="40" Margin="5,5,5,5"/>
+                        <Button Width="110" Command="{Binding AdjValueB}" CommandParameter="dwn" Height="40" Margin="5,0,5,0"/>
+                    </StackPanel>
+                </Grid>
+
+            </Grid>
+        </Border>
+        <!--<DataGrid x:Name="Gridtest" Grid.Column="1" Grid.ColumnSpan="4" Grid.Row="3" Grid.RowSpan="4">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="1" Width="1*" />
+                <DataGridTextColumn Header="2" Width="1*" />
+                <DataGridTextColumn Header="3" Width="1*" />
+                <DataGridTextColumn Header="4" Width="1*" />
+            </DataGrid.Columns>
+            <DataGridTemplateColumn Header="Image" Width="SizeToCells"
+                IsReadOnly="True">
+                <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                        <Image  />
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+            </DataGridTemplateColumn>
+        </DataGrid>-->
+
+        <Button Command="{Binding test1}" Content="初始化" Grid.Column="0" Grid.Row="3"/>
+        <Button Command="{Binding test2}" Content="測試2" Grid.Column="0" Grid.Row="4"/>
+        <Button Command="{Binding test4}" Content="save" Grid.Column="0" Grid.Row="5"/>
+        <Button Command="{Binding test3}" Content="temp save" Grid.Column="0" Grid.Row="6"/>
+        <CtLib:LogGrid  Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="2" Grid.RowSpan="2"
+      DataContext="{Binding UILogger}"
+      TimeHeader="{DynamicResource Opt}"/>
+    </Grid>
+</mah:MetroWindow>
