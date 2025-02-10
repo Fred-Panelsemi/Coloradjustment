@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -615,7 +616,7 @@ namespace PanelSemi_Coloradjustment
         /// <param name="svsen"></param>
         /// <param name="svpo"></param>
         /// <param name="svca"></param>
-        public void cENGGMAONWRITEp(byte svact, byte svip, byte svsen, byte svpo, byte svca,Dictionary<int,List<int>>FPGA_B, Dictionary<int, List<int>> FPGA_A)
+        public void cENGGMAONWRITEp(byte svact, byte svip, byte svsen, byte svpo, byte svca,Dictionary<int, ObservableCollection<int>>FPGA_B, Dictionary<int, ObservableCollection<int>> FPGA_A)
         {
             // 初始化 Reg
             Array.Resize(ref uiregadr_default, uiregadr_default_p.Length);

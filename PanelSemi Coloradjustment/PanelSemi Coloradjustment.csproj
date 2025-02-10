@@ -129,6 +129,7 @@
     <Compile Include="Tool\Tool.cs" />
     <Compile Include="Tool\USB_Tool.cs" />
     <Compile Include="ViewModel\CheckboxModel.cs" />
+    <Compile Include="ViewModel\DictionaryViewModel .cs" />
     <Compile Include="ViewModel\DrawBackSimulation.cs" />
     <Compile Include="ViewModel\DrawFrontSimulation.cs" />
     <Compile Include="ViewModel\EmulatorBrush.cs" />

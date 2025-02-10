@@ -7,7 +7,7 @@
         xmlns:CtLib ="clr-namespace:CtLib.Library.Wpf;assembly=CtLib.Library.Wpf"
         xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls" x:Class="PanelSemi_Coloradjustment.MainWindow"
         mc:Ignorable="d"
-        Title="{Binding PanelSemi_SplicingVersion}" Height="900" Width="1700" Background="{x:Null}" WindowStartupLocation="CenterScreen" TitleCharacterCasing="Normal">
+        Title="{Binding PanelSemi_SplicingVersion}" Height="900" Width="1100" Background="{x:Null}" WindowStartupLocation="CenterScreen" TitleCharacterCasing="Normal">
     <mah:MetroWindow.TitleTemplate>
         <DataTemplate>
             <StackPanel Orientation="Horizontal"
@@ -43,139 +43,95 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
+           
             <ColumnDefinition/>
             <ColumnDefinition/>
             <ColumnDefinition/>
-            <ColumnDefinition Width="0.7*"/>
             <ColumnDefinition/>
             <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="0.7*"/>
 
         </Grid.ColumnDefinitions>
 
-        <Border Grid.Row="0">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <TextBlock Text="單屏攔數" Grid.Column="0" Grid.Row="0" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" />
-                <TextBlock Text="單屏列數" Grid.Column="0" Grid.Row="1" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16" />
-                <CtLib:NumericUpDown  Value="{Binding RowCount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Grid.Column="1" Grid.Row="0" Increment="1" Width="80" Height="50"/>
-                <CtLib:NumericUpDown  Value="{Binding ColumnCount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="1" Increment="1" Height="50" Width="80"/>
-            </Grid>
-        </Border>
-        <Border Grid.Column="0" Grid.Row="1" Grid.RowSpan="1">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="0.5*"/>
-                    <RowDefinition/>
-                    <RowDefinition Height="0.5*"/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <TextBlock Text="Microusb" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
-                <ComboBox ItemsSource="{Binding Microusb_Items}" SelectedItem="{Binding Microusb_SelectedItem}" Grid.Row="1" BorderBrush="{x:Null}">
-                    <ComboBox.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal" Margin="5">
-                                <!-- 圖片 -->
-                                <Image Source="{Binding Image}" Width="30" Height="60" Margin="0,0,5,0" Stretch="Uniform" />
-                                <!-- 文本 -->
-                                <TextBlock Text="{Binding Text}" VerticalAlignment="Center" FontSize="16"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ComboBox.ItemTemplate>
-                </ComboBox>
-
-                <TextBlock Grid.Row="2" Text="HDMI" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
-                <ComboBox ItemsSource="{Binding HDMI_Items}" SelectedItem="{Binding HDMI_SelectedItem}" Grid.Row="3" BorderBrush="{x:Null}">
-                    <ComboBox.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal" Margin="5">
-                                <!-- 圖片 -->
-                                <Image Source="{Binding Image}" Width="30" Height="60" Margin="0,0,5,0" Stretch="Uniform" />
-                                <!-- 文本 -->
-                                <TextBlock Text="{Binding Text}" VerticalAlignment="Center" FontSize="16" />
-                            </StackPanel>
-                        </DataTemplate>
-                    </ComboBox.ItemTemplate>
-                </ComboBox>
-            </Grid>
-        </Border>
-        <Border Grid.Column="4" Grid.RowSpan="2" Grid.ColumnSpan="1">
+        <Border Grid.Column="1" Grid.RowSpan="2" Grid.ColumnSpan="1">
             <StackPanel Margin="2">
                 <TextBlock Text="色域選擇" Foreground="#FFFEFEFE" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="20"/>
                 <Separator/>
                 <Border Height="30">
                     <StackPanel Orientation="Horizontal" >
                         <TextBlock Text="1020階" Foreground="#FFF8F8F8" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"/>
-                        <Rectangle Width="2" Fill="White" Margin="5,0,0,0"/>
-                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[0]}" Content="R" Margin="5,0,0,0" FontSize="18"/>
-                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[1]}" Content="G" Margin="5,0,0,0" FontSize="18"/>
-                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[2]}" Content="B" Margin="5,0,0,0" FontSize="18"/>
-                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[3]}" Content="W" Margin="5,0,0,0" FontSize="18"/>
+                        <Rectangle Width="2" Fill="White" Margin="4,0,4,0"/>
+                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[0]}" Content="R" Margin="2,0,0,0" FontSize="18"/>
+                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[1]}" Content="G" Margin="2,0,0,0" FontSize="18"/>
+                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[2]}" Content="B" Margin="2,0,0,0" FontSize="18"/>
+                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[3]}" Content="W" Margin="2,0,0,0" FontSize="18"/>
                     </StackPanel>
                 </Border>
                 <Separator/>
                 <Border Height="30">
                     <StackPanel Orientation="Horizontal" >
                         <TextBlock Text="0512階" Foreground="#FFF8F8F8" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"/>
-                        <Rectangle Width="2" Fill="White" Margin="5,0,0,0"/>
-                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[4]}" Content="R" Margin="5,0,0,0" FontSize="18"/>
-                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[5]}" Content="G" Margin="5,0,0,0" FontSize="18"/>
-                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[6]}" Content="B" Margin="5,0,0,0" FontSize="18"/>
-                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[7]}" Content="W" Margin="5,0,0,0" FontSize="18"/>
+                        <Rectangle Width="2" Fill="White" Margin="4,0,4,0"/>
+                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[4]}" Content="R" Margin="2,0,0,0" FontSize="18"/>
+                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[5]}" Content="G" Margin="2,0,0,0" FontSize="18"/>
+                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[6]}" Content="B" Margin="2,0,0,0" FontSize="18"/>
+                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[7]}" Content="W" Margin="2,0,0,0" FontSize="18"/>
                     </StackPanel>
                 </Border>
                 <Separator/>
                 <Border Height="30">
                     <StackPanel Orientation="Horizontal" >
                         <TextBlock Text="0256階" Foreground="#FFF8F8F8" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"/>
-                        <Rectangle Width="2" Fill="White" Margin="5,0,0,0"/>
-                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[8]}" Content="R" Margin="5,0,0,0" FontSize="18"/>
-                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[9]}" Content="G" Margin="5,0,0,0" FontSize="18" />
-                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[10]}" Content="B" Margin="5,0,0,0" FontSize="18"/>
-                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[11]}" Content="W" Margin="5,0,0,0" FontSize="18"/>
+                        <Rectangle Width="2" Fill="White" Margin="4,0,4,0"/>
+                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[8]}" Content="R" Margin="2,0,0,0" FontSize="18"/>
+                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[9]}" Content="G" Margin="2,0,0,0" FontSize="18" />
+                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[10]}" Content="B" Margin="2,0,0,0" FontSize="18"/>
+                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[11]}" Content="W" Margin="2,0,0,0" FontSize="18"/>
                     </StackPanel>
                 </Border>
                 <Separator/>
                 <Border Height="30">
                     <StackPanel Orientation="Horizontal" >
                         <TextBlock Text="0128階" Foreground="#FFF8F8F8" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"/>
-                        <Rectangle Width="2" Fill="White" Margin="5,0,0,0"/>
-                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[12]}" Content="R" Margin="5,0,0,0" FontSize="18"/>
-                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[13]}" Content="G" Margin="5,0,0,0" FontSize="18"/>
-                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[14]}" Content="B" Margin="5,0,0,0" FontSize="18"/>
-                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[15]}" Content="W" Margin="5,0,0,0" FontSize="18"/>
+                        <Rectangle Width="2" Fill="White" Margin="4,0,4,0"/>
+                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[12]}" Content="R" Margin="2,0,0,0" FontSize="18"/>
+                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[13]}" Content="G" Margin="2,0,0,0" FontSize="18"/>
+                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[14]}" Content="B" Margin="2,0,0,0" FontSize="18"/>
+                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[15]}" Content="W" Margin="2,0,0,0" FontSize="18"/>
                     </StackPanel>
                 </Border>
                 <Separator/>
-                <Button Command="{Binding StartandInit}" Content="Start" Margin="0,5,0,0" FontSize="16" Background="#FF207900"/>
+               
 
-                <Button Command="{Binding SaveColorInfo}" Content="Save" Margin="0,5,0,0" FontSize="16" Background="#FFA82507"/>
+               
+                
+                
             </StackPanel>
         </Border>
-        <Border Grid.Column="3" Grid.ColumnSpan="1" Grid.RowSpan="7">
+        <Border Margin="2"  Grid.Column="0" Grid.ColumnSpan="1" Grid.Row="5" Grid.RowSpan="1">
+            <Grid>
+                <StackPanel VerticalAlignment="Bottom">
+                    <Button Command="{Binding StartandInit}" Content="{Binding EnterOrExistColorMoode}" Margin="0,5,0,0" FontSize="16" Background="#FF207900" Height="50"/>
+                </StackPanel>
+            </Grid>
+           
+        </Border>
+        <Border Grid.Column="0" Grid.ColumnSpan="1" Grid.RowSpan="5">
             <StackPanel Margin="2">
                 <TextBlock Text="系統" Foreground="#FFFEFEFE" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="20"/>
                 <Separator/>
                 <Button Command="{Binding USB_ComPort_FindandOpen}" Content="連線" Margin="0,5,0,0" FontSize="16" />
-                <ItemsControl ItemsSource="{Binding Panel_ID_CheckBoxes}"  >
+                <ItemsControl ItemsSource="{Binding Panel_ID_CheckBoxes}" >
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <CheckBox Content="{Binding Content}" IsChecked="{Binding IsChecked}"  FontSize="18" Margin="5"/>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
+                
             </StackPanel>
-            
+
         </Border>
-        <Border Margin="2" Grid.Column="5" Grid.RowSpan="2" Grid.ColumnSpan="2" BorderThickness="2" BorderBrush="White">
+        <Border Margin="2" Grid.Column="2" Grid.RowSpan="2" Grid.ColumnSpan="2" BorderThickness="2" BorderBrush="White">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -242,7 +198,7 @@
             </Grid>
 
         </Border>
-        <Border Grid.Column="7" Grid.RowSpan="2" Grid.ColumnSpan="1">
+        <Border Grid.Column="4" Grid.RowSpan="2" Grid.ColumnSpan="1">
             <StackPanel Margin="2">
                 <TextBlock Text="調整模式" Foreground="#FFFEFEFE" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="20"/>
                 <Separator/>
@@ -278,33 +234,20 @@
                 </Border>
             </StackPanel>
         </Border>
-
-       
-
-        <Border Grid.Row="0" Grid.RowSpan="2" Grid.Column="1">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="0.05*"/>
-                    <RowDefinition Height="1*" />
-                </Grid.RowDefinitions>
-                <!--<Rectangle Fill="White" Height="2"/>-->
-                <ListBox Grid.Row="1" Background="{x:Null}"/>
-            </Grid>
-        </Border>
-        <Border Grid.Column="4" Grid.ColumnSpan="1" Grid.Row="3" Grid.RowSpan="1">
-            <Grid>
+        <Separator Grid.Column="1" Grid.ColumnSpan="4"  Grid.Row="2"/>
+        <Border Margin="2" Grid.Column="1" Grid.ColumnSpan="1" Grid.Row="3" Grid.RowSpan="1" BorderThickness="1" BorderBrush="Red" Background="#FF915858">
+            <Grid Width="208">
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                     <RowDefinition Height="2*"/>
                 </Grid.RowDefinitions>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" >
-                    <TextBlock Text="R : " FontSize="30" Foreground="#FFFCFCFC" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8"/>
-                    <TextBlock Text="{Binding Adjuistment_R_Value_Show}" FontSize="30" Foreground="#FFFCFCFC" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
+                    <TextBlock Text="R" FontSize="30" Foreground="#FFFCFCFC" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8"/>
                 </StackPanel>
 
 
-                <StackPanel Grid.Row="1" Margin="5,0,5,0" Orientation="Horizontal" HorizontalAlignment="Right">
-                    <TextBox Margin="5,5,5,5" Text="{Binding ValueR}" FontSize="26" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="80" VerticalAlignment="Center" Height="77"/>
+                <StackPanel Grid.Row="1" Margin="5,0,5,0" Orientation="Horizontal">
+                    <TextBox Margin="5,5,5,5" Text="{Binding ValueR}" FontSize="26" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="70" VerticalAlignment="Center" Height="77" Background="#FF252525"/>
                     <Grid Margin="0,5,0,5">
                         <Grid.RowDefinitions>
                             <RowDefinition/>
@@ -324,65 +267,604 @@
                 </StackPanel>
             </Grid>
         </Border>
-        <Border Grid.Column="5" Grid.ColumnSpan="1" Grid.Row="3" Grid.RowSpan="1">
+        <Border Margin="2" Grid.Column="2" Grid.ColumnSpan="1" Grid.Row="3" Grid.RowSpan="1" BorderThickness="1" BorderBrush="Lime" Background="#FF58913C" >
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition />
                     <RowDefinition Height="2*"/>
                 </Grid.RowDefinitions>
-                <StackPanel Orientation="Horizontal" >
-                    <TextBlock Text="G : " FontSize="30" Foreground="#FFFCFCFC" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8"/>
-                    <TextBlock Text="{Binding Adjuistment_G_Value_Show}" FontSize="30" Foreground="#FFFCFCFC" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
+                    <TextBlock Text="G" FontSize="30" Foreground="#FFFCFCFC" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8"/>
+
                 </StackPanel>
 
 
-                <StackPanel Grid.Row="1" Margin="5,0,5,0" Orientation="Horizontal" HorizontalAlignment="Right">
-                    <TextBox Margin="5"  Text="{Binding ValueG}" FontSize="26" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="80" VerticalAlignment="Center" Height="90"/>
-                    <StackPanel VerticalAlignment="Center">
-                        <Button Width="110" Command="{Binding AdjValueG}" CommandParameter="up"  Height="40" Margin="5,5,5,5">
+                <StackPanel Grid.Row="1" Margin="5,0,5,0" Orientation="Horizontal">
+                    <TextBox Margin="5"  Text="{Binding ValueG}" FontSize="26" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="70" VerticalAlignment="Center" Height="77"/>
+                    <Grid Margin="0,5,0,5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Button Width="110" Command="{Binding AdjValueG}" CommandParameter="up"  Height="35" Margin="5,0,5,5" VerticalAlignment="Bottom">
                             <StackPanel>
-                                <Image Source="/White Up.png" Stretch="Fill" Width="60" Height="30"/>
+                                <Image Source="/White Up.png" Stretch="Fill" Width="60" Height="25"/>
                             </StackPanel>
                         </Button>
-                        <Button Width="110" Command="{Binding AdjValueG}" CommandParameter="dwn" Height="40" Margin="5,0,5,0">
+                        <Button Width="110" Grid.Row="1" Command="{Binding AdjValueG}" CommandParameter="dwn" Height="35" Margin="5,5,5,0" VerticalAlignment="Top">
                             <StackPanel>
-                                <Image Source="/White dwn.png" Stretch="Fill" Height="30" Width="60"/>
+                                <Image Source="/White dwn.png" Stretch="Fill" Height="25" Width="60"/>
                             </StackPanel>
                         </Button>
-                    </StackPanel>
+                    </Grid>
                 </StackPanel>
             </Grid>
         </Border>
-        <Border Grid.Column="6" Grid.ColumnSpan="2" Grid.Row="5" Grid.RowSpan="1">
+        <Border Margin="2" Grid.Column="3" Grid.ColumnSpan="1" Grid.Row="3" Grid.RowSpan="1" BorderThickness="1" BorderBrush="Blue" Background="#FF3C5891" >
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition Height="2*"/>
+                </Grid.RowDefinitions>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
+                    <TextBlock Text="B" FontSize="30" Foreground="#FFFCFCFC" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8"/>
+                </StackPanel>
+
+                <StackPanel Grid.Row="1" Margin="5,0,5,0" Orientation="Horizontal">
+                    <TextBox Margin="5"   Text="{Binding ValueB}" FontSize="26" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="70" VerticalAlignment="Center" Height="77"/>
+                    <Grid Margin="0,5,0,5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Button Width="110" Command="{Binding AdjValueB}" CommandParameter="up"  Height="35" Margin="5,0,5,5" VerticalAlignment="Bottom">
+                            <StackPanel>
+                                <Image Source="/White Up.png" Stretch="Fill" Width="60" Height="25" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Width="110" Grid.Row="1" Command="{Binding AdjValueB}" CommandParameter="dwn" Height="35" Margin="5,5,5,0" VerticalAlignment="Top">
+                            <StackPanel>
+                                <Image Source="/White dwn.png" Stretch="Fill" Height="25" Width="60"/>
+                            </StackPanel>
+                        </Button>
+                    </Grid>
+
+                </StackPanel>
+            </Grid>
+
+        </Border>
+        <Border Margin="2" Grid.Column="4" Grid.ColumnSpan="1" Grid.Row="3" Grid.RowSpan="1">
+            <StackPanel>
+                <Button  Content="恢復為預設色差" Margin="0,5,0,0" FontSize="16" Background="{x:Null}"/>
+            </StackPanel>
+        </Border>
+        <Border Margin="2" Grid.Column="4" Grid.ColumnSpan="1" Grid.Row="5" Grid.RowSpan="1">
+            <StackPanel VerticalAlignment="Bottom">
+                <Button Command="{Binding SaveColorInfo}" Content="儲存色差" Margin="0,5,0,0" FontSize="16" Background="#FFA82507" Height="50"/>
+            </StackPanel>
+        </Border>
+        <Border BorderThickness="1" Margin="2"  Grid.Column="1" Grid.ColumnSpan="1" Grid.Row="4" Grid.RowSpan="2" Background="#FF915858" BorderBrush="Red" >
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0.5*"/>
-                    <ColumnDefinition Width="0.8*"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <StackPanel Orientation="Horizontal" >
-                    <TextBlock Text="B : " FontSize="30" Foreground="#FFFCFCFC" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8"/>
-                    <TextBlock Text="{Binding Adjuistment_R_Value_Show}" FontSize="30" Foreground="#FFFCFCFC" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8"/>
-                </StackPanel>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="XB1" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Text="XB2" Grid.Column="1" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Text="XB3" Grid.Column="2"  Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Text="XB4" Grid.Column="3"  Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                
+                <TextBlock Grid.Row="1" Text="{Binding DataB[1][3]}" FontWeight="Bold"  Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="2" Text="{Binding DataB[1][15]}" FontWeight="Bold" Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="3" Text="{Binding DataB[1][27]}" FontWeight="Bold" Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="4" Text="{Binding DataB[1][39]}" FontWeight="Bold" Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="1" Text="{Binding DataB[1][2]}" FontWeight="Bold"  Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="2" Text="{Binding DataB[1][14]}" FontWeight="Bold" Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="3" Text="{Binding DataB[1][26]}" FontWeight="Bold" Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="4" Text="{Binding DataB[1][38]}" FontWeight="Bold" Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="1" Text="{Binding DataB[1][1]}" FontWeight="Bold"  Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="2" Text="{Binding DataB[1][13]}" FontWeight="Bold" Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="3" Text="{Binding DataB[1][25]}" FontWeight="Bold" Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="4" Text="{Binding DataB[1][37]}" FontWeight="Bold" Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="1" Text="{Binding DataB[1][0]}" FontWeight="Bold"  Visibility= "{Binding Space512}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="2" Text="{Binding DataB[1][12]}" FontWeight="Bold" Visibility= "{Binding Space512}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="3" Text="{Binding DataB[1][24]}" FontWeight="Bold" Visibility= "{Binding Space512}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="4" Text="{Binding DataB[1][36]}" FontWeight="Bold" Visibility= "{Binding Space512}" VerticalAlignment="Center" Foreground="#FF010101"/>
 
-                <StackPanel Grid.Column="2" Margin="5,0,5,0" Orientation="Horizontal" HorizontalAlignment="Right">
-                    <TextBox Margin="5"   Text="{Binding ValueB}" FontSize="26" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="80" VerticalAlignment="Center" Height="90"/>
-                    <StackPanel VerticalAlignment="Center">
-                        <Button Width="110" Command="{Binding AdjValueB}" CommandParameter="up"  Height="40" Margin="5,5,5,5">
-                            <StackPanel>
-                                <Image Source="/White Up.png" Stretch="Fill" Width="60" Height="30" VerticalAlignment="Center"/>
-                            </StackPanel>
-                        </Button>
-                        <Button Width="110" Command="{Binding AdjValueB}" CommandParameter="dwn" Height="40" Margin="5,0,5,0">
-                            <StackPanel>
-                                <Image Source="/White dwn.png" Stretch="Fill" Height="30" Width="60"/>
-                            </StackPanel>
-                        </Button>
-                    </StackPanel>
+                <TextBlock Grid.Column="1"  Grid.Row="1" Text="{Binding DataB[2][3]}" FontWeight="Bold"  Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="2"  Text="{Binding DataB[2][15]}" FontWeight="Bold" Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="3"  Text="{Binding DataB[2][27]}" FontWeight="Bold" Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="4"  Text="{Binding DataB[2][39]}" FontWeight="Bold" Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="1"  Text="{Binding DataB[2][2]}" FontWeight="Bold"  Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="2"  Text="{Binding DataB[2][14]}" FontWeight="Bold" Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="3"  Text="{Binding DataB[2][26]}" FontWeight="Bold" Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="4"  Text="{Binding DataB[2][38]}" FontWeight="Bold" Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="1"  Text="{Binding DataB[2][1]}" FontWeight="Bold"  Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="2"  Text="{Binding DataB[2][13]}" FontWeight="Bold" Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="3"  Text="{Binding DataB[2][25]}" FontWeight="Bold" Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="4"  Text="{Binding DataB[2][37]}" FontWeight="Bold" Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="1"  Text="{Binding DataB[2][0]}" FontWeight="Bold"  Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="2"  Text="{Binding DataB[2][12]}" FontWeight="Bold" Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="3"  Text="{Binding DataB[2][24]}" FontWeight="Bold" Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="4"  Text="{Binding DataB[2][36]}" FontWeight="Bold" Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
 
-                </StackPanel>
+                <TextBlock Grid.Column="2"  Grid.Row="1" Text="{Binding DataB[3][3]}" FontWeight="Bold"  Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="2"  Text="{Binding DataB[3][15]}" FontWeight="Bold" Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="3"  Text="{Binding DataB[3][27]}" FontWeight="Bold" Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="4"  Text="{Binding DataB[3][39]}" FontWeight="Bold" Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="1"  Text="{Binding DataB[3][2]}" FontWeight="Bold"  Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="2"  Text="{Binding DataB[3][14]}" FontWeight="Bold" Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="3"  Text="{Binding DataB[3][26]}" FontWeight="Bold" Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="4"  Text="{Binding DataB[3][38]}" FontWeight="Bold" Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="1"  Text="{Binding DataB[3][1]}" FontWeight="Bold"  Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="2"  Text="{Binding DataB[3][13]}" FontWeight="Bold" Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="3"  Text="{Binding DataB[3][25]}" FontWeight="Bold" Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="4"  Text="{Binding DataB[3][37]}" FontWeight="Bold" Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="1"  Text="{Binding DataB[3][0]}" FontWeight="Bold"  Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="2"  Text="{Binding DataB[3][12]}" FontWeight="Bold" Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="3"  Text="{Binding DataB[3][24]}" FontWeight="Bold" Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="4"  Text="{Binding DataB[3][36]}" FontWeight="Bold" Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+
+                <TextBlock Grid.Column="3"  Grid.Row="1" Text="{Binding DataB[4][3]}" FontWeight="Bold"  Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="2"  Text="{Binding DataB[4][15]}" FontWeight="Bold" Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="3"  Text="{Binding DataB[4][27]}" FontWeight="Bold" Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="4"  Text="{Binding DataB[4][39]}" FontWeight="Bold" Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="1"  Text="{Binding DataB[4][2]}" FontWeight="Bold"  Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="2"  Text="{Binding DataB[4][14]}" FontWeight="Bold" Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="3"  Text="{Binding DataB[4][26]}" FontWeight="Bold" Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="4"  Text="{Binding DataB[4][38]}" FontWeight="Bold" Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="1"  Text="{Binding DataB[4][1]}" FontWeight="Bold"  Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="2"  Text="{Binding DataB[4][13]}" FontWeight="Bold" Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="3"  Text="{Binding DataB[4][25]}" FontWeight="Bold" Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="4"  Text="{Binding DataB[4][37]}" FontWeight="Bold" Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="1"  Text="{Binding DataB[4][0]}" FontWeight="Bold"  Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="2"  Text="{Binding DataB[4][12]}" FontWeight="Bold" Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="3"  Text="{Binding DataB[4][24]}" FontWeight="Bold" Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="4"  Text="{Binding DataB[4][36]}" FontWeight="Bold" Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+
+                <TextBlock Grid.Row="5" Text="XB5" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Grid.Row="5" Text="XB6" Grid.Column="1" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Grid.Row="5" Text="XB7" Grid.Column="2"  Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Grid.Row="5" Text="XB8" Grid.Column="3"  Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+
+                <TextBlock Grid.Row="6" Text="{Binding DataA[1][3]}" FontWeight="Bold"  Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="7" Text="{Binding DataA[1][15]}" FontWeight="Bold" Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="8" Text="{Binding DataA[1][27]}" FontWeight="Bold" Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="9" Text="{Binding DataA[1][39]}" FontWeight="Bold" Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="6" Text="{Binding DataA[1][2]}" FontWeight="Bold"  Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="7" Text="{Binding DataA[1][14]}" FontWeight="Bold" Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="8" Text="{Binding DataA[1][26]}" FontWeight="Bold" Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="9" Text="{Binding DataA[1][38]}" FontWeight="Bold" Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="6" Text="{Binding DataA[1][1]}" FontWeight="Bold"  Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="7" Text="{Binding DataA[1][13]}" FontWeight="Bold" Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="8" Text="{Binding DataA[1][25]}" FontWeight="Bold" Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="9" Text="{Binding DataA[1][37]}" FontWeight="Bold" Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="6" Text="{Binding DataA[1][0]}" FontWeight="Bold"  Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="7" Text="{Binding DataA[1][12]}" FontWeight="Bold" Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="8" Text="{Binding DataA[1][24]}" FontWeight="Bold" Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="9" Text="{Binding DataA[1][36]}" FontWeight="Bold" Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+
+                <TextBlock Grid.Column="1" Grid.Row="6"  Text="{Binding DataA[2][3]}" FontWeight="Bold"  Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="7"  Text="{Binding DataA[2][15]}" FontWeight="Bold" Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="8"  Text="{Binding DataA[2][27]}" FontWeight="Bold" Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="9"  Text="{Binding DataA[2][39]}" FontWeight="Bold" Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="6"  Text="{Binding DataA[2][2]}" FontWeight="Bold"  Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="7"  Text="{Binding DataA[2][14]}" FontWeight="Bold" Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="8"  Text="{Binding DataA[2][26]}" FontWeight="Bold" Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="9"  Text="{Binding DataA[2][38]}" FontWeight="Bold" Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="6"  Text="{Binding DataA[2][1]}" FontWeight="Bold"  Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="7"  Text="{Binding DataA[2][13]}" FontWeight="Bold" Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="8"  Text="{Binding DataA[2][25]}" FontWeight="Bold" Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="9"  Text="{Binding DataA[2][37]}" FontWeight="Bold" Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="6"  Text="{Binding DataA[2][0]}" FontWeight="Bold"  Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="7"  Text="{Binding DataA[2][12]}" FontWeight="Bold" Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="8"  Text="{Binding DataA[2][24]}" FontWeight="Bold" Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="9"  Text="{Binding DataA[2][36]}" FontWeight="Bold" Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+
+                <TextBlock Grid.Column="2" Grid.Row="6" Text="{Binding DataA[3][3]}" FontWeight="Bold"  Visibility= "{Binding Space4096}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="7"  Text="{Binding DataA[3][15]}" FontWeight="Bold" Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="8"  Text="{Binding DataA[3][27]}" FontWeight="Bold" Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="9"  Text="{Binding DataA[3][39]}" FontWeight="Bold" Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="6"  Text="{Binding DataA[3][2]}" FontWeight="Bold"  Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="7"  Text="{Binding DataA[3][14]}" FontWeight="Bold" Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="8"  Text="{Binding DataA[3][26]}" FontWeight="Bold" Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="9"  Text="{Binding DataA[3][38]}" FontWeight="Bold" Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="6"  Text="{Binding DataA[3][1]}" FontWeight="Bold"  Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="7"  Text="{Binding DataA[3][13]}" FontWeight="Bold" Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="8"  Text="{Binding DataA[3][25]}" FontWeight="Bold" Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="9"  Text="{Binding DataA[3][37]}" FontWeight="Bold" Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="6"  Text="{Binding DataA[3][0]}" FontWeight="Bold"  Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="7"  Text="{Binding DataA[3][12]}" FontWeight="Bold" Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="8"  Text="{Binding DataA[3][24]}" FontWeight="Bold" Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="9"  Text="{Binding DataA[3][36]}" FontWeight="Bold" Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+
+                <TextBlock Grid.Column="3" Grid.Row="6"  Text="{Binding DataA[4][3]}" FontWeight="Bold"  Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="7"  Text="{Binding DataA[4][15]}" FontWeight="Bold" Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="8"  Text="{Binding DataA[4][27]}" FontWeight="Bold" Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="9"  Text="{Binding DataA[4][39]}" FontWeight="Bold" Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="6"  Text="{Binding DataA[4][2]}" FontWeight="Bold"  Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="7"  Text="{Binding DataA[4][14]}" FontWeight="Bold" Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="8"  Text="{Binding DataA[4][26]}" FontWeight="Bold" Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="9"  Text="{Binding DataA[4][38]}" FontWeight="Bold" Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="6"  Text="{Binding DataA[4][1]}" FontWeight="Bold"  Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="7"  Text="{Binding DataA[4][13]}" FontWeight="Bold" Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="8"  Text="{Binding DataA[4][25]}" FontWeight="Bold" Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="9"  Text="{Binding DataA[4][37]}" FontWeight="Bold" Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="6"  Text="{Binding DataA[4][0]}" FontWeight="Bold"  Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="7"  Text="{Binding DataA[4][12]}" FontWeight="Bold" Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="8"  Text="{Binding DataA[4][24]}" FontWeight="Bold" Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="9"  Text="{Binding DataA[4][36]}" FontWeight="Bold" Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+
+                
             </Grid>
-
+            <!--<TextBlock Text="{Binding DataGridItems_B[1].Values[3]}"/>-->
         </Border>
+
+        <Border BorderThickness="1" Margin="2"  Grid.Column="2" Grid.ColumnSpan="1" Grid.Row="4" Grid.RowSpan="2" Background="#FF58913C" BorderBrush="Lime" >
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="XB1" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Text="XB2" Grid.Column="1" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Text="XB3" Grid.Column="2"  Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Text="XB4" Grid.Column="3"  Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                <TextBlock Grid.Row="1" Text="{Binding DataB[1][7]}" FontWeight="Bold"  Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="2" Text="{Binding DataB[1][19]}" FontWeight="Bold" Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="3" Text="{Binding DataB[1][31]}" FontWeight="Bold" Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="4" Text="{Binding DataB[1][43]}" FontWeight="Bold" Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="1" Text="{Binding DataB[1][6]}" FontWeight="Bold"  Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="2" Text="{Binding DataB[1][18]}" FontWeight="Bold" Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="3" Text="{Binding DataB[1][30]}" FontWeight="Bold" Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="4" Text="{Binding DataB[1][42]}" FontWeight="Bold" Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="1" Text="{Binding DataB[1][5]}" FontWeight="Bold"  Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="2" Text="{Binding DataB[1][17]}" FontWeight="Bold" Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="3" Text="{Binding DataB[1][29]}" FontWeight="Bold" Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="4" Text="{Binding DataB[1][41]}" FontWeight="Bold" Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="1" Text="{Binding DataB[1][4]}" FontWeight="Bold"  Visibility= "{Binding Space512}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="2" Text="{Binding DataB[1][16]}" FontWeight="Bold" Visibility= "{Binding Space512}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="3" Text="{Binding DataB[1][28]}" FontWeight="Bold" Visibility= "{Binding Space512}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="4" Text="{Binding DataB[1][40]}" FontWeight="Bold" Visibility= "{Binding Space512}" VerticalAlignment="Center" Foreground="#FF010101"/>
+
+                <TextBlock Grid.Column="1"  Grid.Row="1" Text="{Binding DataB[2][7]}" FontWeight="Bold"  Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="2"  Text="{Binding DataB[2][19]}" FontWeight="Bold" Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="3"  Text="{Binding DataB[2][31]}" FontWeight="Bold" Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="4"  Text="{Binding DataB[2][43]}" FontWeight="Bold" Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="1"  Text="{Binding DataB[2][6]}" FontWeight="Bold"  Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="2"  Text="{Binding DataB[2][18]}" FontWeight="Bold" Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="3"  Text="{Binding DataB[2][30]}" FontWeight="Bold" Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="4"  Text="{Binding DataB[2][42]}" FontWeight="Bold" Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="1"  Text="{Binding DataB[2][5]}" FontWeight="Bold"  Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="2"  Text="{Binding DataB[2][17]}" FontWeight="Bold" Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="3"  Text="{Binding DataB[2][29]}" FontWeight="Bold" Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="4"  Text="{Binding DataB[2][41]}" FontWeight="Bold" Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="1"  Text="{Binding DataB[2][4]}" FontWeight="Bold"  Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="2"  Text="{Binding DataB[2][16]}" FontWeight="Bold" Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="3"  Text="{Binding DataB[2][28]}" FontWeight="Bold" Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="4"  Text="{Binding DataB[2][40]}" FontWeight="Bold" Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+
+                <TextBlock Grid.Column="2"  Grid.Row="1" Text="{Binding DataB[3][7]}" FontWeight="Bold"  Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="2"  Text="{Binding DataB[3][19]}" FontWeight="Bold" Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="3"  Text="{Binding DataB[3][31]}" FontWeight="Bold" Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="4"  Text="{Binding DataB[3][43]}" FontWeight="Bold" Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="1"  Text="{Binding DataB[3][6]}" FontWeight="Bold"  Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="2"  Text="{Binding DataB[3][18]}" FontWeight="Bold" Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="3"  Text="{Binding DataB[3][30]}" FontWeight="Bold" Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="4"  Text="{Binding DataB[3][42]}" FontWeight="Bold" Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="1"  Text="{Binding DataB[3][5]}" FontWeight="Bold"  Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="2"  Text="{Binding DataB[3][17]}" FontWeight="Bold" Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="3"  Text="{Binding DataB[3][29]}" FontWeight="Bold" Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="4"  Text="{Binding DataB[3][41]}" FontWeight="Bold" Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="1"  Text="{Binding DataB[3][4]}" FontWeight="Bold"  Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="2"  Text="{Binding DataB[3][16]}" FontWeight="Bold" Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="3"  Text="{Binding DataB[3][28]}" FontWeight="Bold" Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="4"  Text="{Binding DataB[3][40]}" FontWeight="Bold" Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+
+                <TextBlock Grid.Column="3"  Grid.Row="1" Text="{Binding DataB[4][7]}" FontWeight="Bold"  Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="2"  Text="{Binding DataB[4][19]}" FontWeight="Bold" Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="3"  Text="{Binding DataB[4][31]}" FontWeight="Bold" Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="4"  Text="{Binding DataB[4][43]}" FontWeight="Bold" Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="1"  Text="{Binding DataB[4][6]}" FontWeight="Bold"  Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="2"  Text="{Binding DataB[4][18]}" FontWeight="Bold" Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="3"  Text="{Binding DataB[4][30]}" FontWeight="Bold" Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="4"  Text="{Binding DataB[4][42]}" FontWeight="Bold" Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="1"  Text="{Binding DataB[4][5]}" FontWeight="Bold"  Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="2"  Text="{Binding DataB[4][17]}" FontWeight="Bold" Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="3"  Text="{Binding DataB[4][29]}" FontWeight="Bold" Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="4"  Text="{Binding DataB[4][41]}" FontWeight="Bold" Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="1"  Text="{Binding DataB[4][4]}" FontWeight="Bold"  Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="2"  Text="{Binding DataB[4][16]}" FontWeight="Bold" Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="3"  Text="{Binding DataB[4][28]}" FontWeight="Bold" Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="4"  Text="{Binding DataB[4][40]}" FontWeight="Bold" Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+
+                <TextBlock Grid.Row="5" Text="XB5" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Grid.Row="5" Text="XB6" Grid.Column="1" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Grid.Row="5" Text="XB7" Grid.Column="2"  Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Grid.Row="5" Text="XB8" Grid.Column="3"  Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+
+                <TextBlock Grid.Row="6" Text="{Binding DataA[1][7]}" FontWeight="Bold"  Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="7" Text="{Binding DataA[1][19]}" FontWeight="Bold" Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="8" Text="{Binding DataA[1][31]}" FontWeight="Bold" Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="9" Text="{Binding DataA[1][43]}" FontWeight="Bold" Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="6" Text="{Binding DataA[1][6]}" FontWeight="Bold"  Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="7" Text="{Binding DataA[1][18]}" FontWeight="Bold" Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="8" Text="{Binding DataA[1][30]}" FontWeight="Bold" Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="9" Text="{Binding DataA[1][42]}" FontWeight="Bold" Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="6" Text="{Binding DataA[1][5]}" FontWeight="Bold"  Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="7" Text="{Binding DataA[1][17]}" FontWeight="Bold" Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="8" Text="{Binding DataA[1][29]}" FontWeight="Bold" Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="9" Text="{Binding DataA[1][41]}" FontWeight="Bold" Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="6" Text="{Binding DataA[1][4]}" FontWeight="Bold"  Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="7" Text="{Binding DataA[1][16]}" FontWeight="Bold" Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="8" Text="{Binding DataA[1][28]}" FontWeight="Bold" Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="9" Text="{Binding DataA[1][40]}" FontWeight="Bold" Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+
+                <TextBlock Grid.Column="1" Grid.Row="6"  Text="{Binding DataA[2][7]}" FontWeight="Bold"  Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="7"  Text="{Binding DataA[2][19]}" FontWeight="Bold" Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="8"  Text="{Binding DataA[2][31]}" FontWeight="Bold" Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="9"  Text="{Binding DataA[2][43]}" FontWeight="Bold" Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="6"  Text="{Binding DataA[2][6]}" FontWeight="Bold"  Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="7"  Text="{Binding DataA[2][18]}" FontWeight="Bold" Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="8"  Text="{Binding DataA[2][30]}" FontWeight="Bold" Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="9"  Text="{Binding DataA[2][42]}" FontWeight="Bold" Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="6"  Text="{Binding DataA[2][5]}" FontWeight="Bold"  Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="7"  Text="{Binding DataA[2][17]}" FontWeight="Bold" Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="8"  Text="{Binding DataA[2][29]}" FontWeight="Bold" Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="9"  Text="{Binding DataA[2][41]}" FontWeight="Bold" Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="6"  Text="{Binding DataA[2][4]}" FontWeight="Bold"  Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="7"  Text="{Binding DataA[2][16]}" FontWeight="Bold" Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="8"  Text="{Binding DataA[2][28]}" FontWeight="Bold" Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="9"  Text="{Binding DataA[2][40]}" FontWeight="Bold" Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+
+                <TextBlock Grid.Column="2" Grid.Row="6"  Text="{Binding DataA[3][7]}" FontWeight="Bold"  Visibility= "{Binding Space4096}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="7"  Text="{Binding DataA[3][19]}" FontWeight="Bold" Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="8"  Text="{Binding DataA[3][31]}" FontWeight="Bold" Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="9"  Text="{Binding DataA[3][43]}" FontWeight="Bold" Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="6"  Text="{Binding DataA[3][6]}" FontWeight="Bold"  Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="7"  Text="{Binding DataA[3][18]}" FontWeight="Bold" Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="8"  Text="{Binding DataA[3][30]}" FontWeight="Bold" Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="9"  Text="{Binding DataA[3][42]}" FontWeight="Bold" Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="6"  Text="{Binding DataA[3][5]}" FontWeight="Bold"  Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="7"  Text="{Binding DataA[3][17]}" FontWeight="Bold" Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="8"  Text="{Binding DataA[3][29]}" FontWeight="Bold" Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="9"  Text="{Binding DataA[3][41]}" FontWeight="Bold" Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="6"  Text="{Binding DataA[3][4]}" FontWeight="Bold"  Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="7"  Text="{Binding DataA[3][16]}" FontWeight="Bold" Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="8"  Text="{Binding DataA[3][28]}" FontWeight="Bold" Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="9"  Text="{Binding DataA[3][40]}" FontWeight="Bold" Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+
+                <TextBlock Grid.Column="3" Grid.Row="6"  Text="{Binding DataA[4][7]}" FontWeight="Bold"  Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="7"  Text="{Binding DataA[4][19]}" FontWeight="Bold" Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="8"  Text="{Binding DataA[4][31]}" FontWeight="Bold" Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="9"  Text="{Binding DataA[4][43]}" FontWeight="Bold" Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="6"  Text="{Binding DataA[4][6]}" FontWeight="Bold"  Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="7"  Text="{Binding DataA[4][18]}" FontWeight="Bold" Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="8"  Text="{Binding DataA[4][30]}" FontWeight="Bold" Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="9"  Text="{Binding DataA[4][42]}" FontWeight="Bold" Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="6"  Text="{Binding DataA[4][5]}" FontWeight="Bold"  Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="7"  Text="{Binding DataA[4][17]}" FontWeight="Bold" Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="8"  Text="{Binding DataA[4][29]}" FontWeight="Bold" Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="9"  Text="{Binding DataA[4][41]}" FontWeight="Bold" Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="6"  Text="{Binding DataA[4][4]}" FontWeight="Bold"  Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="7"  Text="{Binding DataA[4][16]}" FontWeight="Bold" Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="8"  Text="{Binding DataA[4][28]}" FontWeight="Bold" Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="9"  Text="{Binding DataA[4][40]}" FontWeight="Bold" Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+
+
+            </Grid>
+            <!--<TextBlock Text="{Binding DataGridItems_B[1].Values[3]}"/>-->
+        </Border>
+
+        <Border BorderThickness="1" Margin="2"  Grid.Column="3" Grid.ColumnSpan="1" Grid.Row="4" Grid.RowSpan="2" Background="#FF3C5891" BorderBrush="Blue" >
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="XB1" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Text="XB2" Grid.Column="1" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Text="XB3" Grid.Column="2"  Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Text="XB4" Grid.Column="3"  Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                <TextBlock Grid.Row="1" Text="{Binding DataB[1][11]}" FontWeight="Bold"  Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="2" Text="{Binding DataB[1][23]}" FontWeight="Bold" Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="3" Text="{Binding DataB[1][35]}" FontWeight="Bold" Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="4" Text="{Binding DataB[1][47]}" FontWeight="Bold" Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="1" Text="{Binding DataB[1][10]}" FontWeight="Bold"  Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="2" Text="{Binding DataB[1][22]}" FontWeight="Bold" Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="3" Text="{Binding DataB[1][34]}" FontWeight="Bold" Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="4" Text="{Binding DataB[1][46]}" FontWeight="Bold" Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="1" Text="{Binding DataB[1][9]}" FontWeight="Bold"  Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="2" Text="{Binding DataB[1][21]}" FontWeight="Bold" Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="3" Text="{Binding DataB[1][33]}" FontWeight="Bold" Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="4" Text="{Binding DataB[1][45]}" FontWeight="Bold" Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="1" Text="{Binding DataB[1][8]}" FontWeight="Bold"  Visibility= "{Binding Space512}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="2" Text="{Binding DataB[1][20]}" FontWeight="Bold" Visibility= "{Binding Space512}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="3" Text="{Binding DataB[1][32]}" FontWeight="Bold" Visibility= "{Binding Space512}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="4" Text="{Binding DataB[1][44]}" FontWeight="Bold" Visibility= "{Binding Space512}" VerticalAlignment="Center" Foreground="#FF010101"/>
+
+                <TextBlock Grid.Column="1"  Grid.Row="1" Text="{Binding DataB[2][11]}" FontWeight="Bold"  Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="2"  Text="{Binding DataB[2][23]}" FontWeight="Bold" Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="3"  Text="{Binding DataB[2][35]}" FontWeight="Bold" Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="4"  Text="{Binding DataB[2][47]}" FontWeight="Bold" Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="1"  Text="{Binding DataB[2][10]}" FontWeight="Bold"  Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="2"  Text="{Binding DataB[2][22]}" FontWeight="Bold" Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="3"  Text="{Binding DataB[2][34]}" FontWeight="Bold" Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="4"  Text="{Binding DataB[2][46]}" FontWeight="Bold" Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="1"  Text="{Binding DataB[2][9]}" FontWeight="Bold"  Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="2"  Text="{Binding DataB[2][21]}" FontWeight="Bold" Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="3"  Text="{Binding DataB[2][33]}" FontWeight="Bold" Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="4"  Text="{Binding DataB[2][45]}" FontWeight="Bold" Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="1"  Text="{Binding DataB[2][8]}" FontWeight="Bold"  Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="2"  Text="{Binding DataB[2][20]}" FontWeight="Bold" Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="3"  Text="{Binding DataB[2][32]}" FontWeight="Bold" Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="4"  Text="{Binding DataB[2][44]}" FontWeight="Bold" Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+
+                <TextBlock Grid.Column="2"  Grid.Row="1" Text="{Binding DataB[3][11]}" FontWeight="Bold"  Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="2"  Text="{Binding DataB[3][23]}" FontWeight="Bold" Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="3"  Text="{Binding DataB[3][35]}" FontWeight="Bold" Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="4"  Text="{Binding DataB[3][47]}" FontWeight="Bold" Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="1"  Text="{Binding DataB[3][10]}" FontWeight="Bold"  Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="2"  Text="{Binding DataB[3][22]}" FontWeight="Bold" Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="3"  Text="{Binding DataB[3][34]}" FontWeight="Bold" Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="4"  Text="{Binding DataB[3][46]}" FontWeight="Bold" Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="1"  Text="{Binding DataB[3][9]}" FontWeight="Bold"  Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="2"  Text="{Binding DataB[3][21]}" FontWeight="Bold" Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="3"  Text="{Binding DataB[3][33]}" FontWeight="Bold" Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="4"  Text="{Binding DataB[3][45]}" FontWeight="Bold" Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="1"  Text="{Binding DataB[3][8]}" FontWeight="Bold"  Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="2"  Text="{Binding DataB[3][20]}" FontWeight="Bold" Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="3"  Text="{Binding DataB[3][32]}" FontWeight="Bold" Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="4"  Text="{Binding DataB[3][44]}" FontWeight="Bold" Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+
+                <TextBlock Grid.Column="3"  Grid.Row="1" Text="{Binding DataB[4][11]}" FontWeight="Bold"  Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="2"  Text="{Binding DataB[4][23]}" FontWeight="Bold" Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="3"  Text="{Binding DataB[4][35]}" FontWeight="Bold" Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="4"  Text="{Binding DataB[4][47]}" FontWeight="Bold" Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="1"  Text="{Binding DataB[4][10]}" FontWeight="Bold"  Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="2"  Text="{Binding DataB[4][22]}" FontWeight="Bold" Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="3"  Text="{Binding DataB[4][34]}" FontWeight="Bold" Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="4"  Text="{Binding DataB[4][46]}" FontWeight="Bold" Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="1"  Text="{Binding DataB[4][9]}" FontWeight="Bold"  Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="2"  Text="{Binding DataB[4][21]}" FontWeight="Bold" Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="3"  Text="{Binding DataB[4][33]}" FontWeight="Bold" Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="4"  Text="{Binding DataB[4][45]}" FontWeight="Bold" Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="1"  Text="{Binding DataB[4][8]}" FontWeight="Bold"  Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="2"  Text="{Binding DataB[4][20]}" FontWeight="Bold" Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="3"  Text="{Binding DataB[4][32]}" FontWeight="Bold" Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="4"  Text="{Binding DataB[4][44]}" FontWeight="Bold" Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+
+                <TextBlock Grid.Row="5" Text="XB5" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Grid.Row="5" Text="XB6" Grid.Column="1" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Grid.Row="5" Text="XB7" Grid.Column="2"  Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock Grid.Row="5" Text="XB8" Grid.Column="3"  Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+
+                <TextBlock Grid.Row="6" Text="{Binding DataA[1][11]}" FontWeight="Bold"  Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="7" Text="{Binding DataA[1][23]}" FontWeight="Bold" Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="8" Text="{Binding DataA[1][35]}" FontWeight="Bold" Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="9" Text="{Binding DataA[1][47]}" FontWeight="Bold" Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="6" Text="{Binding DataA[1][10]}" FontWeight="Bold"  Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="7" Text="{Binding DataA[1][22]}" FontWeight="Bold" Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="8" Text="{Binding DataA[1][34]}" FontWeight="Bold" Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="9" Text="{Binding DataA[1][46]}" FontWeight="Bold" Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="6" Text="{Binding DataA[1][9]}" FontWeight="Bold"  Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="7" Text="{Binding DataA[1][21]}" FontWeight="Bold" Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="8" Text="{Binding DataA[1][33]}" FontWeight="Bold" Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="9" Text="{Binding DataA[1][45]}" FontWeight="Bold" Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="6" Text="{Binding DataA[1][8]}" FontWeight="Bold"  Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="7" Text="{Binding DataA[1][20]}" FontWeight="Bold" Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="8" Text="{Binding DataA[1][32]}" FontWeight="Bold" Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Row="9" Text="{Binding DataA[1][44]}" FontWeight="Bold" Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+
+                <TextBlock Grid.Column="1" Grid.Row="6"  Text="{Binding DataA[2][11]}" FontWeight="Bold"  Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="7"  Text="{Binding DataA[2][23]}" FontWeight="Bold" Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="8"  Text="{Binding DataA[2][35]}" FontWeight="Bold" Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="9"  Text="{Binding DataA[2][47]}" FontWeight="Bold" Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="6"  Text="{Binding DataA[2][10]}" FontWeight="Bold"  Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="7"  Text="{Binding DataA[2][22]}" FontWeight="Bold" Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="8"  Text="{Binding DataA[2][34]}" FontWeight="Bold" Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="9"  Text="{Binding DataA[2][46]}" FontWeight="Bold" Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="6"  Text="{Binding DataA[2][9]}" FontWeight="Bold"  Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="7"  Text="{Binding DataA[2][21]}" FontWeight="Bold" Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="8"  Text="{Binding DataA[2][33]}" FontWeight="Bold" Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="9"  Text="{Binding DataA[2][45]}" FontWeight="Bold" Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="6"  Text="{Binding DataA[2][8]}" FontWeight="Bold"  Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="7"  Text="{Binding DataA[2][20]}" FontWeight="Bold" Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="8"  Text="{Binding DataA[2][32]}" FontWeight="Bold" Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="1" Grid.Row="9"  Text="{Binding DataA[2][44]}" FontWeight="Bold" Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+
+                <TextBlock Grid.Column="2" Grid.Row="6"  Text="{Binding DataA[3][11]}" FontWeight="Bold"  Visibility= "{Binding Space4096}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="7"  Text="{Binding DataA[3][23]}" FontWeight="Bold" Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="8"  Text="{Binding DataA[3][35]}" FontWeight="Bold" Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="9"  Text="{Binding DataA[3][47]}" FontWeight="Bold" Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="6"  Text="{Binding DataA[3][10]}" FontWeight="Bold"  Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="7"  Text="{Binding DataA[3][22]}" FontWeight="Bold" Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="8"  Text="{Binding DataA[3][34]}" FontWeight="Bold" Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="9"  Text="{Binding DataA[3][46]}" FontWeight="Bold" Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="6"  Text="{Binding DataA[3][9]}" FontWeight="Bold"  Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="7"  Text="{Binding DataA[3][21]}" FontWeight="Bold" Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="8"  Text="{Binding DataA[3][33]}" FontWeight="Bold" Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="9"  Text="{Binding DataA[3][45]}" FontWeight="Bold" Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="6"  Text="{Binding DataA[3][8]}" FontWeight="Bold"  Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="7"  Text="{Binding DataA[3][20]}" FontWeight="Bold" Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="8"  Text="{Binding DataA[3][32]}" FontWeight="Bold" Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="2" Grid.Row="9"  Text="{Binding DataA[3][44]}" FontWeight="Bold" Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+
+                <TextBlock Grid.Column="3" Grid.Row="6"  Text="{Binding DataA[4][11]}" FontWeight="Bold"  Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="7"  Text="{Binding DataA[4][23]}" FontWeight="Bold" Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="8"  Text="{Binding DataA[4][35]}" FontWeight="Bold" Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="9"  Text="{Binding DataA[4][47]}" FontWeight="Bold" Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="6"  Text="{Binding DataA[4][10]}" FontWeight="Bold"  Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="7"  Text="{Binding DataA[4][22]}" FontWeight="Bold" Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="8"  Text="{Binding DataA[4][34]}" FontWeight="Bold" Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="9"  Text="{Binding DataA[4][46]}" FontWeight="Bold" Visibility= "{Binding Space2048}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="6"  Text="{Binding DataA[4][9]}" FontWeight="Bold"  Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="7"  Text="{Binding DataA[4][21]}" FontWeight="Bold" Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="8"  Text="{Binding DataA[4][33]}" FontWeight="Bold" Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="9"  Text="{Binding DataA[4][45]}" FontWeight="Bold" Visibility= "{Binding Space1024}" VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="6"  Text="{Binding DataA[4][8]}" FontWeight="Bold"  Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="7"  Text="{Binding DataA[4][20]}" FontWeight="Bold" Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="8"  Text="{Binding DataA[4][32]}" FontWeight="Bold" Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+                <TextBlock Grid.Column="3" Grid.Row="9"  Text="{Binding DataA[4][44]}" FontWeight="Bold" Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
+
+
+            </Grid>
+            <!--<TextBlock Text="{Binding DataGridItems_B[1].Values[3]}"/>-->
+        </Border>
+
+        <!--<DataGrid  ItemsSource="{Binding DataGridItems_B}" AutoGenerateColumns="False" Grid.Column="1" Grid.ColumnSpan="4" Grid.Row="4" Grid.RowSpan="2">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Key" Binding="{Binding Key}" Width="50"/>
+                <DataGridTextColumn Header="Values" Binding="{Binding ValuesAsString}" Width="200"/>
+            </DataGrid.Columns>
+        </DataGrid>-->
         <!--<DataGrid x:Name="Gridtest" Grid.Column="1" Grid.ColumnSpan="4" Grid.Row="3" Grid.RowSpan="4">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="1" Width="1*" />
@@ -399,12 +881,7 @@
                 </DataGridTemplateColumn.CellTemplate>
             </DataGridTemplateColumn>
         </DataGrid>-->
-
-        <Button Command="{Binding test1}" Content="初始化" Grid.Column="0" Grid.Row="3"/>
-        <Button Command="{Binding test2}" Content="測試2" Grid.Column="0" Grid.Row="4"/>
-        <Button Command="{Binding test4}" Content="save" Grid.Column="0" Grid.Row="5"/>
-        <Button Command="{Binding test3}" Content="temp save" Grid.Column="0" Grid.Row="6"/>
-        <CtLib:LogGrid  Grid.Column="3" Grid.ColumnSpan="5" Grid.Row="6" Grid.RowSpan="2"
+        <CtLib:LogGrid  Grid.Column="0" Grid.ColumnSpan="5" Grid.Row="6" Grid.RowSpan="2"
       DataContext="{Binding UILogger}"
       TimeHeader="{DynamicResource Opt}"/>
     </Grid>

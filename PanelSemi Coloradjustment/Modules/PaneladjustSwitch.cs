@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Drawing.Printing;
 using System.Linq;
 using System.Security.Permissions;
@@ -42,12 +44,19 @@ namespace PanelSemi_Coloradjustment
 
     //================================================================================================================================================================================
     // Class  >> PaneladjustSwitch
-    internal class PaneladjustSwitch
+    internal class PaneladjustSwitch: INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
         // 正面看控制左半邊的FPGA
-        public Dictionary<int, List<int>> FPGA_B = new Dictionary<int, List<int>>();
+        public Dictionary<int, ObservableCollection<int>> FPGA_B = new Dictionary<int, ObservableCollection<int>>();
+
         // 正面看控制右半邊的FPGA
-        public Dictionary<int, List<int>> FPGA_A = new Dictionary<int, List<int>>();
+        public Dictionary<int, ObservableCollection<int>> FPGA_A = new Dictionary<int, ObservableCollection<int>>();
         // 色域旗標
         public string ColorspaceFlag = "";
         public string ColorFalg = "";
@@ -58,14 +67,14 @@ namespace PanelSemi_Coloradjustment
         private bool mIsChangeMode = false;
         public PaneladjustSwitch()
         {
-            Fill_Defaultvalue();
             
+            Fill_Defaultvalue();
         }
 
 
-        public delegate void FPGA_Dictionary_2UI(Dictionary<int, List<int>> FPGA_B, Dictionary<int, List<int>> FPGA_A);
+        public delegate void FPGA_Dictionary_2UI(Dictionary<int, ObservableCollection<int>> FPGA_B, Dictionary<int, ObservableCollection<int>> FPGA_A);
         public event FPGA_Dictionary_2UI FPGA_Dictionary_2UIChangeEvent;
-        public  void FPGA_Dictionary_2UIChange(Dictionary<int, List<int>> FPGA_B, Dictionary<int, List<int>> FPGA_A) => FPGA_Dictionary_2UIChangeEvent(FPGA_B, FPGA_A);
+        public  void FPGA_Dictionary_2UIChange(Dictionary<int, ObservableCollection<int>> FPGA_B, Dictionary<int, ObservableCollection<int>> FPGA_A) => FPGA_Dictionary_2UIChangeEvent(FPGA_B, FPGA_A);
 
 
 
@@ -195,7 +204,7 @@ namespace PanelSemi_Coloradjustment
             }
         }
 
-        private void AssignFPGAValue(ref Dictionary<int, List<int>> fpga, int xbNum, int index, int value)
+        private void AssignFPGAValue(ref Dictionary<int, ObservableCollection<int>> fpga, int xbNum, int index, int value)
         {
             if (mIsChangeMode)
             {
@@ -215,7 +224,7 @@ namespace PanelSemi_Coloradjustment
         }
 
         private void AssignFPGAWhite(
-            Dictionary<int, List<int>> fpga, int xbNum, int tileIndex,
+            Dictionary<int, ObservableCollection<int>> fpga, int xbNum, int tileIndex,
             int colorGamut, int valueR, int valueG, int valueB)
         {
             AssignFPGAValue(ref fpga, xbNum, tileIndex * 12 + 0 + colorGamut, valueR); // R
@@ -238,8 +247,8 @@ namespace PanelSemi_Coloradjustment
         {
             for (int i = 1; i < 5; i++)
             {
-                FPGA_B.Add(i, new List<int>(defaultvalue_List_B));
-                FPGA_A.Add(i, new List<int>( defaultvalue_List_A));
+                FPGA_B.Add(i, new ObservableCollection<int>(defaultvalue_List_B));
+                FPGA_A.Add(i, new ObservableCollection<int>( defaultvalue_List_A));
             }
         }
         /// <summary>

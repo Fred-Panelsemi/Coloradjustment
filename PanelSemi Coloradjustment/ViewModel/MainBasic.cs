@@ -7,6 +7,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -114,6 +115,32 @@ namespace PanelSemi_Coloradjustment
             set
             {
                 mAdjuistment_B_Value_Show = value;
+                OnPropertyChanged();
+            }
+        }
+
+
+        // 進入/離開色差模式
+        private string mEnterOrExistColorMoode = "進入色差調節模式";
+        public  string EnterOrExistColorMoode
+        {
+            get => mEnterOrExistColorMoode;
+            set
+            {
+                mEnterOrExistColorMoode = value;
+                OnPropertyChanged(nameof(EnterOrExistColorMoode));
+            }
+        }
+
+
+        // 色域的Flag
+        private int mColorspaceFlag = 4096;
+        public int ColorspaceFlag
+        {
+            get => mColorspaceFlag;
+            set
+            {
+                mColorspaceFlag = value;
                 OnPropertyChanged();
             }
         }

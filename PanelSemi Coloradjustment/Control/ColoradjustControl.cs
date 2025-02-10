@@ -2,6 +2,7 @@
 using CtLib.Module.ChainDa.Dimmer;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -57,9 +58,9 @@ namespace PanelSemi_Coloradjustment
         // 是否進入色差調整模式
         public bool IsColorAdjustmentMode = false;
         // 讀取所有屏色差值的容器 FPGA_B Dictionary<屏幕 , IDDictionary<XB ID, List<色差資訊>>>
-        Dictionary<int, Dictionary<int, List<int>>> FLASH_B_List;
+        Dictionary<int, Dictionary<int, ObservableCollection<int>>> FLASH_B_List;
         // 讀取所有屏色差值的容器 FPGA_A Dictionary<屏幕 , IDDictionary<XB ID, List<色差資訊>>>
-        Dictionary<int, Dictionary<int, List<int>>> FLASH_A_List;
+        Dictionary<int, Dictionary<int, ObservableCollection<int>>> FLASH_A_List;
 
         /// <summary>
         /// class ColorControl 結構初始化
@@ -179,12 +180,15 @@ namespace PanelSemi_Coloradjustment
                     valueB = ColorspaceFlagnum / 4;
                     break;
             }
-            for (int i = 0; i < PanelConut; i++)
+            if(IsColorAdjustmentMode == true)
             {
-                /* 送白畫面 1020 階 */
-                mTotalProcess.cPGRGB10BITp(2, 0, 0, Convert.ToByte(i + 1), 2, valueR.ToString(), valueG.ToString(), valueB.ToString());
-                /* 因為送PG Mode 白畫面 會覆蓋色差 先將原本的色差在寫入 */
-                mTotalProcess.cENGGMAONWRITEp(1, 0, 160, Convert.ToByte(i + 1), Convert.ToByte(2), FLASH_B_List[i + 1], FLASH_A_List[i + 1]);
+                for (int i = 0; i < PanelConut; i++)
+                {
+                    /* 送白畫面 1020 階 */
+                    mTotalProcess.cPGRGB10BITp(2, 0, 0, Convert.ToByte(i + 1), 2, valueR.ToString(), valueG.ToString(), valueB.ToString());
+                    /* 因為送PG Mode 白畫面 會覆蓋色差 先將原本的色差在寫入 */
+                    mTotalProcess.cENGGMAONWRITEp(1, 0, 160, Convert.ToByte(i + 1), Convert.ToByte(2), FLASH_B_List[i + 1], FLASH_A_List[i + 1]);
+                }
             }
         }
 
@@ -282,21 +286,21 @@ namespace PanelSemi_Coloradjustment
         public void PGMODE_Value_Read()
         {
             /* 重製 */
-            FLASH_B_List = new Dictionary<int, Dictionary<int, List<int>>>();
-            FLASH_A_List = new Dictionary<int, Dictionary<int, List<int>>>();
+            FLASH_B_List = new Dictionary<int, Dictionary<int, ObservableCollection<int>>>();
+            FLASH_A_List = new Dictionary<int, Dictionary<int, ObservableCollection<int>>>();
             /* 初始化字典Step1 */
             for (int i = 0; i < PanelConut; i++)
             {
-                FLASH_B_List.Add(i + 1, new Dictionary<int, List<int>>());
-                FLASH_A_List.Add(i + 1, new Dictionary<int, List<int>>());
+                FLASH_B_List.Add(i + 1, new Dictionary<int, ObservableCollection<int>>());
+                FLASH_A_List.Add(i + 1, new Dictionary<int, ObservableCollection<int>>());
             }
             /* 初始化字典Step2 */
             for (int i = 0; i < PanelConut; i++)
             {
                 for (int j = 1; j < 5; j++)
                 {
-                    FLASH_B_List[i + 1].Add(j, new List<int>(defaultvalue_List_B));
-                    FLASH_A_List[i + 1].Add(j, new List<int>(defaultvalue_List_A));
+                    FLASH_B_List[i + 1].Add(j, new ObservableCollection<int>(defaultvalue_List_B));
+                    FLASH_A_List[i + 1].Add(j, new ObservableCollection<int>(defaultvalue_List_A));
                 }
             }
             /* 宣告旗標 */

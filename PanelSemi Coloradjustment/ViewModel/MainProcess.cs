@@ -13,6 +13,9 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Web.UI.WebControls;
+using System.Windows;
+using System.Windows.Data;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 using System.Windows.Input;
@@ -54,6 +57,101 @@ namespace PanelSemi_Coloradjustment
     internal partial class MainProcess : MetroProcessBase<Panelsemi>, INotifyPropertyChanged
     {
         // 測試區 ================================================================================================================================================================================
+        private ObservableCollection<DictionaryViewModel> _dataGridItemsA;
+        private ObservableCollection<DictionaryViewModel> _dataGridItemsB;
+        public ObservableCollection<DictionaryViewModel> DataGridItems_B
+        {
+            get => _dataGridItemsB;
+            set
+            {
+                _dataGridItemsB = value;
+                OnPropertyChanged(nameof(DataGridItems_B));
+            }
+        }
+        public ObservableCollection<DictionaryViewModel> DataGridItems_A
+        {
+            get => _dataGridItemsA;
+            set
+            {
+                _dataGridItemsA = value;
+                OnPropertyChanged(nameof(DataGridItems_A));
+            }
+        }
+
+        //----------------------------
+        private Visibility mSpace4096 = Visibility.Hidden;
+        public Visibility Space4096
+        {
+            get => mSpace4096;
+            set
+            {
+                mSpace4096 = value;
+                OnPropertyChanged(nameof(Space4096));
+            }
+        }
+        private Visibility mSpace2048 = Visibility.Hidden;
+        public Visibility Space2048
+        {
+            get => mSpace2048;
+            set
+            {
+                mSpace2048 = value;
+                OnPropertyChanged(nameof(Space2048));
+            }
+        }
+        private Visibility mSpace1024 = Visibility.Hidden;
+        public Visibility Space1024
+        {
+            get => mSpace1024;
+            set
+            {
+                mSpace1024 = value;
+                OnPropertyChanged(nameof(Space1024));
+            }
+        }
+        private Visibility mSpace512 = Visibility.Hidden;
+        public Visibility Space512
+        {
+            get => mSpace512;
+            set
+            {
+                mSpace512 = value;
+                OnPropertyChanged(nameof(Space512));
+            }
+        }
+
+        private Dictionary<int, ObservableCollection<int>> mDataB;
+        public Dictionary<int, ObservableCollection<int>> DataB
+        {
+            get => mDataB;
+            set
+            {
+                mDataB = value;
+                OnPropertyChanged(nameof(DataB));
+            }
+        }
+
+        private Dictionary<int, ObservableCollection<int>> mDataA;
+        public Dictionary<int, ObservableCollection<int>> DataA
+        {
+            get => mDataA;
+            set
+            {
+                mDataA = value;
+                OnPropertyChanged(nameof(DataA));
+            }
+        }
+
+        private ICollectionView _filteredItems;
+        public ICollectionView FilteredItems
+        {
+            get => _filteredItems;
+            set
+            {
+                _filteredItems = value;
+                OnPropertyChanged(nameof(FilteredItems));
+            }
+        }
         public ICommand test1 { get; set; }
         private void test1_Ation()
         {
@@ -95,6 +193,8 @@ namespace PanelSemi_Coloradjustment
             test2 = new RelayCommand(test2_Ation);
             test3 = new RelayCommand(test3_Ation);
             test4 = new RelayCommand(test4_Ation);
+
+         
 
             /* 撈出版本號　=> 由AssemblyInfo.cs中設定 */
             var asm = Assembly.GetExecutingAssembly();
@@ -217,7 +317,11 @@ namespace PanelSemi_Coloradjustment
                 /*>> Update Panel 數量 */
                 UpdateNumofPanel();
             }
-            
+
+            DataB = new Dictionary<int, ObservableCollection<int>>();
+            DataB = mPaneladjustSwitch.FPGA_B;
+            DataA = new Dictionary<int, ObservableCollection<int>>();
+            DataA = mPaneladjustSwitch.FPGA_A;
         }
 
         /// <summary>
@@ -243,13 +347,13 @@ namespace PanelSemi_Coloradjustment
                     }
                 }
             }
-
             /* 更換ID時 要去重讀 Flah的色差值 */
             if (mColorControl.IsColorAdjustmentMode == true) { mColorControl.ColorInfoRead(); }
             /* 刷新模擬器的顏色 */
             mPaneladjustSwitch.PanelSwitch_update("Total Tile", 99, 99, 99, mPaneladjustSwitch.ColorspaceFlagnum, mPaneladjustSwitch.ColorFalg, 0, 0, 0);
             /* 並在Panel再刷上原本的數值 因為有調整後沒儲存更換ID再換回來 Panel 上的色塊不會不見 */
             if (mColorControl.IsColorAdjustmentMode == true) { mColorControl.ColorTempSave(); }
+         
         }
 
         /// <summary>
@@ -260,19 +364,34 @@ namespace PanelSemi_Coloradjustment
         /// </summary>
         private void StartandInit_Action()
         {
-            if(mColorControl.ChoicePanelID == 0)
+            if(mColorControl.IsColorAdjustmentMode == false)
             {
-                MessageBox.Show("請選擇ID再開始");
-                return;
+                if (mColorControl.ChoicePanelID == 0)
+                {
+                    
+                    
+                    System.Windows.MessageBox.Show("請選擇ID再開始");
+                    return;
+                }
+                mColorControl.IsColorAdjustmentMode = true;
+                //mEasyDebug.ID_Serialmode();
+                Thread.Sleep(3000);
+                mColorControl.ColorCtrInit();
+                /* 勾選1020階白畫面 */
+                ColorSpaceCheckBoxStates[3] = true;
+                EnterOrExistColorMoode = "離開 色差調節模式";
             }
-            mColorControl.IsColorAdjustmentMode = true;
-            //mEasyDebug.ID_Serialmode();
-            Thread.Sleep(3000);
-            mColorControl.ColorCtrInit();
-            /* 勾選1020階白畫面 */
-            ColorSpaceCheckBoxStates[3] = true;
+            else
+            {
+
+            }
+            
         }
 
+
+        /// <summary>
+        /// 離開色差調節模式
+        /// </summary>
         private void EsxicAdjustMode_Action()
         {
 
@@ -337,6 +456,7 @@ namespace PanelSemi_Coloradjustment
         private void AdjValueG_Action(string paRa)
         {
             mColorControl.AdjustG(paRa, Mode_SelectedItem, ValueG);
+
         }
 
         /// <summary>
@@ -438,19 +558,39 @@ namespace PanelSemi_Coloradjustment
                     {
                         if(i == 0 | i ==1 | i == 2 | i == 3)
                         {
-                            mPaneladjustSwitch.ColorspaceFlagnum = 4096; 
+                            mPaneladjustSwitch.ColorspaceFlagnum = 4096;
+                            ColorspaceFlag = 4096;
+                            Space4096 = Visibility.Visible;
+                            Space2048 = Visibility.Hidden;
+                            Space1024 = Visibility.Hidden;
+                            Space512 = Visibility.Hidden;
                         }
                         else if(i == 4 | i == 5 | i == 6 | i == 7)
                         {
                             mPaneladjustSwitch.ColorspaceFlagnum = 2048;
+                            ColorspaceFlag = 2048;
+                            Space4096 = Visibility.Hidden;
+                            Space2048 = Visibility.Visible;
+                            Space1024 = Visibility.Hidden;
+                            Space512 = Visibility.Hidden;
                         }
                         else if (i == 8 | i == 9 | i == 10 | i == 11)
                         {
                             mPaneladjustSwitch.ColorspaceFlagnum = 1024;
+                            ColorspaceFlag = 1024;
+                            Space4096 = Visibility.Hidden;
+                            Space2048 = Visibility.Hidden;
+                            Space1024 = Visibility.Visible;
+                            Space512 = Visibility.Hidden;
                         }
                         else if (i == 12 | i == 13 | i == 14 | i == 15)
                         {
                             mPaneladjustSwitch.ColorspaceFlagnum = 512;
+                            ColorspaceFlag = 512;
+                            Space4096 = Visibility.Hidden;
+                            Space2048 = Visibility.Hidden;
+                            Space1024 = Visibility.Hidden;
+                            Space512 = Visibility.Visible;
                         }
 
                         if (i == 0 | i == 4 | i == 8 | i == 12)
@@ -474,6 +614,7 @@ namespace PanelSemi_Coloradjustment
                         mColorControl.ColrSpaceChange(mPaneladjustSwitch.ColorspaceFlagnum,mPaneladjustSwitch.ColorFalg);
                     }
                 }
+                /* 介面互動 */
             }
         }
 
@@ -484,7 +625,7 @@ namespace PanelSemi_Coloradjustment
         /// </summary>
         /// <param name="FPGA_B"></param>
         /// <param name="FPGA_A"></param>
-        private void FPGA_Dictionary_2UIChangeEvent(Dictionary<int, List<int>> FPGA_B, Dictionary<int, List<int>> FPGA_A)
+        private void FPGA_Dictionary_2UIChangeEvent(Dictionary<int, ObservableCollection<int>> FPGA_B, Dictionary<int, ObservableCollection<int>> FPGA_A)
         {
             switch (mPaneladjustSwitch.ColorspaceFlag)
             {

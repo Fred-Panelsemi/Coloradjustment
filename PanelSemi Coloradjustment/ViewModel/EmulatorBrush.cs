@@ -43,7 +43,7 @@ namespace PanelSemi_Coloradjustment
         /// <param name="listFillBrush"></param>
         /// <param name="fpgaData"></param>
         /// <param name="offset"></param>
-        private void UpdateBrushColors(string channel, int colorSpace, ObservableCollection<SolidColorBrush> listFillBrush, Dictionary<int, List<int>> fpgaData, int offset = 0)
+        private void UpdateBrushColors(string channel, int colorSpace, ObservableCollection<SolidColorBrush> listFillBrush, Dictionary<int, ObservableCollection<int>> fpgaData, int offset = 0)
         {
             int loopCount = 0;
             int colorPt = 0;
