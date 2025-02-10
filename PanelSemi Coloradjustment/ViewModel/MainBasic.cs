@@ -59,10 +59,10 @@ namespace PanelSemi_Coloradjustment
 
         public ObservableCollection<string> Mode_Item { get; set; }
         private string mMode_SelectedItem;
-        public  string Mode_SelectedItem // 綁定到選中的項目
-        {   
-            get => mMode_SelectedItem; 
-            set 
+        public string Mode_SelectedItem // 綁定到選中的項目
+        {
+            get => mMode_SelectedItem;
+            set
             {
                 mMode_SelectedItem = value;
                 if (Mode_SelectedItem == "Total Tile")
@@ -70,7 +70,7 @@ namespace PanelSemi_Coloradjustment
                     Is1x4 = false;
                     IsSingle = false;
                 }
-                else if(Mode_SelectedItem == "1x4 Tile")
+                else if (Mode_SelectedItem == "1x4 Tile")
                 {
                     Is1x4 = true;
                     IsSingle = false;
@@ -80,9 +80,43 @@ namespace PanelSemi_Coloradjustment
                     Is1x4 = true;
                     IsSingle = true;
                 }
-                OnPropertyChanged(); 
-            } 
-        } 
+                OnPropertyChanged();
+            }
+        }
+
+        // 顯示要RGB要調整色域的數值
+        private int mAdjuistment_R_Value_Show = 0;
+        public int Adjuistment_R_Value_Show
+        {
+            get => mAdjuistment_R_Value_Show;
+            set
+            {
+                mAdjuistment_R_Value_Show = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private int mAdjuistment_G_Value_Show = 0;
+        public int Adjuistment_G_Value_Show
+        {
+            get => mAdjuistment_G_Value_Show;
+            set
+            {
+                mAdjuistment_G_Value_Show = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private int mAdjuistment_B_Value_Show = 0;
+        public int Adjuistment_B_Value_Show
+        {
+            get => mAdjuistment_B_Value_Show;
+            set
+            {
+                mAdjuistment_B_Value_Show = value;
+                OnPropertyChanged();
+            }
+        }
 
         // 色域Checkbox溝選用
         private ObservableCollection<bool> mColorSpacecheckBoxStates;
@@ -133,7 +167,7 @@ namespace PanelSemi_Coloradjustment
 
         // R G B 介面上綁定的數值
         private int mValueR = 1;
-        public int ValueR { get => mValueR; set { mValueR = value;  OnPropertyChanged(); } }
+        public int ValueR { get => mValueR; set { mValueR = value; OnPropertyChanged(); } }
 
         private int mValueG = 1;
         public int ValueG { get => mValueG; set { mValueG = value; OnPropertyChanged(); } }
@@ -164,7 +198,7 @@ namespace PanelSemi_Coloradjustment
 
         //
         private string mIsUsbConnect = "not connect";
-        public  string IsUsbConnect { get => mIsUsbConnect; set { mIsUsbConnect = value; OnPropertyChanged(); } }
+        public string IsUsbConnect { get => mIsUsbConnect; set { mIsUsbConnect = value; OnPropertyChanged(); } }
 
         #endregion
 
@@ -182,12 +216,12 @@ namespace PanelSemi_Coloradjustment
         #region 自定義控建
 
         private ObservableCollection<CheckBoxModel> mPanel_ID_CheckBoxes;
-        public ObservableCollection<CheckBoxModel> Panel_ID_CheckBoxes { get => mPanel_ID_CheckBoxes; set { mPanel_ID_CheckBoxes = value; OnPropertyChanged(); } } 
+        public ObservableCollection<CheckBoxModel> Panel_ID_CheckBoxes { get => mPanel_ID_CheckBoxes; set { mPanel_ID_CheckBoxes = value; OnPropertyChanged(); } }
         #endregion
 
         #region MyRegion
         SolidColorBrush PanelBABrush = new SolidColorBrush();
-        private SolidColorBrush _strRGB = new SolidColorBrush(Color.FromRgb(255,0,0));
+        private SolidColorBrush _strRGB = new SolidColorBrush(Color.FromRgb(255, 0, 0));
         public SolidColorBrush strRGB
         {
             get => _strRGB;
@@ -229,7 +263,7 @@ namespace PanelSemi_Coloradjustment
                 OnPropertyChanged(nameof(FillBrushX1T2));
             }
         }
-        private SolidColorBrush _fillBrush_X1T3 = new SolidColorBrush(Color.FromRgb(0,0,0));
+        private SolidColorBrush _fillBrush_X1T3 = new SolidColorBrush(Color.FromRgb(0, 0, 0));
         public SolidColorBrush FillBrushX1T3
         {
             get => _fillBrush_X1T3;
@@ -446,7 +480,7 @@ namespace PanelSemi_Coloradjustment
                 OnPropertyChanged(nameof(AFillBrushX2T3));
             }
         }
-       private SolidColorBrush A_fillBrush_X2T4 = new SolidColorBrush(Color.FromRgb(0, 0, 0));
+        private SolidColorBrush A_fillBrush_X2T4 = new SolidColorBrush(Color.FromRgb(0, 0, 0));
         public SolidColorBrush AFillBrushX2T4
         {
             get => A_fillBrush_X2T4;

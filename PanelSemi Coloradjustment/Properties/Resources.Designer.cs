@@ -73,6 +73,16 @@ namespace PanelSemi_Coloradjustment.Properties {
         /// <summary>
         ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
         /// </summary>
+        internal static System.Drawing.Bitmap dwn_removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("dwn_removebg_preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+        /// </summary>
         internal static System.Drawing.Bitmap fhd {
             get {
                 object obj = ResourceManager.GetObject("fhd", resourceCulture);
@@ -116,6 +126,26 @@ namespace PanelSemi_Coloradjustment.Properties {
         internal static System.Drawing.Bitmap LUn {
             get {
                 object obj = ResourceManager.GetObject("LUn", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+        /// </summary>
+        internal static System.Drawing.Bitmap menu_down_outline {
+            get {
+                object obj = ResourceManager.GetObject("menu_down_outline", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+        /// </summary>
+        internal static System.Drawing.Bitmap menu_up_outline {
+            get {
+                object obj = ResourceManager.GetObject("menu_up_outline", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -186,6 +216,36 @@ namespace PanelSemi_Coloradjustment.Properties {
         internal static System.Drawing.Bitmap U2D {
             get {
                 object obj = ResourceManager.GetObject("U2D", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+        /// </summary>
+        internal static System.Drawing.Bitmap up_removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("up_removebg_preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+        /// </summary>
+        internal static System.Drawing.Bitmap White_dwn {
+            get {
+                object obj = ResourceManager.GetObject("White_dwn", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+        /// </summary>
+        internal static System.Drawing.Bitmap White_Up {
+            get {
+                object obj = ResourceManager.GetObject("White_Up", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

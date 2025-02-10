@@ -54,6 +54,8 @@ namespace PanelSemi_Coloradjustment
         public int PanelConut = 0;
         // 選擇的ID
         public int ChoicePanelID = 0;
+        // 是否進入色差調整模式
+        public bool IsColorAdjustmentMode = false;
         // 讀取所有屏色差值的容器 FPGA_B Dictionary<屏幕 , IDDictionary<XB ID, List<色差資訊>>>
         Dictionary<int, Dictionary<int, List<int>>> FLASH_B_List;
         // 讀取所有屏色差值的容器 FPGA_A Dictionary<屏幕 , IDDictionary<XB ID, List<色差資訊>>>

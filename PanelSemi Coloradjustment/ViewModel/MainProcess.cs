@@ -243,12 +243,13 @@ namespace PanelSemi_Coloradjustment
                     }
                 }
             }
+
             /* 更換ID時 要去重讀 Flah的色差值 */
-            mColorControl.ColorInfoRead();
+            if (mColorControl.IsColorAdjustmentMode == true) { mColorControl.ColorInfoRead(); }
             /* 刷新模擬器的顏色 */
             mPaneladjustSwitch.PanelSwitch_update("Total Tile", 99, 99, 99, mPaneladjustSwitch.ColorspaceFlagnum, mPaneladjustSwitch.ColorFalg, 0, 0, 0);
             /* 並在Panel再刷上原本的數值 因為有調整後沒儲存更換ID再換回來 Panel 上的色塊不會不見 */
-            mColorControl.ColorTempSave();
+            if (mColorControl.IsColorAdjustmentMode == true) { mColorControl.ColorTempSave(); }
         }
 
         /// <summary>
@@ -259,11 +260,22 @@ namespace PanelSemi_Coloradjustment
         /// </summary>
         private void StartandInit_Action()
         {
+            if(mColorControl.ChoicePanelID == 0)
+            {
+                MessageBox.Show("請選擇ID再開始");
+                return;
+            }
+            mColorControl.IsColorAdjustmentMode = true;
             //mEasyDebug.ID_Serialmode();
             Thread.Sleep(3000);
             mColorControl.ColorCtrInit();
             /* 勾選1020階白畫面 */
             ColorSpaceCheckBoxStates[3] = true;
+        }
+
+        private void EsxicAdjustMode_Action()
+        {
+
         }
 
         /// <summary>

@@ -248,5 +248,38 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menu-up-outline.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menu-down-outline.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="menu-up-outline.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dwn-removebg-preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\up-removebg-preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="up-removebg-preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\White dwn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\White Up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="White Up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="White dwn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="dwn-removebg-preview.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
