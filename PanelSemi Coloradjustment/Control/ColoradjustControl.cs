@@ -93,6 +93,43 @@ namespace PanelSemi_Coloradjustment
 
         }
 
+        public void ExistColorMode()
+        {
+            /* 發送 ENG OFF */
+            mTotalProcess.cENGGMAONWRITEp(3, 0, 160, Convert.ToByte(1), Convert.ToByte(2), mPaneladjustSwitch.FPGA_B, mPaneladjustSwitch.FPGA_A);
+            /* 發送離開PG mode */
+            mTotalProcess.cPGRGB10BITp(0, 0, 0, 0, 0, "-1", "-1", "-1");
+            FLASH_B_List[ChoicePanelID] = mPaneladjustSwitch.FPGA_B;
+            FLASH_A_List[ChoicePanelID] = mPaneladjustSwitch.FPGA_A;
+            for (int i = 0; i < PanelConut; i++)
+            {
+                /* 因為送PG Mode 白畫面 會覆蓋色差 先將原本的色差在寫入 */
+                mTotalProcess.cENGGMAONWRITEp(1, 0, 160, Convert.ToByte(i + 1), Convert.ToByte(2), FLASH_B_List[i + 1], FLASH_A_List[i + 1]);
+            }
+        }
+
+        public void RecoverDefault()
+        {
+            for (int i = 1; i < 5; i++)
+            {
+                for (int j = 0; j < 12; j++)
+                {
+                    mPaneladjustSwitch.FPGA_B[i][j*4] = 481;
+                    mPaneladjustSwitch.FPGA_B[i][j*4 + 1] = 963;
+                    mPaneladjustSwitch.FPGA_B[i][j*4 + 2] = 1927;
+                    mPaneladjustSwitch.FPGA_B[i][j*4 + 3] = 3840;
+
+
+                    mPaneladjustSwitch.FPGA_A[i][j*4] = 481;
+                    mPaneladjustSwitch.FPGA_A[i][j*4 + 1] = 963;
+                    mPaneladjustSwitch.FPGA_A[i][j*4 + 2] = 1927;
+                    mPaneladjustSwitch.FPGA_A[i][j*4 + 3] = 3840;
+                }
+            }
+            mPaneladjustSwitch.PanelSwitch_update("Total Tile", 99, 99, 99, mPaneladjustSwitch.ColorspaceFlagnum, mPaneladjustSwitch.ColorFalg, 0, 0, 0);
+            ColorTempSave();
+        }
+
         /// <summary>
         /// 讀取選擇屏的色差資訊
         /// </summary>
@@ -116,7 +153,7 @@ namespace PanelSemi_Coloradjustment
                 /* 所以47的位置填完後 要將 coUntXb 的值+1，coUnt 歸0 */
                 if (coUnt == 47)     /* RRRR */
                 {                    /* GGGG */
-                    coUntXb++;       /* BBBB */  
+                    coUntXb++;       /* BBBB */
                     coUnt = 0;
                 }
                 else
@@ -180,7 +217,7 @@ namespace PanelSemi_Coloradjustment
                     valueB = ColorspaceFlagnum / 4;
                     break;
             }
-            if(IsColorAdjustmentMode == true)
+            if (IsColorAdjustmentMode == true)
             {
                 for (int i = 0; i < PanelConut; i++)
                 {
@@ -279,7 +316,7 @@ namespace PanelSemi_Coloradjustment
             ColorTempSave();
         }
 
-        
+
         /// <summary>
         /// 讀取全部屏的色差資訊
         /// </summary>
@@ -369,8 +406,8 @@ namespace PanelSemi_Coloradjustment
             }
             for (int i = 0; i < 48; i++)
             {
-                defaultvalue_List_A.Add(new int[4] { 512, 1024, 2048, 4080 }[i % 4]); // 按照 4 個值循環填入
-                defaultvalue_List_B.Add(new int[4] { 512, 1024, 2048, 4080 }[i % 4]); // 按照 4 個值循環填入
+                defaultvalue_List_A.Add(new int[4] { 481, 963, 1927, 3840 }[i % 4]); // 按照 4 個值循環填入
+                defaultvalue_List_B.Add(new int[4] { 481, 963, 1927, 3840 }[i % 4]); // 按照 4 個值循環填入
             }
 
         }
@@ -380,10 +417,10 @@ namespace PanelSemi_Coloradjustment
         // X4_4 RRRR GGGG BBBB
         // 1個FPGA 16*12 = 192 個數值 
         public static int[] Colordefaulvalue_A = new int[192];
-        public static int[] defaultvalue_A = new int[4] { 512, 1024, 2048, 4080 };
+        public static int[] defaultvalue_A = new int[4] { 481, 963, 1927, 3840 };
         public static List<int> defaultvalue_List_A = new List<int>();
         public static int[] Colordefaulvalue_B = new int[192];
-        public static int[] defaultvalue_B = new int[4] { 512, 1024, 2048, 4080 };
+        public static int[] defaultvalue_B = new int[4] { 481, 963, 1927, 3840 };
         public static List<int> defaultvalue_List_B = new List<int>();
 
 

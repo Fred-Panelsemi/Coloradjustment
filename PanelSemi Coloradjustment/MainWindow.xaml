@@ -333,9 +333,10 @@
             </Grid>
 
         </Border>
+        
         <Border Margin="2" Grid.Column="4" Grid.ColumnSpan="1" Grid.Row="3" Grid.RowSpan="1">
             <StackPanel>
-                <Button  Content="恢復為預設色差" Margin="0,5,0,0" FontSize="16" Background="{x:Null}"/>
+                <Button Command="{Binding RecoverDefaultValue}"  Content="恢復為預設色差" Margin="0,5,0,0" FontSize="16" Background="{x:Null}"/>
             </StackPanel>
         </Border>
         <Border Margin="2" Grid.Column="4" Grid.ColumnSpan="1" Grid.Row="5" Grid.RowSpan="1">
@@ -881,6 +882,9 @@
                 </DataGridTemplateColumn.CellTemplate>
             </DataGridTemplateColumn>
         </DataGrid>-->
+        <Border Visibility="{Binding IsEnterColorAdjustmentMode}" IsEnabled="False" Grid.Column="1" Grid.ColumnSpan="4" Grid.Row="0" Grid.RowSpan="6" Background="#B2828282">
+            <TextBlock Text="尚未進入色差調節模式" FontSize="60" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Border>
         <CtLib:LogGrid  Grid.Column="0" Grid.ColumnSpan="5" Grid.Row="6" Grid.RowSpan="2"
       DataContext="{Binding UILogger}"
       TimeHeader="{DynamicResource Opt}"/>

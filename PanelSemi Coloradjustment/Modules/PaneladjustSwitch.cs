@@ -243,7 +243,7 @@ namespace PanelSemi_Coloradjustment
         /// <summary>
         /// 
         /// </summary>
-        private void Init_Dictionary()
+        public void Init_Dictionary()
         {
             for (int i = 1; i < 5; i++)
             {
@@ -263,8 +263,8 @@ namespace PanelSemi_Coloradjustment
             }
             for (int i = 0; i < 48; i++)
             {
-                defaultvalue_List_A.Add(new int[4] { 512, 1024, 2048, 4080 }[i % 4]); // 按照 4 個值循環填入
-                defaultvalue_List_B.Add(new int[4] { 512, 1024, 2048, 4080 }[i % 4]); // 按照 4 個值循環填入
+                defaultvalue_List_A.Add(new int[4] { 481, 963, 1927, 3840 }[i % 4]); // 按照 4 個值循環填入
+                defaultvalue_List_B.Add(new int[4] { 481, 963, 1927, 3840 }[i % 4]); // 按照 4 個值循環填入
             }
             Init_Dictionary();
         }
@@ -274,10 +274,10 @@ namespace PanelSemi_Coloradjustment
         // X4_4 RRRR GGGG BBBB
         // 1個FPGA 16*12 = 192 個數值 
         public static int[] Colordefaulvalue_A = new int[192];
-        public static int[] defaultvalue_A = new int[4] { 512, 1024, 2048, 4080 };
+        public static int[] defaultvalue_A = new int[4] { 481, 963, 1927, 3840 };
         public static List<int> defaultvalue_List_A = new List<int>();
         public static int[] Colordefaulvalue_B = new int[192];
-        public static int[] defaultvalue_B = new int[4] { 512, 1024, 2048, 4080 };
+        public static int[] defaultvalue_B = new int[4] { 481, 963, 1927, 3840 };
         public static List<int> defaultvalue_List_B = new List<int>();
 
     }

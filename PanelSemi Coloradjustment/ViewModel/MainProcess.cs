@@ -28,6 +28,7 @@ using CtLib.Library.Contracts;
 using CtLib.Library.Log;
 using CtLib.Library.Wpf;
 using CtLib.Module.Delta.PLC;
+using MahApps.Metro.Controls;
 using PanelSemi_Coloradjustment.Properties;
 using PanelSemi_Coloradjustment.ViewModel;
 using static System.Net.Mime.MediaTypeNames;
@@ -205,12 +206,14 @@ namespace PanelSemi_Coloradjustment
             StartandInit = new RelayCommand(StartandInit_Action);
             USB_ComPort_FindandOpen = new RelayCommand(USB_ComPort_FindandOpen_Action);
             SaveColorInfo = new RelayCommand(SaveColorInfo_Action);
+            RecoverDefaultValue = new RelayCommand(RecoverDefaultValue_Action);
 
 
             /* DelegateCommand 宣告 */
             AdjValueR = new DelegateCommand<string>(AdjValueR_Action);
             AdjValueG = new DelegateCommand<string>(AdjValueG_Action);
             AdjValueB = new DelegateCommand<string>(AdjValueB_Action);
+
 
             /* Microusb_Items Combox 初始化 */
             Microusb_Items = new ObservableCollection<ComboBoxItemModel>
@@ -319,9 +322,15 @@ namespace PanelSemi_Coloradjustment
             }
 
             DataB = new Dictionary<int, ObservableCollection<int>>();
-            DataB = mPaneladjustSwitch.FPGA_B;
             DataA = new Dictionary<int, ObservableCollection<int>>();
+            DataB = mPaneladjustSwitch.FPGA_B;
             DataA = mPaneladjustSwitch.FPGA_A;
+        }
+
+        private void RecoverDefaultValue_Action()
+        {
+            
+            mColorControl.RecoverDefault();
         }
 
         /// <summary>
@@ -368,8 +377,6 @@ namespace PanelSemi_Coloradjustment
             {
                 if (mColorControl.ChoicePanelID == 0)
                 {
-                    
-                    
                     System.Windows.MessageBox.Show("請選擇ID再開始");
                     return;
                 }
@@ -380,22 +387,19 @@ namespace PanelSemi_Coloradjustment
                 /* 勾選1020階白畫面 */
                 ColorSpaceCheckBoxStates[3] = true;
                 EnterOrExistColorMoode = "離開 色差調節模式";
+                IsEnterColorAdjustmentMode = Visibility.Hidden;
             }
             else
             {
-
+                IsEnterColorAdjustmentMode = Visibility.Visible;
+                mColorControl.IsColorAdjustmentMode = false;
+                EnterOrExistColorMoode = "進入 色差調節模式";
+                mColorControl.ExistColorMode();
+                
             }
             
         }
 
-
-        /// <summary>
-        /// 離開色差調節模式
-        /// </summary>
-        private void EsxicAdjustMode_Action()
-        {
-
-        }
 
         /// <summary>
         /// Update Panel 數量
@@ -447,6 +451,7 @@ namespace PanelSemi_Coloradjustment
         private void AdjValueR_Action(string paRa)
         {
             mColorControl.AdjustR(paRa, Mode_SelectedItem, ValueR);
+        
         }
 
         /// <summary>

@@ -70,11 +70,32 @@ namespace PanelSemi_Coloradjustment
                 {
                     Is1x4 = false;
                     IsSingle = false;
+                    if(Ix4checkBoxStates != null & SinglecheckBoxStates!= null)
+                    {
+                        for (int i = 0; i < Ix4checkBoxStates.Count; i++)
+                        {
+                            Ix4checkBoxStates[i] = false;
+                        }
+                        for (int i = 0; i < SinglecheckBoxStates.Count; i++)
+                        {
+                            SinglecheckBoxStates[i] = false;
+                        }
+                    }
+                    
                 }
                 else if (Mode_SelectedItem == "1x4 Tile")
                 {
                     Is1x4 = true;
                     IsSingle = false;
+                    if (SinglecheckBoxStates != null)
+                    {
+                        for (int i = 0; i < SinglecheckBoxStates.Count; i++)
+                        {
+                            SinglecheckBoxStates[i] = false;
+                        }
+                    }
+                    
+
                 }
                 else if (Mode_SelectedItem == "Single Tile")
                 {
@@ -129,6 +150,17 @@ namespace PanelSemi_Coloradjustment
             {
                 mEnterOrExistColorMoode = value;
                 OnPropertyChanged(nameof(EnterOrExistColorMoode));
+            }
+        }
+
+        private Visibility mIsEnterColorAdjustmentMode = Visibility.Visible;
+        public Visibility IsEnterColorAdjustmentMode
+        {
+            get => mIsEnterColorAdjustmentMode;
+            set
+            {
+                mIsEnterColorAdjustmentMode = value;
+                OnPropertyChanged(nameof(IsEnterColorAdjustmentMode));
             }
         }
 
@@ -235,6 +267,7 @@ namespace PanelSemi_Coloradjustment
         public ICommand IDChoice { get; set; }
         public ICommand USB_ComPort_FindandOpen { get; set; }
         public ICommand SaveColorInfo { get; set; }
+        public ICommand RecoverDefaultValue { get; set; }
         public DelegateCommand<string> AdjValueR { get; set; }
         public DelegateCommand<string> AdjValueG { get; set; }
         public DelegateCommand<string> AdjValueB { get; set; }
