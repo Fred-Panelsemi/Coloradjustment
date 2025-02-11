@@ -821,13 +821,31 @@ namespace PanelSemi_Coloradjustment
                             {
                                 if(svn == 1)
                                 {
-                                    sDataDec[(i - 1) * 48 + j + 91] = FPGA_B[i][j].ToString();
-                                    FPGAsel = 1;
+                                   
+                                    try
+                                    {
+                                        sDataDec[(i - 1) * 48 + j + 91] = FPGA_B[i][j].ToString();
+                                        FPGAsel = 1;
+                                    }
+                                    catch
+                                    {
+
+                                    }
+                                 
                                 }
                                 else
                                 {
-                                    sDataDec[(i - 1) * 48 + j + 91] = FPGA_A[i][j].ToString();
-                                    FPGAsel = 0;
+                                    
+                                    try
+                                    {
+                                        sDataDec[(i - 1) * 48 + j + 91] = FPGA_A[i][j].ToString();
+                                        FPGAsel = 0;
+                                    }
+                                    catch
+                                    {
+
+                                    }
+                                   
                                 }
                             }
                         }

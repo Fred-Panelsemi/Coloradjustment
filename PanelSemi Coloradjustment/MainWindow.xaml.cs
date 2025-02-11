@@ -41,7 +41,8 @@ namespace PanelSemi_Coloradjustment
 
         }
 
-        private void MetroWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+
+        private void MetroWindow_Closing_1(object sender, System.ComponentModel.CancelEventArgs e)
         {
             mMainProcess.WindowClose_Action();
         }
