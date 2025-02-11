@@ -883,9 +883,9 @@
                 </DataGridTemplateColumn.CellTemplate>
             </DataGridTemplateColumn>
         </DataGrid>-->
-        <!--<Border Visibility="{Binding IsEnterColorAdjustmentMode}" IsEnabled="False" Grid.Column="1" Grid.ColumnSpan="4" Grid.Row="0" Grid.RowSpan="6" Background="#B2828282">
+        <Border Visibility="{Binding IsEnterColorAdjustmentMode}" IsEnabled="False" Grid.Column="1" Grid.ColumnSpan="4" Grid.Row="0" Grid.RowSpan="6" Background="#B2828282">
             <TextBlock Text="尚未進入色差調節模式" FontSize="60" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        </Border>-->
+        </Border>
         <CtLib:LogGrid  Grid.Column="0" Grid.ColumnSpan="5" Grid.Row="6" Grid.RowSpan="2"
       DataContext="{Binding UILogger}"
       TimeHeader="{DynamicResource Opt}"/>
