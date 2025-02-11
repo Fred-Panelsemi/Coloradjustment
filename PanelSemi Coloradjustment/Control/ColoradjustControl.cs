@@ -1,5 +1,4 @@
 ﻿using CtLib.Library;
-using CtLib.Module.ChainDa.Dimmer;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;

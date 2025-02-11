@@ -27,7 +27,6 @@ using CtLib.Library;
 using CtLib.Library.Contracts;
 using CtLib.Library.Log;
 using CtLib.Library.Wpf;
-using CtLib.Module.Delta.PLC;
 using MahApps.Metro.Controls;
 using PanelSemi_Coloradjustment.Properties;
 using PanelSemi_Coloradjustment.ViewModel;

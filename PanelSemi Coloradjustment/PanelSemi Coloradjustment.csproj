@@ -58,32 +58,12 @@
     <Reference Include="ControlzEx, Version=5.0.0.0, Culture=neutral, PublicKeyToken=69f1c32f803d307e, processorArchitecture=MSIL">
       <HintPath>..\packages\ControlzEx.5.0.2\lib\net462\ControlzEx.dll</HintPath>
     </Reference>
-    <Reference Include="CtLib.Communication">
-      <HintPath>Resource\CtLib.Communication.dll</HintPath>
-    </Reference>
-    <Reference Include="CtLib.Library">
-      <HintPath>Resource\CtLib.Library.dll</HintPath>
-    </Reference>
-    <Reference Include="CtLib.Library.Algorithm">
-      <HintPath>Resource\CtLib.Library.Algorithm.dll</HintPath>
+    <Reference Include="CtLib.Library, Version=1.0.10.5, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\CtLib_dll\CtLib.Library.dll</HintPath>
     </Reference>
     <Reference Include="CtLib.Library.Wpf">
-      <HintPath>Resource\CtLib.Library.Wpf.dll</HintPath>
-    </Reference>
-    <Reference Include="CtLib.Module.Beckhoff">
-      <HintPath>Resource\CtLib.Module.Beckhoff.dll</HintPath>
-    </Reference>
-    <Reference Include="CtLib.Module.ChainDa">
-      <HintPath>Resource\CtLib.Module.ChainDa.dll</HintPath>
-    </Reference>
-    <Reference Include="CtLib.Module.Database">
-      <HintPath>Resource\CtLib.Module.Database.dll</HintPath>
-    </Reference>
-    <Reference Include="CtLib.Module.Delta">
-      <HintPath>Resource\CtLib.Module.Delta.dll</HintPath>
-    </Reference>
-    <Reference Include="CtLib.Module.SEMI">
-      <HintPath>Resource\CtLib.Module.SEMI.dll</HintPath>
+      <HintPath>..\..\..\..\CtLib_dll\CtLib.Library.Wpf.dll</HintPath>
     </Reference>
     <Reference Include="MahApps.Metro, Version=2.0.0.0, Culture=neutral, PublicKeyToken=51482d6f650b2b3f, processorArchitecture=MSIL">
       <HintPath>..\packages\MahApps.Metro.2.4.9\lib\net47\MahApps.Metro.dll</HintPath>

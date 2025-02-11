@@ -9,7 +9,7 @@
         mc:Ignorable="d"
         WindowStyle="SingleBorderWindow"
         ResizeMode="CanMinimize"
-        Title="{Binding PanelSemi_SplicingVersion}" Height="900" Width="1100" Background="{x:Null}" WindowStartupLocation="CenterScreen" TitleCharacterCasing="Normal" Closing="MetroWindow_Closing">
+        Title="{Binding PanelSemi_SplicingVersion}" Height="900" Width="1100" Background="{x:Null}" WindowStartupLocation="CenterScreen" TitleCharacterCasing="Normal">
     <mah:MetroWindow.TitleTemplate>
         <DataTemplate>
             <StackPanel Orientation="Horizontal"
@@ -30,9 +30,9 @@
             </StackPanel>
         </DataTemplate>
     </mah:MetroWindow.TitleTemplate>
-    <!--<Window.DataContext>
+    <Window.DataContext>
         <local:MainProcess/>
-    </Window.DataContext>-->
+    </Window.DataContext>
 
     <Grid>
         <Grid.RowDefinitions>
