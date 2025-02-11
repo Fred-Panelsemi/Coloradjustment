@@ -7,8 +7,9 @@
         xmlns:CtLib ="clr-namespace:CtLib.Library.Wpf;assembly=CtLib.Library.Wpf"
         xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls" x:Class="PanelSemi_Coloradjustment.MainWindow"
         mc:Ignorable="d"
-        
-        Title="{Binding PanelSemi_SplicingVersion}" Height="900" Width="1100" Background="{x:Null}" WindowStartupLocation="CenterScreen" TitleCharacterCasing="Normal">
+        WindowStyle="SingleBorderWindow"
+        ResizeMode="CanMinimize"
+        Title="{Binding PanelSemi_SplicingVersion}" Height="900" Width="1100" Background="{x:Null}" WindowStartupLocation="CenterScreen" TitleCharacterCasing="Normal" Closing="MetroWindow_Closing">
     <mah:MetroWindow.TitleTemplate>
         <DataTemplate>
             <StackPanel Orientation="Horizontal"
@@ -29,9 +30,9 @@
             </StackPanel>
         </DataTemplate>
     </mah:MetroWindow.TitleTemplate>
-    <Window.DataContext>
+    <!--<Window.DataContext>
         <local:MainProcess/>
-    </Window.DataContext>
+    </Window.DataContext>-->
 
     <Grid>
         <Grid.RowDefinitions>

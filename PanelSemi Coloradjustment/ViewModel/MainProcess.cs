@@ -44,6 +44,7 @@ using static System.Net.Mime.MediaTypeNames;
 namespace PanelSemi_Coloradjustment
 {
     // MainProcess 本體
+    // V1.0.0.0
     // 1. 【Init】 Mainprocess 結構Init
     //    => MainProcess()
     // 2. 【事件委派】 用於當 FPGA_B FPGA_A 的數值改變時 通知VM層的介面綁定物件進行刷新
@@ -52,133 +53,40 @@ namespace PanelSemi_Coloradjustment
     //    => initRegBoxMark()
     // 4. 【Void】 填充拼接需要的資訊矩陣
     //    => fillRegBoxMark()
+    // 5. 【Void】 離開視窗觸發之動作
+    //    => WindowClose_Action()
+    // 6. 【Void】 回復預設色差
+    //    => RecoverDefaultValue_Action()
+    // 7. 【Void】 開始進行色差調整併進入色差調整模式
+    //    => StartandInit_Action()
+    // 8. 【Void】 更新目前連接電腦的屏幕數量
+    //    => UpdateNumofPanel()
+    // 9. 【Void】 重新搜尋USB COM Port
+    //    => USB_ComPort_FindandOpen_Action()
+    // 10 【Void】 儲存色差資訊
+    //    => SaveColorInfo_Action()
+    // 11 【Void】 變更紅色數值
+    //    => AdjValueR_Action()
+    // 12 【Void】 變更綠色數值
+    //    => AdjValueG_Action()
+    // 13 【Void】 變更藍色數值
+    //    => AdjValueB_Action()
+    // 14 【事件委派】 當Checkbox發生變動時的事件
+    //    => SinglecheckBoxStates_CollectionChanged
+    // 15 【事件委派】 當Checkbox發生變動時的事件
+    //    => Ix4checkBoxStates_CollectionChanged
+    // 16 【事件委派】 當Checkbox發生變動時的事件
+    //    => mCheckBoxStates_CollectionChanged
+    // 17 【事件委派】 當FPGA_B FPGA_A發生變動時的事件
+    //    => FPGA_Dictionary_2UIChangeEvent
 
     //================================================================================================================================================================================
     // Partial VM >> MainProcess
     internal partial class MainProcess : MetroProcessBase<Panelsemi>, INotifyPropertyChanged
     {
         // 測試區 ================================================================================================================================================================================
-        private ObservableCollection<DictionaryViewModel> _dataGridItemsA;
-        private ObservableCollection<DictionaryViewModel> _dataGridItemsB;
-        public ObservableCollection<DictionaryViewModel> DataGridItems_B
-        {
-            get => _dataGridItemsB;
-            set
-            {
-                _dataGridItemsB = value;
-                OnPropertyChanged(nameof(DataGridItems_B));
-            }
-        }
-        public ObservableCollection<DictionaryViewModel> DataGridItems_A
-        {
-            get => _dataGridItemsA;
-            set
-            {
-                _dataGridItemsA = value;
-                OnPropertyChanged(nameof(DataGridItems_A));
-            }
-        }
-
-        //----------------------------
-        private Visibility mSpace4096 = Visibility.Hidden;
-        public Visibility Space4096
-        {
-            get => mSpace4096;
-            set
-            {
-                mSpace4096 = value;
-                OnPropertyChanged(nameof(Space4096));
-            }
-        }
-        private Visibility mSpace2048 = Visibility.Hidden;
-        public Visibility Space2048
-        {
-            get => mSpace2048;
-            set
-            {
-                mSpace2048 = value;
-                OnPropertyChanged(nameof(Space2048));
-            }
-        }
-        private Visibility mSpace1024 = Visibility.Hidden;
-        public Visibility Space1024
-        {
-            get => mSpace1024;
-            set
-            {
-                mSpace1024 = value;
-                OnPropertyChanged(nameof(Space1024));
-            }
-        }
-        private Visibility mSpace512 = Visibility.Hidden;
-        public Visibility Space512
-        {
-            get => mSpace512;
-            set
-            {
-                mSpace512 = value;
-                OnPropertyChanged(nameof(Space512));
-            }
-        }
-
-        private Dictionary<int, ObservableCollection<int>> mDataB;
-        public Dictionary<int, ObservableCollection<int>> DataB
-        {
-            get => mDataB;
-            set
-            {
-                mDataB = value;
-                OnPropertyChanged(nameof(DataB));
-            }
-        }
-
-        private Dictionary<int, ObservableCollection<int>> mDataA;
-        public Dictionary<int, ObservableCollection<int>> DataA
-        {
-            get => mDataA;
-            set
-            {
-                mDataA = value;
-                OnPropertyChanged(nameof(DataA));
-            }
-        }
-
-        private ICollectionView _filteredItems;
-        public ICollectionView FilteredItems
-        {
-            get => _filteredItems;
-            set
-            {
-                _filteredItems = value;
-                OnPropertyChanged(nameof(FilteredItems));
-            }
-        }
-        public ICommand test1 { get; set; }
-        private void test1_Ation()
-        {
-            mEasyDebug.ID_Serialmode();
-            mColorControl.ColorCtrInit();
-            // 勾選1020階白畫面
-            ColorSpaceCheckBoxStates[3] = true;
-
-        }
-        public ICommand test2 { get; set; }
-        private void test2_Ation()
-        {
-            //mColorControl.ChoiceID_And_ReadFlash();
-        }
-        public ICommand test3 { get; set; }
-        private void test3_Ation()
-        {
-
-            mColorControl.ColorTempSave();
-        }
-
-        public ICommand test4 { get; set; }
-        private void test4_Ation()
-        {
-            mColorControl.ColorSave();
-        }
+      
+   
 
         // 測試區 ================================================================================================================================================================================
         
@@ -190,12 +98,7 @@ namespace PanelSemi_Coloradjustment
         public MainProcess()
         {
             /* 測試宣告區 */
-            test1 = new RelayCommand(test1_Ation);
-            test2 = new RelayCommand(test2_Ation);
-            test3 = new RelayCommand(test3_Ation);
-            test4 = new RelayCommand(test4_Ation);
-
-         
+    
 
             /* 撈出版本號　=> 由AssemblyInfo.cs中設定 */
             var asm = Assembly.GetExecutingAssembly();
@@ -207,14 +110,14 @@ namespace PanelSemi_Coloradjustment
             USB_ComPort_FindandOpen = new RelayCommand(USB_ComPort_FindandOpen_Action);
             SaveColorInfo = new RelayCommand(SaveColorInfo_Action);
             RecoverDefaultValue = new RelayCommand(RecoverDefaultValue_Action);
-          
+            WindowClose = new RelayCommand(WindowClose_Action);
 
 
             /* DelegateCommand 宣告 */
             AdjValueR = new DelegateCommand<string>(AdjValueR_Action);
             AdjValueG = new DelegateCommand<string>(AdjValueG_Action);
             AdjValueB = new DelegateCommand<string>(AdjValueB_Action);
-            WindowClose = new DelegateCommand<CancelEventArgs>(WindowClose_Action);
+           
 
             /* Microusb_Items Combox 初始化 */
             Microusb_Items = new ObservableCollection<ComboBoxItemModel>
@@ -328,14 +231,17 @@ namespace PanelSemi_Coloradjustment
             DataA = mPaneladjustSwitch.FPGA_A;
         }
 
-        private void WindowClose_Action(CancelEventArgs e)
+        /// <summary>
+        /// 關閉視窗動作
+        /// </summary>
+        public void WindowClose_Action()
         {
             // 這裡執行關閉應用程式前的動作
             MessageBoxResult result = System.Windows.MessageBox.Show("確定要關閉應用程式嗎?", "確認", MessageBoxButton.YesNo, MessageBoxImage.Warning);
 
             if (result == MessageBoxResult.No)
             {
-                e.Cancel = true; // 取消關閉
+                return;
             }
             else
             {
@@ -348,9 +254,12 @@ namespace PanelSemi_Coloradjustment
                     mColorControl.ExistColorMode();
                 }
             }
-           
+            System.Windows.Application.Current.Shutdown();
         }
 
+        /// <summary>
+        /// 回復預設色差值
+        /// </summary>
         private void RecoverDefaultValue_Action()
         {
             mColorControl.RecoverDefault();
@@ -411,6 +320,7 @@ namespace PanelSemi_Coloradjustment
                 ColorSpaceCheckBoxStates[3] = true;
                 EnterOrExistColorMoode = "離開 色差調節模式";
                 IsEnterColorAdjustmentMode = Visibility.Hidden;
+                CtLog.Warning("進入 色差調節模式");
             }
             else
             {
@@ -418,7 +328,7 @@ namespace PanelSemi_Coloradjustment
                 mColorControl.IsColorAdjustmentMode = false;
                 EnterOrExistColorMoode = "進入 色差調節模式";
                 mColorControl.ExistColorMode();
-                
+                CtLog.Warning("離開 色差調節模式");
             }
             
         }
@@ -501,7 +411,7 @@ namespace PanelSemi_Coloradjustment
         /// </summary>
         int ix4ChangeInt = 0;
         /// <summary>
-        /// 
+        /// 當Checkbox發生變動時的事件
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -523,9 +433,9 @@ namespace PanelSemi_Coloradjustment
                 }
             }
         }
-     
+
         /// <summary>
-        /// 
+        /// 當Checkbox發生變動時的事件
         /// </summary>
         int singleChangeInt = 0;
         /// <summary>
@@ -566,7 +476,7 @@ namespace PanelSemi_Coloradjustment
         /// </summary>
         int colorSpaceChangeInt = 0;
         /// <summary>
-        /// 
+        /// 當Checkbox發生變動時的事件
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -725,6 +635,7 @@ namespace PanelSemi_Coloradjustment
         }
         
 
+        //---------------------------- 以下色差程式無用到---------------------------------
         /// <summary>
         /// 
         /// </summary>

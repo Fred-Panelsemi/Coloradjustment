@@ -22,19 +22,28 @@ namespace PanelSemi_Coloradjustment
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
+        MainProcess mMainProcess = new MainProcess();
+
         public MainWindow()
         {
             InitializeComponent();
+            this.DataContext = mMainProcess;
+
         }
 
         private void NumericUpDown_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
-            Console.WriteLine($"{1},{2}");
+            
         }
 
         private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
+        }
+
+        private void MetroWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            mMainProcess.WindowClose_Action();
         }
     }
 }

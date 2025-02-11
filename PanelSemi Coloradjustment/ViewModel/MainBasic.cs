@@ -214,6 +214,73 @@ namespace PanelSemi_Coloradjustment
             }
         }
 
+        // 顯示/隱藏 RGB 數值
+        private Visibility mSpace4096 = Visibility.Hidden;
+        public Visibility Space4096
+        {
+            get => mSpace4096;
+            set
+            {
+                mSpace4096 = value;
+                OnPropertyChanged(nameof(Space4096));
+            }
+        }
+        // 顯示/隱藏 RGB 數值
+        private Visibility mSpace2048 = Visibility.Hidden;
+        public Visibility Space2048
+        {
+            get => mSpace2048;
+            set
+            {
+                mSpace2048 = value;
+                OnPropertyChanged(nameof(Space2048));
+            }
+        }
+        // 顯示/隱藏 RGB 數值
+        private Visibility mSpace1024 = Visibility.Hidden;
+        public Visibility Space1024
+        {
+            get => mSpace1024;
+            set
+            {
+                mSpace1024 = value;
+                OnPropertyChanged(nameof(Space1024));
+            }
+        }
+        // 顯示/隱藏 RGB 數值
+        private Visibility mSpace512 = Visibility.Hidden;
+        public Visibility Space512
+        {
+            get => mSpace512;
+            set
+            {
+                mSpace512 = value;
+                OnPropertyChanged(nameof(Space512));
+            }
+        }
+        // 綁定在介面上顯示的 FPGA_B List
+        private Dictionary<int, ObservableCollection<int>> mDataB;
+        public Dictionary<int, ObservableCollection<int>> DataB
+        {
+            get => mDataB;
+            set
+            {
+                mDataB = value;
+                OnPropertyChanged(nameof(DataB));
+            }
+        }
+        // 綁定在介面上顯示的 FPGA_A List
+        private Dictionary<int, ObservableCollection<int>> mDataA;
+        public Dictionary<int, ObservableCollection<int>> DataA
+        {
+            get => mDataA;
+            set
+            {
+                mDataA = value;
+                OnPropertyChanged(nameof(DataA));
+            }
+        }
+
         // 選擇
 
         // Mode XB Tile Chose 物件
