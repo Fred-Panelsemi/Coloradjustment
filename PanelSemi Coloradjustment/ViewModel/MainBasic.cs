@@ -142,7 +142,7 @@ namespace PanelSemi_Coloradjustment
 
 
         // 進入/離開色差模式
-        private string mEnterOrExistColorMoode = "進入色差調節模式";
+        private string mEnterOrExistColorMoode = "進入\r\n色差調節模式";
         public  string EnterOrExistColorMoode
         {
             get => mEnterOrExistColorMoode;

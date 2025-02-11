@@ -8,8 +8,7 @@
         xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls" x:Class="PanelSemi_Coloradjustment.MainWindow"
         mc:Ignorable="d"
         WindowStyle="SingleBorderWindow"
-        ResizeMode="CanMinimize"
-        Title="{Binding PanelSemi_SplicingVersion}" Height="900" Width="1100" Background="{x:Null}" WindowStartupLocation="CenterScreen" TitleCharacterCasing="Normal" Closing="MetroWindow_Closing_1">
+        Title="{Binding PanelSemi_SplicingVersion}" Height="700" Width="870" Background="{x:Null}" WindowStartupLocation="CenterScreen" TitleCharacterCasing="Normal" Closing="MetroWindow_Closing_1" ResizeMode="CanResizeWithGrip">
     <mah:MetroWindow.TitleTemplate>
         <DataTemplate>
             <StackPanel Orientation="Horizontal"
@@ -46,59 +45,59 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
            
+            <ColumnDefinition Width="0.7*"/>
             <ColumnDefinition/>
             <ColumnDefinition/>
             <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="0.7*"/>
 
         </Grid.ColumnDefinitions>
 
         <Border Grid.Column="1" Grid.RowSpan="2" Grid.ColumnSpan="1">
             <StackPanel Margin="2">
-                <TextBlock Text="色域選擇" Foreground="#FFFEFEFE" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="20"/>
+                <TextBlock Text="色域選擇" Foreground="#FFFEFEFE" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="16"/>
                 <Separator/>
                 <Border Height="30">
                     <StackPanel Orientation="Horizontal" >
-                        <TextBlock Text="1020階" Foreground="#FFF8F8F8" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"/>
+                        <TextBlock Text="1020" Foreground="#FFF8F8F8" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"/>
                         <Rectangle Width="2" Fill="White" Margin="4,0,4,0"/>
-                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[0]}" Content="R" Margin="2,0,0,0" FontSize="18"/>
-                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[1]}" Content="G" Margin="2,0,0,0" FontSize="18"/>
-                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[2]}" Content="B" Margin="2,0,0,0" FontSize="18"/>
-                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[3]}" Content="W" Margin="2,0,0,0" FontSize="18"/>
+                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[0]}" Content="R" Margin="2,0,0,0" FontSize="14"/>
+                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[1]}" Content="G" Margin="2,0,0,0" FontSize="14"/>
+                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[2]}" Content="B" Margin="2,0,0,0" FontSize="14"/>
+                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[3]}" Content="W" Margin="2,0,0,0" FontSize="14"/>
                     </StackPanel>
                 </Border>
                 <Separator/>
                 <Border Height="30">
                     <StackPanel Orientation="Horizontal" >
-                        <TextBlock Text="0512階" Foreground="#FFF8F8F8" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"/>
+                        <TextBlock Text="0512" Foreground="#FFF8F8F8" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"/>
                         <Rectangle Width="2" Fill="White" Margin="4,0,4,0"/>
-                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[4]}" Content="R" Margin="2,0,0,0" FontSize="18"/>
-                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[5]}" Content="G" Margin="2,0,0,0" FontSize="18"/>
-                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[6]}" Content="B" Margin="2,0,0,0" FontSize="18"/>
-                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[7]}" Content="W" Margin="2,0,0,0" FontSize="18"/>
+                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[4]}" Content="R" Margin="2,0,0,0" FontSize="14"/>
+                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[5]}" Content="G" Margin="2,0,0,0" FontSize="14"/>
+                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[6]}" Content="B" Margin="2,0,0,0" FontSize="14"/>
+                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[7]}" Content="W" Margin="2,0,0,0" FontSize="14"/>
                     </StackPanel>
                 </Border>
                 <Separator/>
                 <Border Height="30">
                     <StackPanel Orientation="Horizontal" >
-                        <TextBlock Text="0256階" Foreground="#FFF8F8F8" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"/>
+                        <TextBlock Text="0256" Foreground="#FFF8F8F8" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"/>
                         <Rectangle Width="2" Fill="White" Margin="4,0,4,0"/>
-                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[8]}" Content="R" Margin="2,0,0,0" FontSize="18"/>
-                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[9]}" Content="G" Margin="2,0,0,0" FontSize="18" />
-                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[10]}" Content="B" Margin="2,0,0,0" FontSize="18"/>
-                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[11]}" Content="W" Margin="2,0,0,0" FontSize="18"/>
+                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[8]}" Content="R" Margin="2,0,0,0" FontSize="14"/>
+                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[9]}" Content="G" Margin="2,0,0,0" FontSize="14" />
+                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[10]}" Content="B" Margin="2,0,0,0" FontSize="14"/>
+                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[11]}" Content="W" Margin="2,0,0,0" FontSize="14"/>
                     </StackPanel>
                 </Border>
                 <Separator/>
                 <Border Height="30">
                     <StackPanel Orientation="Horizontal" >
-                        <TextBlock Text="0128階" Foreground="#FFF8F8F8" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"/>
+                        <TextBlock Text="0128" Foreground="#FFF8F8F8" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14"/>
                         <Rectangle Width="2" Fill="White" Margin="4,0,4,0"/>
-                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[12]}" Content="R" Margin="2,0,0,0" FontSize="18"/>
-                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[13]}" Content="G" Margin="2,0,0,0" FontSize="18"/>
-                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[14]}" Content="B" Margin="2,0,0,0" FontSize="18"/>
-                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[15]}" Content="W" Margin="2,0,0,0" FontSize="18"/>
+                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[12]}" Content="R" Margin="2,0,0,0" FontSize="14"/>
+                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[13]}" Content="G" Margin="2,0,0,0" FontSize="14"/>
+                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[14]}" Content="B" Margin="2,0,0,0" FontSize="14"/>
+                        <CheckBox IsChecked="{Binding ColorSpaceCheckBoxStates[15]}" Content="W" Margin="2,0,0,0" FontSize="14"/>
                     </StackPanel>
                 </Border>
                 <Separator/>
@@ -112,14 +111,14 @@
         <Border Margin="2"  Grid.Column="0" Grid.ColumnSpan="1" Grid.Row="5" Grid.RowSpan="1">
             <Grid>
                 <StackPanel VerticalAlignment="Bottom">
-                    <Button Command="{Binding StartandInit}" Content="{Binding EnterOrExistColorMoode}" Margin="0,5,0,0" FontSize="16" Background="#FF207900" Height="50"/>
+                    <Button Command="{Binding StartandInit}" Content="{Binding EnterOrExistColorMoode}" Margin="0,5,0,0" FontSize="16" Background="#FF207900" Height="70"/>
                 </StackPanel>
             </Grid>
            
         </Border>
         <Border Grid.Column="0" Grid.ColumnSpan="1" Grid.RowSpan="5">
             <StackPanel Margin="2">
-                <TextBlock Text="系統" Foreground="#FFFEFEFE" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="20"/>
+                <TextBlock Text="系統" Foreground="#FFFEFEFE" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="16"/>
                 <Separator/>
                 <Button Command="{Binding USB_ComPort_FindandOpen}" Content="連線" Margin="0,5,0,0" FontSize="16" />
                 <ItemsControl ItemsSource="{Binding Panel_ID_CheckBoxes}" >
@@ -202,43 +201,43 @@
         </Border>
         <Border Grid.Column="4" Grid.RowSpan="2" Grid.ColumnSpan="1">
             <StackPanel Margin="2">
-                <TextBlock Text="調整模式" Foreground="#FFFEFEFE" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="20"/>
+                <TextBlock Text="調整模式" Foreground="#FFFEFEFE" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="16"/>
                 <Separator/>
                 <ComboBox ItemsSource="{Binding Mode_Item}" SelectedItem="{Binding Mode_SelectedItem}"  Margin="5"/>
                 <Separator/>
-                <TextBlock Text="XB Chose" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18"/>
+                <TextBlock Text="XB Chose" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
                 <Border Height="30" IsEnabled="{Binding Is1x4}">
                     <StackPanel Orientation="Horizontal">
-                        <CheckBox IsChecked="{Binding Ix4checkBoxStates[0]}" Content="1" Margin="5,0,0,0" FontSize="18"/>
-                        <CheckBox IsChecked="{Binding Ix4checkBoxStates[1]}" Content="2" Margin="5,0,0,0" FontSize="18"/>
-                        <CheckBox IsChecked="{Binding Ix4checkBoxStates[2]}" Content="3" Margin="5,0,0,0" FontSize="18"/>
-                        <CheckBox IsChecked="{Binding Ix4checkBoxStates[3]}" Content="4" Margin="5,0,0,0" FontSize="18"/>
+                        <CheckBox IsChecked="{Binding Ix4checkBoxStates[0]}" Content="1" Margin="2,0,0,0" FontSize="14"/>
+                        <CheckBox IsChecked="{Binding Ix4checkBoxStates[1]}" Content="2" Margin="2,0,0,0" FontSize="14"/>
+                        <CheckBox IsChecked="{Binding Ix4checkBoxStates[2]}" Content="3" Margin="2,0,0,0" FontSize="14"/>
+                        <CheckBox IsChecked="{Binding Ix4checkBoxStates[3]}" Content="4" Margin="2,0,0,0" FontSize="14"/>
                     </StackPanel>
 
                 </Border>
                 <Border Height="30" IsEnabled="{Binding Is1x4}">
                     <StackPanel Orientation="Horizontal">
-                        <CheckBox IsChecked="{Binding Ix4checkBoxStates[4]}" Content="5" Margin="5,0,0,0" FontSize="18"/>
-                        <CheckBox IsChecked="{Binding Ix4checkBoxStates[5]}" Content="6" Margin="5,0,0,0" FontSize="18"/>
-                        <CheckBox IsChecked="{Binding Ix4checkBoxStates[6]}" Content="7" Margin="5,0,0,0" FontSize="18"/>
-                        <CheckBox IsChecked="{Binding Ix4checkBoxStates[7]}" Content="8" Margin="5,0,0,0" FontSize="18"/>
+                        <CheckBox IsChecked="{Binding Ix4checkBoxStates[4]}" Content="5" Margin="2,0,0,0" FontSize="14"/>
+                        <CheckBox IsChecked="{Binding Ix4checkBoxStates[5]}" Content="6" Margin="2,0,0,0" FontSize="14"/>
+                        <CheckBox IsChecked="{Binding Ix4checkBoxStates[6]}" Content="7" Margin="2,0,0,0" FontSize="14"/>
+                        <CheckBox IsChecked="{Binding Ix4checkBoxStates[7]}" Content="8" Margin="2,0,0,0" FontSize="14"/>
                     </StackPanel>
                 </Border>
                 <Separator/>
-                <TextBlock Text="Tile Chose" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18"/>
+                <TextBlock Text="Tile Chose" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
                 <Border Height="30" IsEnabled="{Binding IsSingle}">
                     <StackPanel Orientation="Horizontal">
-                        <CheckBox IsChecked="{Binding SinglecheckBoxStates[0]}" Content="1" Margin="5,0,0,0" FontSize="18"/>
-                        <CheckBox IsChecked="{Binding SinglecheckBoxStates[1]}" Content="2" Margin="5,0,0,0" FontSize="18"/>
-                        <CheckBox IsChecked="{Binding SinglecheckBoxStates[2]}" Content="3" Margin="5,0,0,0" FontSize="18"/>
-                        <CheckBox IsChecked="{Binding SinglecheckBoxStates[3]}" Content="4" Margin="5,0,0,0" FontSize="18"/>
+                        <CheckBox IsChecked="{Binding SinglecheckBoxStates[0]}" Content="1" Margin="2,0,0,0" FontSize="14"/>
+                        <CheckBox IsChecked="{Binding SinglecheckBoxStates[1]}" Content="2" Margin="2,0,0,0" FontSize="14"/>
+                        <CheckBox IsChecked="{Binding SinglecheckBoxStates[2]}" Content="3" Margin="2,0,0,0" FontSize="14"/>
+                        <CheckBox IsChecked="{Binding SinglecheckBoxStates[3]}" Content="4" Margin="2,0,0,0" FontSize="14"/>
                     </StackPanel>
                 </Border>
             </StackPanel>
         </Border>
         <Separator Grid.Column="1" Grid.ColumnSpan="4"  Grid.Row="2"/>
         <Border Margin="2" Grid.Column="1" Grid.ColumnSpan="1" Grid.Row="3" Grid.RowSpan="1" BorderThickness="1" BorderBrush="Red" Background="#FF915858">
-            <Grid Width="208">
+            <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                     <RowDefinition Height="2*"/>
@@ -255,14 +254,14 @@
                             <RowDefinition/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <Button Grid.Row="0" Command="{Binding AdjValueR}" CommandParameter="up" Width="110" Height="35" Margin="5,0,5,5" VerticalAlignment="Bottom">
+                        <Button Grid.Row="0" Command="{Binding AdjValueR}" CommandParameter="up" Width="80" Height="33" Margin="5,0,5,5" VerticalAlignment="Bottom">
                             <StackPanel>
-                                <Image Source="/White Up.png" Stretch="Fill" Width="60" Height="25"/>
+                                <Image Source="/White Up.png" Stretch="Fill" Width="50" Height="20"/>
                             </StackPanel>
                         </Button>
-                        <Button Grid.Row="1" Command="{Binding AdjValueR}" CommandParameter="dwn" Width="110" Height="35" Margin="5,5,5,0" VerticalAlignment="Top">
+                        <Button Grid.Row="1" Command="{Binding AdjValueR}" CommandParameter="dwn" Width="80" Height="33" Margin="5,5,5,0" VerticalAlignment="Top">
                             <StackPanel>
-                                <Image Source="/White dwn.png" Stretch="Fill" Height="25" Width="60"/>
+                                <Image Source="/White dwn.png" Stretch="Fill" Height="20" Width="50"/>
                             </StackPanel>
                         </Button>
                     </Grid>
@@ -288,14 +287,14 @@
                             <RowDefinition/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <Button Width="110" Command="{Binding AdjValueG}" CommandParameter="up"  Height="35" Margin="5,0,5,5" VerticalAlignment="Bottom">
+                        <Button Width="80" Command="{Binding AdjValueG}" CommandParameter="up"  Height="33" Margin="5,0,5,5" VerticalAlignment="Bottom">
                             <StackPanel>
-                                <Image Source="/White Up.png" Stretch="Fill" Width="60" Height="25"/>
+                                <Image Source="/White Up.png" Stretch="Fill" Width="50" Height="20"/>
                             </StackPanel>
                         </Button>
-                        <Button Width="110" Grid.Row="1" Command="{Binding AdjValueG}" CommandParameter="dwn" Height="35" Margin="5,5,5,0" VerticalAlignment="Top">
+                        <Button Width="80" Grid.Row="1" Command="{Binding AdjValueG}" CommandParameter="dwn" Height="33" Margin="5,5,5,0" VerticalAlignment="Top">
                             <StackPanel>
-                                <Image Source="/White dwn.png" Stretch="Fill" Height="25" Width="60"/>
+                                <Image Source="/White dwn.png" Stretch="Fill" Width="50" Height="20"/>
                             </StackPanel>
                         </Button>
                     </Grid>
@@ -319,14 +318,14 @@
                             <RowDefinition/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <Button Width="110" Command="{Binding AdjValueB}" CommandParameter="up"  Height="35" Margin="5,0,5,5" VerticalAlignment="Bottom">
+                        <Button Width="80" Command="{Binding AdjValueB}" CommandParameter="up"  Height="33" Margin="5,0,5,5" VerticalAlignment="Bottom">
                             <StackPanel>
-                                <Image Source="/White Up.png" Stretch="Fill" Width="60" Height="25" VerticalAlignment="Center"/>
+                                <Image Source="/White Up.png" Stretch="Fill" Width="50" Height="20" VerticalAlignment="Center"/>
                             </StackPanel>
                         </Button>
-                        <Button Width="110" Grid.Row="1" Command="{Binding AdjValueB}" CommandParameter="dwn" Height="35" Margin="5,5,5,0" VerticalAlignment="Top">
-                            <StackPanel>
-                                <Image Source="/White dwn.png" Stretch="Fill" Height="25" Width="60"/>
+                        <Button Width="80" Grid.Row="1" Command="{Binding AdjValueB}" CommandParameter="dwn" Height="33" Margin="5,5,5,0" VerticalAlignment="Top">
+                            <StackPanel Height="20">
+                                <Image Source="/White dwn.png" Stretch="Fill" Width="50" Height="20"/>
                             </StackPanel>
                         </Button>
                     </Grid>
@@ -343,7 +342,7 @@
         </Border>
         <Border Margin="2" Grid.Column="4" Grid.ColumnSpan="1" Grid.Row="5" Grid.RowSpan="1">
             <StackPanel VerticalAlignment="Bottom">
-                <Button Command="{Binding SaveColorInfo}" Content="儲存色差" Margin="0,5,0,0" FontSize="16" Background="#FFA82507" Height="50"/>
+                <Button Command="{Binding SaveColorInfo}" Content="儲存色差" Margin="0,5,0,0" FontSize="16" Background="#FFA82507" Height="70"/>
             </StackPanel>
         </Border>
         <Border BorderThickness="1" Margin="2"  Grid.Column="1" Grid.ColumnSpan="1" Grid.Row="4" Grid.RowSpan="2" Background="#FF915858" BorderBrush="Red" >
@@ -884,9 +883,9 @@
                 </DataGridTemplateColumn.CellTemplate>
             </DataGridTemplateColumn>
         </DataGrid>-->
-        <Border Visibility="{Binding IsEnterColorAdjustmentMode}" IsEnabled="False" Grid.Column="1" Grid.ColumnSpan="4" Grid.Row="0" Grid.RowSpan="6" Background="#B2828282">
+        <!--<Border Visibility="{Binding IsEnterColorAdjustmentMode}" IsEnabled="False" Grid.Column="1" Grid.ColumnSpan="4" Grid.Row="0" Grid.RowSpan="6" Background="#B2828282">
             <TextBlock Text="尚未進入色差調節模式" FontSize="60" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        </Border>
+        </Border>-->
         <CtLib:LogGrid  Grid.Column="0" Grid.ColumnSpan="5" Grid.Row="6" Grid.RowSpan="2"
       DataContext="{Binding UILogger}"
       TimeHeader="{DynamicResource Opt}"/>

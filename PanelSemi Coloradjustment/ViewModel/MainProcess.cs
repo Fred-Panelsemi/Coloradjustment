@@ -317,7 +317,7 @@ namespace PanelSemi_Coloradjustment
                 mColorControl.ColorCtrInit();
                 /* 勾選1020階白畫面 */
                 ColorSpaceCheckBoxStates[3] = true;
-                EnterOrExistColorMoode = "離開 色差調節模式";
+                EnterOrExistColorMoode = "離開\r\n色差調節模式";
                 IsEnterColorAdjustmentMode = Visibility.Hidden;
                 CtLog.Warning("進入 色差調節模式");
             }
@@ -325,7 +325,7 @@ namespace PanelSemi_Coloradjustment
             {
                 IsEnterColorAdjustmentMode = Visibility.Visible;
                 mColorControl.IsColorAdjustmentMode = false;
-                EnterOrExistColorMoode = "進入 色差調節模式";
+                EnterOrExistColorMoode = "進入\r\n色差調節模式";
                 mColorControl.ExistColorMode();
                 CtLog.Warning("離開 色差調節模式");
             }
