@@ -268,6 +268,8 @@ namespace PanelSemi_Coloradjustment
         public ICommand USB_ComPort_FindandOpen { get; set; }
         public ICommand SaveColorInfo { get; set; }
         public ICommand RecoverDefaultValue { get; set; }
+        public ICommand WindowClose { get; set; }
+
         public DelegateCommand<string> AdjValueR { get; set; }
         public DelegateCommand<string> AdjValueG { get; set; }
         public DelegateCommand<string> AdjValueB { get; set; }

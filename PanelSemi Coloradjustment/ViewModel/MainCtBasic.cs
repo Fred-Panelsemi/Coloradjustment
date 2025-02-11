@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using CtLib.Library.Contracts;
 using CtLib.Library;
 using System.Windows.Input;
+using System.Windows;
 
 namespace PanelSemi_Coloradjustment
 {
@@ -18,6 +19,7 @@ namespace PanelSemi_Coloradjustment
 
         public override Task SystemDispose()
         {
+            
             throw new NotImplementedException();
         }
 

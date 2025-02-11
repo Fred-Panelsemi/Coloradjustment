@@ -7,6 +7,7 @@
         xmlns:CtLib ="clr-namespace:CtLib.Library.Wpf;assembly=CtLib.Library.Wpf"
         xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls" x:Class="PanelSemi_Coloradjustment.MainWindow"
         mc:Ignorable="d"
+        
         Title="{Binding PanelSemi_SplicingVersion}" Height="900" Width="1100" Background="{x:Null}" WindowStartupLocation="CenterScreen" TitleCharacterCasing="Normal">
     <mah:MetroWindow.TitleTemplate>
         <DataTemplate>

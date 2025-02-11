@@ -207,13 +207,14 @@ namespace PanelSemi_Coloradjustment
             USB_ComPort_FindandOpen = new RelayCommand(USB_ComPort_FindandOpen_Action);
             SaveColorInfo = new RelayCommand(SaveColorInfo_Action);
             RecoverDefaultValue = new RelayCommand(RecoverDefaultValue_Action);
+          
 
 
             /* DelegateCommand 宣告 */
             AdjValueR = new DelegateCommand<string>(AdjValueR_Action);
             AdjValueG = new DelegateCommand<string>(AdjValueG_Action);
             AdjValueB = new DelegateCommand<string>(AdjValueB_Action);
-
+            WindowClose = new DelegateCommand<CancelEventArgs>(WindowClose_Action);
 
             /* Microusb_Items Combox 初始化 */
             Microusb_Items = new ObservableCollection<ComboBoxItemModel>
@@ -327,9 +328,31 @@ namespace PanelSemi_Coloradjustment
             DataA = mPaneladjustSwitch.FPGA_A;
         }
 
+        private void WindowClose_Action(CancelEventArgs e)
+        {
+            // 這裡執行關閉應用程式前的動作
+            MessageBoxResult result = System.Windows.MessageBox.Show("確定要關閉應用程式嗎?", "確認", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+            if (result == MessageBoxResult.No)
+            {
+                e.Cancel = true; // 取消關閉
+            }
+            else
+            {
+                // 這裡可以做一些釋放資源或存檔的動作
+                if (mColorControl.IsColorAdjustmentMode == true)
+                {
+                    IsEnterColorAdjustmentMode = Visibility.Visible;
+                    mColorControl.IsColorAdjustmentMode = false;
+                    EnterOrExistColorMoode = "進入 色差調節模式";
+                    mColorControl.ExistColorMode();
+                }
+            }
+           
+        }
+
         private void RecoverDefaultValue_Action()
         {
-            
             mColorControl.RecoverDefault();
         }
 

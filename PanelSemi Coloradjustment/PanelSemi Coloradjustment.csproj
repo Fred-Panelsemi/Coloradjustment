@@ -51,6 +51,9 @@
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Lib icon 第六版.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="ControlzEx, Version=5.0.0.0, Culture=neutral, PublicKeyToken=69f1c32f803d307e, processorArchitecture=MSIL">
       <HintPath>..\packages\ControlzEx.5.0.2\lib\net462\ControlzEx.dll</HintPath>
@@ -281,6 +284,24 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="dwn-removebg-preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Lib icon 第二版.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Lib icon 第二版_2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Lib icon 第三版.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Lib icon 第四版.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Lib icon 第五版.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Lib icon 第六版.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

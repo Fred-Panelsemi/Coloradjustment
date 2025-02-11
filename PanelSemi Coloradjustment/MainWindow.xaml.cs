@@ -25,8 +25,6 @@ namespace PanelSemi_Coloradjustment
         public MainWindow()
         {
             InitializeComponent();
-            
-            
         }
 
         private void NumericUpDown_CanExecute(object sender, CanExecuteRoutedEventArgs e)
