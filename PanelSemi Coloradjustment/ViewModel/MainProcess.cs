@@ -101,7 +101,7 @@ namespace PanelSemi_Coloradjustment
 
             /* 撈出版本號　=> 由AssemblyInfo.cs中設定 */
             var asm = Assembly.GetExecutingAssembly();
-            PanelSemi_SplicingVersion = $"v{asm.GetName().Version}";
+            PanelSemi_SplicingVersion = $"v{asm.GetName().Version} Beta";
 
             /* Command 宣告 */
             FrontBackSimulation = new RelayCommand(FrontSimulation_Action);
