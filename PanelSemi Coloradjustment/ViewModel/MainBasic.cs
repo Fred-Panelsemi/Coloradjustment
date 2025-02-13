@@ -153,7 +153,7 @@ namespace PanelSemi_Coloradjustment
             }
         }
 
-        private Visibility mIsEnterColorAdjustmentMode = Visibility.Visible;
+        private Visibility mIsEnterColorAdjustmentMode = Visibility.Hidden;
         public Visibility IsEnterColorAdjustmentMode
         {
             get => mIsEnterColorAdjustmentMode;

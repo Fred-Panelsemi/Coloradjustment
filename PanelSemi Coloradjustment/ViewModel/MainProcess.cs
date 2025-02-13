@@ -97,12 +97,13 @@ namespace PanelSemi_Coloradjustment
         public MainProcess()
         {
             /* 測試宣告區 */
-    
 
+            
+           
             /* 撈出版本號　=> 由AssemblyInfo.cs中設定 */
             var asm = Assembly.GetExecutingAssembly();
-            PanelSemi_SplicingVersion = $"v{asm.GetName().Version} Beta";
-
+            PanelSemi_SplicingVersion = $"v{asm.GetName().Version}";
+            
             /* Command 宣告 */
             FrontBackSimulation = new RelayCommand(FrontSimulation_Action);
             StartandInit = new RelayCommand(StartandInit_Action);
@@ -116,8 +117,8 @@ namespace PanelSemi_Coloradjustment
             AdjValueR = new DelegateCommand<string>(AdjValueR_Action);
             AdjValueG = new DelegateCommand<string>(AdjValueG_Action);
             AdjValueB = new DelegateCommand<string>(AdjValueB_Action);
-            
 
+            
             /* Microusb_Items Combox 初始化 */
             Microusb_Items = new ObservableCollection<ComboBoxItemModel>
             {
@@ -217,17 +218,21 @@ namespace PanelSemi_Coloradjustment
 
 
             Panel_ID_CheckBoxes = new ObservableCollection<CheckBoxModel>();
+            
             /* 如果有找到USB接口 且 已連線 >>*/
             if (mTotalProcess.isUSBCconnect != "" & mTotalProcess.isUSBOpen == true)
             {
+                
                 /*>> Update Panel 數量 */
                 UpdateNumofPanel();
             }
-
+            
             DataB = new Dictionary<int, ObservableCollection<int>>();
             DataA = new Dictionary<int, ObservableCollection<int>>();
             DataB = mPaneladjustSwitch.FPGA_B;
             DataA = mPaneladjustSwitch.FPGA_A;
+          
+            
         }
 
         /// <summary>
@@ -373,7 +378,12 @@ namespace PanelSemi_Coloradjustment
         /// </summary>
         private void SaveColorInfo_Action()
         {
+            
+            LoadingWindow.CreateNew();
+            Thread.Sleep(2000);
+            LoadingWindow.UpdateMessage("寫入色差中");
             mColorControl.ColorSave();
+            LoadingWindow.Close();
         }
 
         /// <summary>

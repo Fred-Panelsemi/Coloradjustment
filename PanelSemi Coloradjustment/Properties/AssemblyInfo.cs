@@ -47,6 +47,7 @@ using System.Windows;
 //      次要版本
 //      組建編號
 //      修訂
-//
+// v1.0.0.0 Beta
+// v1.0.0.0 // 正式釋出版
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]

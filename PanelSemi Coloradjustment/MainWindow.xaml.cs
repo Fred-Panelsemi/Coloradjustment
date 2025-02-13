@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -13,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using CtLib.Library.Wpf;
 using MahApps.Metro.Controls;
 
 namespace PanelSemi_Coloradjustment
@@ -28,6 +30,9 @@ namespace PanelSemi_Coloradjustment
         {
             InitializeComponent();
             this.DataContext = mMainProcess;
+            
+            this.Topmost = true;
+            this.Topmost = false;
 
         }
 
