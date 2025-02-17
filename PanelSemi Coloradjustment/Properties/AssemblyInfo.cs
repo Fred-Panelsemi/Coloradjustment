@@ -49,5 +49,6 @@ using System.Windows;
 //      修訂
 // v1.0.0.0 Beta
 // v1.0.0.0 // 正式釋出版
+// v1.0.0.0 小修改【不變更版本】 >> 修正 > 儲存色差後 不再該ID離開色差調節模式後 FPGA Reg 會寫到調整色差前的值 
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
