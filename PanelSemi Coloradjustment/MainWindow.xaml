@@ -8,7 +8,7 @@
         xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls" x:Class="PanelSemi_Coloradjustment.MainWindow"
         mc:Ignorable="d"
         WindowStyle="SingleBorderWindow"
-        Title="{Binding PanelSemi_SplicingVersion}" Height="700" Width="870" Background="{x:Null}" WindowStartupLocation="CenterScreen" TitleCharacterCasing="Normal" Closing="MetroWindow_Closing_1" ResizeMode="CanResizeWithGrip">
+        Title="{Binding PanelSemi_SplicingVersion}" Height="700" Width="870" Background="{x:Null}" WindowStartupLocation="CenterScreen" TitleCharacterCasing="Normal" Closing="MetroWindow_Closing_1" ResizeMode="CanResizeWithGrip" Activated="MetroWindow_Activated">
     <mah:MetroWindow.TitleTemplate>
         <DataTemplate>
             <StackPanel Orientation="Horizontal"

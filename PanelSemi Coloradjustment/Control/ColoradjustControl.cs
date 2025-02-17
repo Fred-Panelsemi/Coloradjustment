@@ -244,6 +244,8 @@ namespace PanelSemi_Coloradjustment
         {
             /* 這個是寫死進去 */
             mTotalProcess.cENGGMAONWRITEp(2, 0, 160, Convert.ToByte(ChoicePanelID), Convert.ToByte(2), mPaneladjustSwitch.FPGA_B, mPaneladjustSwitch.FPGA_A);
+            PGMODE_Value_Read();
+
         }
 
         /// <summary>

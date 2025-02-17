@@ -32,7 +32,7 @@ namespace PanelSemi_Coloradjustment
             this.DataContext = mMainProcess;
             
             this.Topmost = true;
-            this.Topmost = false;
+            LoadingWindow.Close();
 
         }
 
@@ -50,6 +50,11 @@ namespace PanelSemi_Coloradjustment
         private void MetroWindow_Closing_1(object sender, System.ComponentModel.CancelEventArgs e)
         {
             mMainProcess.WindowClose_Action();
+        }
+
+        private void MetroWindow_Activated(object sender, EventArgs e)
+        {
+            this.Topmost = false;
         }
     }
 }

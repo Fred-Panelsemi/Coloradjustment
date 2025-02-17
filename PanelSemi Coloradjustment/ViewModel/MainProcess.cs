@@ -103,7 +103,9 @@ namespace PanelSemi_Coloradjustment
             /* 撈出版本號　=> 由AssemblyInfo.cs中設定 */
             var asm = Assembly.GetExecutingAssembly();
             PanelSemi_SplicingVersion = $"v{asm.GetName().Version}";
-            
+
+            LoadingWindow.CreateNew();
+            Thread.Sleep(2000);
             /* Command 宣告 */
             FrontBackSimulation = new RelayCommand(FrontSimulation_Action);
             StartandInit = new RelayCommand(StartandInit_Action);
@@ -218,21 +220,27 @@ namespace PanelSemi_Coloradjustment
 
 
             Panel_ID_CheckBoxes = new ObservableCollection<CheckBoxModel>();
-            
+            LoadingWindow.UpdateMessage("建立連線");
             /* 如果有找到USB接口 且 已連線 >>*/
             if (mTotalProcess.isUSBCconnect != "" & mTotalProcess.isUSBOpen == true)
             {
-                
+                LoadingWindow.UpdateMessage("匯入螢幕資訊");
                 /*>> Update Panel 數量 */
                 UpdateNumofPanel();
+                Thread.Sleep(2000);
             }
-            
+            else
+            {
+                LoadingWindow.UpdateMessage("目前無連接屏幕");
+                Thread.Sleep(2000);
+            }
+      
             DataB = new Dictionary<int, ObservableCollection<int>>();
             DataA = new Dictionary<int, ObservableCollection<int>>();
             DataB = mPaneladjustSwitch.FPGA_B;
             DataA = mPaneladjustSwitch.FPGA_A;
-          
-            
+            LoadingWindow.UpdateMessage("進入視窗");
+
         }
 
         /// <summary>
@@ -379,10 +387,12 @@ namespace PanelSemi_Coloradjustment
         private void SaveColorInfo_Action()
         {
             
-            LoadingWindow.CreateNew();
+            LoadingWindow.CreateNew("寫入色差中");
             Thread.Sleep(2000);
             LoadingWindow.UpdateMessage("寫入色差中");
+            
             mColorControl.ColorSave();
+            Thread.Sleep(4000);
             LoadingWindow.Close();
         }
 
