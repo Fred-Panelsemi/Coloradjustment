@@ -44,7 +44,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-           
+
             <ColumnDefinition Width="0.7*"/>
             <ColumnDefinition/>
             <ColumnDefinition/>
@@ -101,11 +101,11 @@
                     </StackPanel>
                 </Border>
                 <Separator/>
-               
 
-               
-                
-                
+
+
+
+
             </StackPanel>
         </Border>
         <Border Margin="2"  Grid.Column="0" Grid.ColumnSpan="1" Grid.Row="5" Grid.RowSpan="1">
@@ -114,13 +114,24 @@
                     <Button Command="{Binding StartandInit}" Content="{Binding EnterOrExistColorMoode}" Margin="0,5,0,0" FontSize="16" Background="#FF207900" Height="70"/>
                 </StackPanel>
             </Grid>
-           
+
         </Border>
         <Border Grid.Column="0" Grid.ColumnSpan="1" Grid.RowSpan="5">
             <StackPanel Margin="2">
-                <TextBlock Text="系統" Foreground="#FFFEFEFE" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="16"/>
+                <Grid Height="20.32">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="1" Text="系統" Foreground="#FFFEFEFE" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="16"/>
+                    <Button Command="{Binding MCU_Reset}" Grid.Column="2" FontSize="5" Padding="0,0,0,0" HorizontalContentAlignment="Center" MinHeight="10" BorderBrush="{x:Null}" Background="{x:Null}">
+                        <Image Source="/Refresh.png"/>
+                    </Button>
+                </Grid>
                 <Separator/>
                 <Button Command="{Binding USB_ComPort_FindandOpen}" Content="連線" Margin="0,5,0,0" FontSize="16" />
+                <mah:ToggleSwitch  OnContent="ID On" OffContent="ID off" OnCommand="{Binding ID_On}" OffCommand="{Binding ID_Off}"/>
                 <ItemsControl ItemsSource="{Binding Panel_ID_CheckBoxes}" >
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
@@ -128,7 +139,7 @@
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
-                
+
             </StackPanel>
 
         </Border>
@@ -334,10 +345,15 @@
             </Grid>
 
         </Border>
-        
+
         <Border Margin="2" Grid.Column="4" Grid.ColumnSpan="1" Grid.Row="3" Grid.RowSpan="1">
             <StackPanel>
-                <Button Command="{Binding RecoverDefaultValue}"  Content="恢復為預設色差" Margin="0,5,0,0" FontSize="16" Background="{x:Null}"/>
+                <Button Command="{Binding RecoverDefaultValue}"   Margin="0,5,0,0" FontSize="16" Background="{x:Null}">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="恢復預設值"/>
+                        <Image Source="/Refresh_2.png" Height="18" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
             </StackPanel>
         </Border>
         <Border Margin="2" Grid.Column="4" Grid.ColumnSpan="1" Grid.Row="5" Grid.RowSpan="1">
@@ -369,7 +385,7 @@
                 <TextBlock Text="XB2" Grid.Column="1" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <TextBlock Text="XB3" Grid.Column="2"  Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <TextBlock Text="XB4" Grid.Column="3"  Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                
+
                 <TextBlock Grid.Row="1" Text="{Binding DataB[1][3]}" FontWeight="Bold"  Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
                 <TextBlock Grid.Row="2" Text="{Binding DataB[1][15]}" FontWeight="Bold" Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
                 <TextBlock Grid.Row="3" Text="{Binding DataB[1][27]}" FontWeight="Bold" Visibility= "{Binding Space4096}" VerticalAlignment="Center" Foreground="#FF010101"/>
@@ -512,7 +528,7 @@
                 <TextBlock Grid.Column="3" Grid.Row="8"  Text="{Binding DataA[4][24]}" FontWeight="Bold" Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
                 <TextBlock Grid.Column="3" Grid.Row="9"  Text="{Binding DataA[4][36]}" FontWeight="Bold" Visibility= "{Binding Space512}"  VerticalAlignment="Center" Foreground="#FF010101"/>
 
-                
+
             </Grid>
             <!--<TextBlock Text="{Binding DataGridItems_B[1].Values[3]}"/>-->
         </Border>
@@ -883,9 +899,9 @@
                 </DataGridTemplateColumn.CellTemplate>
             </DataGridTemplateColumn>
         </DataGrid>-->
-        <Border Visibility="{Binding IsEnterColorAdjustmentMode}" IsEnabled="False" Grid.Column="1" Grid.ColumnSpan="4" Grid.Row="0" Grid.RowSpan="6" Background="#B2828282">
+        <!--<Border Visibility="{Binding IsEnterColorAdjustmentMode}" IsEnabled="False" Grid.Column="1" Grid.ColumnSpan="4" Grid.Row="0" Grid.RowSpan="6" Background="#B2828282">
             <TextBlock Text="尚未進入色差調節模式" FontSize="60" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        </Border>
+        </Border>-->
         <CtLib:LogGrid  Grid.Column="0" Grid.ColumnSpan="5" Grid.Row="6" Grid.RowSpan="2"
       DataContext="{Binding UILogger}"
       TimeHeader="{DynamicResource Opt}"/>

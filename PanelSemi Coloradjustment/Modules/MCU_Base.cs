@@ -212,7 +212,7 @@ namespace PanelSemi_Coloradjustment
         /// <summary>
         /// 
         /// </summary>
-        public void McuSW_Reset(string cmdName)   //0xFF
+        public void McuSW_Reset()   //0xFF
         {
             
             #region 2023版公用程序 (無 Nova 參數)
@@ -234,7 +234,7 @@ namespace PanelSemi_Coloradjustment
         /// 
         /// </summary>
         /// <param name="svOnOff"></param>
-        public void mpIDONOFF(byte svOnOff, string cmdName)          //0x86
+        public void mpIDONOFF(byte svOnOff)          //0x86
         {
             
             #region 2023版公用程序

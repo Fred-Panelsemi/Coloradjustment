@@ -324,7 +324,7 @@ namespace PanelSemi_Coloradjustment
                         resultInfo = $"Done,{cmdName},{strTemp}";
                         break;
                     default:
-
+                        Svs = "1";
                         Console.WriteLine("Not Much Classify");
                         break;
 

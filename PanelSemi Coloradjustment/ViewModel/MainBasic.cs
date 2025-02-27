@@ -336,6 +336,9 @@ namespace PanelSemi_Coloradjustment
         public ICommand SaveColorInfo { get; set; }
         public ICommand RecoverDefaultValue { get; set; }
         public ICommand WindowClose { get; set; }
+        public ICommand ID_On { get; set; }
+        public ICommand ID_Off { get; set; }
+        public ICommand MCU_Reset { get; set; }
 
         public DelegateCommand<string> AdjValueR { get; set; }
         public DelegateCommand<string> AdjValueG { get; set; }

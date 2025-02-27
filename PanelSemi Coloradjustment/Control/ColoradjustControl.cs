@@ -222,8 +222,17 @@ namespace PanelSemi_Coloradjustment
                 {
                     /* 送白畫面 1020 階 */
                     mTotalProcess.cPGRGB10BITp(2, 0, 0, Convert.ToByte(i + 1), 2, valueR.ToString(), valueG.ToString(), valueB.ToString());
-                    /* 因為送PG Mode 白畫面 會覆蓋色差 先將原本的色差在寫入 */
-                    mTotalProcess.cENGGMAONWRITEp(1, 0, 160, Convert.ToByte(i + 1), Convert.ToByte(2), FLASH_B_List[i + 1], FLASH_A_List[i + 1]);
+                    if(i+1 == ChoicePanelID)
+                    {
+                        /* 因為送PG Mode 白畫面 會覆蓋色差 先將原本的色差在寫入 */
+                        /* 如果是選擇的ID 就用FPGA_B FPGA_A 的數值帶入 */
+                        mTotalProcess.cENGGMAONWRITEp(1, 0, 160, Convert.ToByte(i + 1), Convert.ToByte(2), mPaneladjustSwitch.FPGA_B, mPaneladjustSwitch.FPGA_A);
+                    }
+                    else
+                    {
+                        /* 因為送PG Mode 白畫面 會覆蓋色差 先將原本的色差在寫入 */
+                        mTotalProcess.cENGGMAONWRITEp(1, 0, 160, Convert.ToByte(i + 1), Convert.ToByte(2), FLASH_B_List[i + 1], FLASH_A_List[i + 1]);
+                    }
                 }
             }
         }

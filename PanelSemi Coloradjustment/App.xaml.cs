@@ -13,5 +13,6 @@ namespace PanelSemi_Coloradjustment
     /// </summary>
     public partial class App : Application
     {
+
     }
 }

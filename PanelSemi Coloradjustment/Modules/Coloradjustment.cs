@@ -1221,7 +1221,8 @@ namespace PanelSemi_Coloradjustment
                 else if (svsen == 31) { svx = 240; svy = 405; FPGAsel = 0; }
                 else if (svsen == 32) { svx = 360; svy = 405; FPGAsel = 0; }
 
-                int[] svdata = new int[] { 96, 12, 360, int.Parse(svr), int.Parse(svg), int.Parse(svb), svx, svy, svw, svh };
+                //int[] svdata = new int[] { 96, 12, 360, int.Parse(svr), int.Parse(svg), int.Parse(svb), svx, svy, svw, svh };
+                int[] svdata = new int[] { 96, 12, 360, int.Parse("1000"), int.Parse("600"), int.Parse("600"), 20, 20, 20, 20 };
                 lblCmd = "FPGA_SPI_W";
                 mhFPGASPIWRITE(FPGAsel, svreg, svdata);
                 #endregion

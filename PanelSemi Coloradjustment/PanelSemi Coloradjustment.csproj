@@ -282,5 +282,17 @@
   <ItemGroup>
     <Resource Include="Lib icon 第六版.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Refresh_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Refresh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Refresh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Refresh_2.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

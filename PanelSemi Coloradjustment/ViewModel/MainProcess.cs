@@ -113,7 +113,9 @@ namespace PanelSemi_Coloradjustment
             SaveColorInfo = new RelayCommand(SaveColorInfo_Action);
             RecoverDefaultValue = new RelayCommand(RecoverDefaultValue_Action);
             WindowClose = new RelayCommand(WindowClose_Action);
-
+            ID_On = new RelayCommand(ID_On_Action);
+            ID_Off = new RelayCommand(ID_Off_Action);
+            MCU_Reset = new RelayCommand(MCU_Reset_Action);
 
             /* DelegateCommand 宣告 */
             AdjValueR = new DelegateCommand<string>(AdjValueR_Action);
@@ -244,6 +246,33 @@ namespace PanelSemi_Coloradjustment
         }
 
         /// <summary>
+        /// 將屏幕重啟
+        /// </summary>
+        private void MCU_Reset_Action()
+        {
+            mTotalProcess.markreset(99, true);
+            mTotalProcess.McuSW_Reset();
+        }
+
+        /// <summary>
+        /// ID On
+        /// </summary>
+        private void ID_Off_Action()
+        {
+            mTotalProcess.markreset(99,true);
+            mTotalProcess.mpIDONOFF(Convert.ToByte("0"));
+        }
+
+        /// <summary>
+        /// ID Off
+        /// </summary>
+        private void ID_On_Action()
+        {
+            mTotalProcess.markreset(99, true);
+            mTotalProcess.mpIDONOFF(Convert.ToByte("1"));
+        }
+
+        /// <summary>
         /// 關閉視窗動作
         /// </summary>
         public void WindowClose_Action()
@@ -308,7 +337,7 @@ namespace PanelSemi_Coloradjustment
             if (mColorControl.IsColorAdjustmentMode == true) { mColorControl.ColorTempSave(); }
          
         }
-
+            
         /// <summary>
         /// 選擇ID後並開始調整色差
         /// 1. 會先用 Serialmode 分配ID
@@ -317,6 +346,8 @@ namespace PanelSemi_Coloradjustment
         /// </summary>
         private void StartandInit_Action()
         {
+            LoadingWindow.CreateNew();
+            Thread.Sleep(500);
             if(mColorControl.IsColorAdjustmentMode == false)
             {
                 if (mColorControl.ChoicePanelID == 0)
@@ -342,9 +373,8 @@ namespace PanelSemi_Coloradjustment
                 mColorControl.ExistColorMode();
                 CtLog.Warning("離開 色差調節模式");
             }
-            
+            LoadingWindow.Close();
         }
-
 
         /// <summary>
         /// Update Panel 數量
@@ -372,13 +402,16 @@ namespace PanelSemi_Coloradjustment
         public void USB_ComPort_FindandOpen_Action()
         {
             /* 呼叫 TotalProcess 中的 USB_ComPort_FindandOpen 找USB的COM Port並連接 */
-            mTotalProcess.USB_ComPort_FindandOpen();
-            /* 如果有找到USB接口 且 已連線 >>*/
-            if (mTotalProcess.isUSBCconnect != "" & mTotalProcess.isUSBOpen == true)
-            {
-                /*>> Update Panel 數量 */
-                UpdateNumofPanel();
-            }
+            //mTotalProcess.USB_ComPort_FindandOpen();
+            ///* 如果有找到USB接口 且 已連線 >>*/
+            //if (mTotalProcess.isUSBCconnect != "" & mTotalProcess.isUSBOpen == true)
+            //{
+            //    /*>> Update Panel 數量 */
+            //    UpdateNumofPanel();
+            //}
+
+            /* 測試 */
+            mTotalProcess.cPGRGB10BITp(3,0,0,1,2,"99","99","99");
         }
 
         /// <summary>
@@ -386,7 +419,6 @@ namespace PanelSemi_Coloradjustment
         /// </summary>
         private void SaveColorInfo_Action()
         {
-            
             LoadingWindow.CreateNew("寫入色差中");
             Thread.Sleep(2000);
             LoadingWindow.UpdateMessage("寫入色差中");
@@ -501,7 +533,6 @@ namespace PanelSemi_Coloradjustment
         /// <param name="e"></param>
         private void mCheckBoxStates_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
-            //Console.WriteLine(e.NewItems[0]);
             if ((bool)e.NewItems[0] == true)
             {
                 colorSpaceChangeInt = e.NewStartingIndex;
