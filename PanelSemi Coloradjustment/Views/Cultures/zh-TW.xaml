@@ -1,0 +1,16 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <sys:String x:Key="LangSwitch">語系切換</sys:String>
+    <sys:String x:Key="zhTW">中文</sys:String>
+    <sys:String x:Key="enUS">英文</sys:String>
+    <sys:String x:Key="jaJP">日語</sys:String>
+    <sys:String x:Key="System">系統</sys:String>
+    <sys:String x:Key="Connect">連線</sys:String>
+    <sys:String x:Key="Mode">調整模式</sys:String>
+    <sys:String x:Key="Recover">恢復預設值</sys:String>
+    <sys:String x:Key="Colorspace">色域選擇</sys:String>
+    <sys:String x:Key="Save">儲存色差</sys:String>
+    <sys:String x:Key="Enter">進入色差調節模式</sys:String>
+    <sys:String x:Key="Flag">尚未進入色差調節模式</sys:String>
+</ResourceDictionary>

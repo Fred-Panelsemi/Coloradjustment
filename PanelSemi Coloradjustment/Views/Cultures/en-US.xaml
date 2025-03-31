@@ -1,0 +1,16 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <sys:String x:Key="LangSwitch">Language</sys:String>
+    <sys:String x:Key="zhTW">Chinese</sys:String>
+    <sys:String x:Key="enUS">English</sys:String>
+    <sys:String x:Key="jaJP">Japanese</sys:String>
+    <sys:String x:Key="System">System</sys:String>
+    <sys:String x:Key="Connect">Connect</sys:String>
+    <sys:String x:Key="Mode">Mode</sys:String>
+    <sys:String x:Key="Recover">Recover</sys:String>
+    <sys:String x:Key="Colorspace">Colorspace</sys:String>
+    <sys:String x:Key="Save">Save</sys:String>
+    <sys:String x:Key="Enter">Enter Adjustment Mode</sys:String>
+    <sys:String x:Key="Flag" xml:space="preserve">Not yet entered &#x000A;color difference adjustment mode</sys:String>
+</ResourceDictionary>

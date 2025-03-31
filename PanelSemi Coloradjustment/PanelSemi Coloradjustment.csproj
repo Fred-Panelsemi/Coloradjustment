@@ -52,7 +52,7 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Lib icon 第六版.ico</ApplicationIcon>
+    <ApplicationIcon>圖片2 %283%29.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ControlzEx, Version=5.0.0.0, Culture=neutral, PublicKeyToken=69f1c32f803d307e, processorArchitecture=MSIL">
@@ -64,6 +64,9 @@
     </Reference>
     <Reference Include="CtLib.Library.Wpf">
       <HintPath>..\..\..\..\CtLib_dll\CtLib.Library.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="LoadingWindowLibrary">
+      <HintPath>..\..\..\LoadingWindowLibrary_net8\LoadingWindowLibrary\LoadingWindowLibrary\bin\Debug\LoadingWindowLibrary.dll</HintPath>
     </Reference>
     <Reference Include="MahApps.Metro, Version=2.0.0.0, Culture=neutral, PublicKeyToken=51482d6f650b2b3f, processorArchitecture=MSIL">
       <HintPath>..\packages\MahApps.Metro.2.4.9\lib\net47\MahApps.Metro.dll</HintPath>
@@ -119,6 +122,18 @@
     <Compile Include="ViewModel\MainCtBasic.cs" />
     <Compile Include="ViewModel\MainProcess.cs" />
     <Compile Include="ViewModel\Panelsemi.cs" />
+    <Page Include="Views\Cultures\en-US.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Cultures\ja-JP.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Cultures\zh-TW.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -161,6 +176,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Enum\" />
+    <Folder Include="Helper\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resource\panelsemi.jpg" />
@@ -293,6 +309,18 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Refresh_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="圖片2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="圖片2 %281%29.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="圖片2 %282%29.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="圖片2 %283%29.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

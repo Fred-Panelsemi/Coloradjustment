@@ -38,9 +38,11 @@ namespace PanelSemi_Coloradjustment
             throw new NotImplementedException();
         }
 
+        private int langFlag = 0;
         protected override void CultureChanged(CultureInfo culture)
         {
-            throw new NotImplementedException();
+            Properties.Settings.Default.DefaultCulture = culture;
+            Properties.Settings.Default.Save();
         }
 
         protected override void EquipSttChanged(EquipState stt)

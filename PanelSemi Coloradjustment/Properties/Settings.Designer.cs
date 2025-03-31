@@ -22,5 +22,16 @@ namespace PanelSemi_Coloradjustment.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Globalization.CultureInfo DefaultCulture {
+            get {
+                return ((global::System.Globalization.CultureInfo)(this["DefaultCulture"]));
+            }
+            set {
+                this["DefaultCulture"] = value;
+            }
+        }
     }
 }

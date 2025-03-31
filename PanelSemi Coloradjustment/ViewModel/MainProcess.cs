@@ -11,6 +11,7 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web.UI.WebControls;
@@ -104,7 +105,8 @@ namespace PanelSemi_Coloradjustment
             var asm = Assembly.GetExecutingAssembly();
             PanelSemi_SplicingVersion = $"v{asm.GetName().Version}";
             /**/
-            LoadingWindow.CreateNew();
+            LoadingWindowLibrary.LoadingWindowHelper.Create();
+            //LoadingWindow.CreateNew();
             Thread.Sleep(2000);
             /* Command 宣告 */
             FrontBackSimulation = new RelayCommand(FrontSimulation_Action);
@@ -151,6 +153,19 @@ namespace PanelSemi_Coloradjustment
                 "Single Tile"
             };
             Mode_SelectedItem = Mode_Item[0];
+
+            /* 初始化語系 */
+            var cultFs = new Uri[]
+            {
+                new Uri(@"Views/Cultures/zh-TW.xaml",UriKind.Relative),
+                new Uri(@"Views/Cultures/en-US.xaml",UriKind.Relative),
+                new Uri(@"Views/Cultures/ja-JP.xaml",UriKind.Relative)
+            };
+            CultureHelper.Initial(
+                cultFs,
+                PanelSemi_Coloradjustment.Properties.Settings.Default.DefaultCulture,
+                System.Windows.Application.Current
+            );
 
             /* ColorSpaceCheckBoxStates checkbox 填充 */
             ColorSpaceCheckBoxStates = new ObservableCollection<bool>();
@@ -222,18 +237,18 @@ namespace PanelSemi_Coloradjustment
 
 
             Panel_ID_CheckBoxes = new ObservableCollection<CheckBoxModel>();
-            LoadingWindow.UpdateMessage("建立連線");
+            LoadingWindowLibrary.LoadingWindowHelper.Update("建立連線");
             /* 如果有找到USB接口 且 已連線 >>*/
             if (mTotalProcess.isUSBCconnect != "" & mTotalProcess.isUSBOpen == true)
             {
-                LoadingWindow.UpdateMessage("匯入螢幕資訊");
+                LoadingWindowLibrary.LoadingWindowHelper.Update("匯入螢幕資訊");
                 /*>> Update Panel 數量 */
                 UpdateNumofPanel();
                 Thread.Sleep(2000);
             }
             else
             {
-                LoadingWindow.UpdateMessage("目前無連接屏幕");
+                LoadingWindowLibrary.LoadingWindowHelper.Update("目前無連接屏幕");
                 Thread.Sleep(2000);
             }
       
@@ -241,8 +256,8 @@ namespace PanelSemi_Coloradjustment
             DataA = new Dictionary<int, ObservableCollection<int>>();
             DataB = mPaneladjustSwitch.FPGA_B;
             DataA = mPaneladjustSwitch.FPGA_A;
-            LoadingWindow.UpdateMessage("進入視窗");
-
+            LoadingWindowLibrary.LoadingWindowHelper.Update("進入視窗");
+            LoadingWindowLibrary.LoadingWindowHelper.Close();
         }
 
         /// <summary>
@@ -346,7 +361,7 @@ namespace PanelSemi_Coloradjustment
         /// </summary>
         private void StartandInit_Action()
         {
-            LoadingWindow.CreateNew();
+            LoadingWindowLibrary.LoadingWindowHelper.Create();
             Thread.Sleep(500);
             if(mColorControl.IsColorAdjustmentMode == false)
             {
@@ -361,19 +376,20 @@ namespace PanelSemi_Coloradjustment
                 mColorControl.ColorCtrInit();
                 /* 勾選1020階白畫面 */
                 ColorSpaceCheckBoxStates[3] = true;
-                EnterOrExistColorMoode = "離開\r\n色差調節模式";
+                
+                EnterOrExistColorMoode = "Exist\r\nAdjustment Mode";
                 IsEnterColorAdjustmentMode = Visibility.Hidden;
-                CtLog.Warning("進入 色差調節模式");
+                //CtLog.Warning("進入 色差調節模式");
             }
             else
             {
                 IsEnterColorAdjustmentMode = Visibility.Visible;
                 mColorControl.IsColorAdjustmentMode = false;
-                EnterOrExistColorMoode = "進入\r\n色差調節模式";
+                EnterOrExistColorMoode = "Enter\r\nAdjustment Mode";
                 mColorControl.ExistColorMode();
-                CtLog.Warning("離開 色差調節模式");
+                //CtLog.Warning("離開 色差調節模式");
             }
-            LoadingWindow.Close();
+            LoadingWindowLibrary.LoadingWindowHelper.Close();
         }
 
         /// <summary>
@@ -419,13 +435,13 @@ namespace PanelSemi_Coloradjustment
         /// </summary>
         private void SaveColorInfo_Action()
         {
-            LoadingWindow.CreateNew("寫入色差中");
+            LoadingWindowLibrary.LoadingWindowHelper.Create();
             Thread.Sleep(2000);
-            LoadingWindow.UpdateMessage("寫入色差中");
+            LoadingWindowLibrary.LoadingWindowHelper.Update("寫入色差中");
             
             mColorControl.ColorSave();
             Thread.Sleep(4000);
-            LoadingWindow.Close();
+            LoadingWindowLibrary.LoadingWindowHelper.Close();
         }
 
         /// <summary>

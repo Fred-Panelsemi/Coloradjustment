@@ -106,6 +106,18 @@ namespace PanelSemi_Coloradjustment
             }
         }
 
+        public ObservableCollection<string> Lang_Item { get; set; }
+        private string mLang_SelectedItem;
+        public string Lang_SelectedItem // 綁定到選中的項目
+        {
+            get => mLang_SelectedItem;
+            set
+            {
+                mLang_SelectedItem = value;
+                OnPropertyChanged();
+            }
+        }
+
         // 顯示要RGB要調整色域的數值
         private int mAdjuistment_R_Value_Show = 0;
         public int Adjuistment_R_Value_Show
@@ -142,7 +154,7 @@ namespace PanelSemi_Coloradjustment
 
 
         // 進入/離開色差模式
-        private string mEnterOrExistColorMoode = "進入\r\n色差調節模式";
+        private string mEnterOrExistColorMoode = "Enter\r\nAdjustment Mode";
         public  string EnterOrExistColorMoode
         {
             get => mEnterOrExistColorMoode;
