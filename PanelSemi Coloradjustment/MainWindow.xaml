@@ -4,8 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PanelSemi_Coloradjustment"
-        xmlns:CtLib ="clr-namespace:CtLib.Library.Wpf;assembly=CtLib.Library.Wpf"
-        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"  
+        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls" d:DataContext="{d:DesignInstance Type=local:PaneladjustSwitch}"
         x:Class="PanelSemi_Coloradjustment.MainWindow"
         mc:Ignorable="d"
         WindowStyle="SingleBorderWindow"
@@ -55,7 +54,7 @@
 
         </Grid.ColumnDefinitions>
         <Menu Grid.ColumnSpan="5" Grid.Row="0"  Background="#3C3C3C">
-            <MenuItem Header="{DynamicResource LangSwitch}" Background="#3C3C3C" Foreground="White" FontSize="8" Width="60" VerticalContentAlignment="Center">
+            <MenuItem Header="{DynamicResource LangSwitch}" Background="#3C3C3C" Foreground="White" FontSize="12" VerticalContentAlignment="Center" Width="120">
                 <MenuItem Header="{DynamicResource zhTW}" Command="{Binding ChangeCulture}" CommandParameter="zh-TW"/>
                 <MenuItem Header="{DynamicResource enUS}" Command="{Binding ChangeCulture}" CommandParameter="en-US"/>
                 <MenuItem Header="{DynamicResource jaJP}" Command="{Binding ChangeCulture}" CommandParameter="ja-JP"/>

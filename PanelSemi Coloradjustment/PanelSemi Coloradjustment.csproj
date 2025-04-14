@@ -58,15 +58,8 @@
     <Reference Include="ControlzEx, Version=5.0.0.0, Culture=neutral, PublicKeyToken=69f1c32f803d307e, processorArchitecture=MSIL">
       <HintPath>..\packages\ControlzEx.5.0.2\lib\net462\ControlzEx.dll</HintPath>
     </Reference>
-    <Reference Include="CtLib.Library, Version=1.0.10.5, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\CtLib_dll\CtLib.Library.dll</HintPath>
-    </Reference>
-    <Reference Include="CtLib.Library.Wpf">
-      <HintPath>..\..\..\..\CtLib_dll\CtLib.Library.Wpf.dll</HintPath>
-    </Reference>
     <Reference Include="LoadingWindowLibrary">
-      <HintPath>..\..\..\LoadingWindowLibrary_net8\LoadingWindowLibrary\LoadingWindowLibrary\bin\Debug\LoadingWindowLibrary.dll</HintPath>
+      <HintPath>Resource\LoadingWindowLibrary.dll</HintPath>
     </Reference>
     <Reference Include="MahApps.Metro, Version=2.0.0.0, Culture=neutral, PublicKeyToken=51482d6f650b2b3f, processorArchitecture=MSIL">
       <HintPath>..\packages\MahApps.Metro.2.4.9\lib\net47\MahApps.Metro.dll</HintPath>
@@ -105,6 +98,10 @@
     <Compile Include="Control\Pidinit.cs" />
     <Compile Include="Control\Screen_Splicing.cs" />
     <Compile Include="Control\TotalProcess.cs" />
+    <Compile Include="Helper\CultureHelper.cs" />
+    <Compile Include="Helper\DelegateCommand.cs" />
+    <Compile Include="Helper\RelayCommand.cs" />
+    <Compile Include="Helper\WpfInvoke.cs" />
     <Compile Include="Modules\Coloradjustment.cs" />
     <Compile Include="Modules\Error_Base.cs" />
     <Compile Include="Modules\FPGA_Base.cs" />
@@ -176,7 +173,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Enum\" />
-    <Folder Include="Helper\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resource\panelsemi.jpg" />

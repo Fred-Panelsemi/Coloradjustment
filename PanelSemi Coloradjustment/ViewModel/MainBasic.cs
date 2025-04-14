@@ -11,7 +11,6 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using CtLib.Library.Wpf;
 using PanelSemi_Coloradjustment.ViewModel;
 
 namespace PanelSemi_Coloradjustment
@@ -351,6 +350,8 @@ namespace PanelSemi_Coloradjustment
         public ICommand ID_On { get; set; }
         public ICommand ID_Off { get; set; }
         public ICommand MCU_Reset { get; set; }
+
+        public ICommand ChangeCulture { get; set; }
 
         public DelegateCommand<string> AdjValueR { get; set; }
         public DelegateCommand<string> AdjValueG { get; set; }

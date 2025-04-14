@@ -1,5 +1,4 @@
-﻿using CtLib.Library.Log;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;

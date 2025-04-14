@@ -24,11 +24,8 @@ using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using ControlzEx.Standard;
-using CtLib.Library;
-using CtLib.Library.Contracts;
-using CtLib.Library.Log;
-using CtLib.Library.Wpf;
 using MahApps.Metro.Controls;
+using PanelSemi_Coloradjustment.Helper;
 using PanelSemi_Coloradjustment.Properties;
 using PanelSemi_Coloradjustment.ViewModel;
 using static System.Net.Mime.MediaTypeNames;
@@ -82,7 +79,7 @@ namespace PanelSemi_Coloradjustment
 
     //================================================================================================================================================================================
     // Partial VM >> MainProcess
-    internal partial class MainProcess : MetroProcessBase<Panelsemi>, INotifyPropertyChanged
+    internal partial class MainProcess :  INotifyPropertyChanged
     {
         // 測試區 ================================================================================================================================================================================
       
@@ -100,7 +97,7 @@ namespace PanelSemi_Coloradjustment
             /* 測試宣告區 */
 
             
-           
+            
             /* 撈出版本號　=> 由AssemblyInfo.cs中設定 */
             var asm = Assembly.GetExecutingAssembly();
             PanelSemi_SplicingVersion = $"v{asm.GetName().Version}";
@@ -118,13 +115,14 @@ namespace PanelSemi_Coloradjustment
             ID_On = new RelayCommand(ID_On_Action);
             ID_Off = new RelayCommand(ID_Off_Action);
             MCU_Reset = new RelayCommand(MCU_Reset_Action);
+           
 
             /* DelegateCommand 宣告 */
             AdjValueR = new DelegateCommand<string>(AdjValueR_Action);
             AdjValueG = new DelegateCommand<string>(AdjValueG_Action);
             AdjValueB = new DelegateCommand<string>(AdjValueB_Action);
+            ChangeCulture = new DelegateCommand<string>(ChangeCulture_Action);
 
-            
             /* Microusb_Items Combox 初始化 */
             Microusb_Items = new ObservableCollection<ComboBoxItemModel>
             {
@@ -161,7 +159,7 @@ namespace PanelSemi_Coloradjustment
                 new Uri(@"Views/Cultures/en-US.xaml",UriKind.Relative),
                 new Uri(@"Views/Cultures/ja-JP.xaml",UriKind.Relative)
             };
-            CultureHelper.Initial(
+            PanelSemi_Coloradjustment.Helper.CultureHelper.Initial(
                 cultFs,
                 PanelSemi_Coloradjustment.Properties.Settings.Default.DefaultCulture,
                 System.Windows.Application.Current
@@ -260,6 +258,12 @@ namespace PanelSemi_Coloradjustment
             LoadingWindowLibrary.LoadingWindowHelper.Close();
         }
 
+        private void ChangeCulture_Action(string cultureCode)
+        {
+            CultureInfo newCulture = new CultureInfo(cultureCode);
+            CultureHelper.ChangeCulture(newCulture);
+        }
+
         /// <summary>
         /// 將屏幕重啟
         /// </summary>
@@ -340,7 +344,6 @@ namespace PanelSemi_Coloradjustment
                     {
                         ChoicePanelID = i+1;
                         mColorControl.ChoicePanelID = ChoicePanelID;
-                        CtLog.Info($"選擇 ID {ChoicePanelID}");
                     }
                 }
             }

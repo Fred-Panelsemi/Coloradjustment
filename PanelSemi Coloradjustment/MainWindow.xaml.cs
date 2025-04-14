@@ -15,8 +15,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using CtLib.Library;
-using CtLib.Library.Wpf;
 using MahApps.Metro.Controls;
 
 namespace PanelSemi_Coloradjustment
