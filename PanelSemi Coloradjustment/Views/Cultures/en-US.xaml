@@ -2,6 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
     <sys:String x:Key="LangSwitch">Language</sys:String>
+    <sys:String x:Key="Option">Options</sys:String>
     <sys:String x:Key="zhTW">Chinese</sys:String>
     <sys:String x:Key="enUS">English</sys:String>
     <sys:String x:Key="jaJP">Japanese</sys:String>
