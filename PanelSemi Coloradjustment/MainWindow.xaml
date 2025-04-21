@@ -8,7 +8,7 @@
         x:Class="PanelSemi_Coloradjustment.MainWindow"
         mc:Ignorable="d"
         WindowStyle="SingleBorderWindow"
-        Title="{Binding PanelSemi_SplicingVersion}" Height="700" Width="870" Background="{x:Null}" WindowStartupLocation="CenterScreen" TitleCharacterCasing="Normal" Closing="MetroWindow_Closing_1" ResizeMode="CanResizeWithGrip" Activated="MetroWindow_Activated">
+        Title="{Binding PanelSemi_SplicingVersion}" Height="700" Width="1000" Background="{x:Null}" WindowStartupLocation="CenterScreen" TitleCharacterCasing="Normal" Closing="MetroWindow_Closing_1" ResizeMode="CanResizeWithGrip" Activated="MetroWindow_Activated">
     <mah:MetroWindow.TitleTemplate>
         <DataTemplate>
             <StackPanel Orientation="Horizontal"
@@ -54,7 +54,9 @@
 
         </Grid.ColumnDefinitions>
         <Menu Grid.ColumnSpan="5" Grid.Row="0"  Background="#3C3C3C">
-            <MenuItem Header="{DynamicResource LangSwitch}" Background="#3C3C3C" Foreground="White" FontSize="12" VerticalContentAlignment="Center" Width="120">
+            <!--<Button Command="{Binding USB_ComPort_FindandOpen}" Content="{DynamicResource Connect}" Margin="0,5,0,0" FontSize="12" />-->
+            <MenuItem Command="{Binding USB_ComPort_FindandOpen}" Header="{DynamicResource Connect}"  FontSize="12" Background="#FF3C3C3C" Width="80" />
+            <MenuItem Header="{DynamicResource LangSwitch}" Background="#3C3C3C" Foreground="White" FontSize="12" VerticalContentAlignment="Center" Width="100">
                 <MenuItem Header="{DynamicResource zhTW}" Command="{Binding ChangeCulture}" CommandParameter="zh-TW"/>
                 <MenuItem Header="{DynamicResource enUS}" Command="{Binding ChangeCulture}" CommandParameter="en-US"/>
                 <MenuItem Header="{DynamicResource jaJP}" Command="{Binding ChangeCulture}" CommandParameter="ja-JP"/>
@@ -137,7 +139,7 @@
                     </Button>-->
                 </Grid>
                 <Separator/>
-                <Button Command="{Binding USB_ComPort_FindandOpen}" Content="{DynamicResource Connect}" Margin="0,5,0,0" FontSize="16" />
+                
                 
                 <!--<mah:ToggleSwitch  OnContent="ID On" OffContent="ID off" OnCommand="{Binding ID_On}" OffCommand="{Binding ID_Off}"/>-->
                 <ItemsControl ItemsSource="{Binding Panel_ID_CheckBoxes}" >
