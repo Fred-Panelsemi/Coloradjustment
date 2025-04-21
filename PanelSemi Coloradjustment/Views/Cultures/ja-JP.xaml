@@ -6,7 +6,7 @@
     <sys:String x:Key="zhTW">中国語</sys:String>
     <sys:String x:Key="enUS">英語</sys:String>
     <sys:String x:Key="jaJP">日本語</sys:String>
-    <sys:String x:Key="System">システム</sys:String>
+    <sys:String x:Key="System">ID List</sys:String>
     <sys:String x:Key="Connect">接続</sys:String>
     <sys:String x:Key="Mode">調整モード</sys:String>
     <sys:String x:Key="Recover">初期設定に戻す</sys:String>

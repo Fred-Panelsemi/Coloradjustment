@@ -6,7 +6,7 @@
     <sys:String x:Key="zhTW">Chinese</sys:String>
     <sys:String x:Key="enUS">English</sys:String>
     <sys:String x:Key="jaJP">Japanese</sys:String>
-    <sys:String x:Key="System">System</sys:String>
+    <sys:String x:Key="System">ID List</sys:String>
     <sys:String x:Key="Connect">Connect</sys:String>
     <sys:String x:Key="Mode">Mode</sys:String>
     <sys:String x:Key="Recover">Recover</sys:String>
