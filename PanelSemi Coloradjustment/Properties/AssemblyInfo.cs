@@ -59,5 +59,9 @@ using System.Windows;
 //          【新增】 ID ON OFF 功能
 //          【新增】 MCU Reset 功能 (將屏幕關機功能)
 //          【修正】 很多屏幕連接時左側ID顯示區無法容下這麼多ID
-[assembly: AssemblyVersion("1.0.0.1")]
-[assembly: AssemblyFileVersion("1.0.0.1")]
+//-----------------------------------
+// v1.0.0.2 【修正】 ID ON OFF 功能 與 MCU Reset 功能 (將屏幕關機功能) 暫時拿掉
+//          【新增】 menu bar
+//          【更改】 connect 按鈕 與 語系切換 放置於menu bar中
+[assembly: AssemblyVersion("1.0.0.2")]
+[assembly: AssemblyFileVersion("1.0.0.2")]

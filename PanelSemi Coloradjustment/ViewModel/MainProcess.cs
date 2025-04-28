@@ -96,8 +96,6 @@ namespace PanelSemi_Coloradjustment
         {
             /* 測試宣告區 */
 
-            
-            
             /* 撈出版本號　=> 由AssemblyInfo.cs中設定 */
             var asm = Assembly.GetExecutingAssembly();
             PanelSemi_SplicingVersion = $"v{asm.GetName().Version}";
